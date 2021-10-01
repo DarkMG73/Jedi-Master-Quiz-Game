@@ -1,57 +1,51 @@
 import { useState, useEffect } from "react";
+import classes from "./Question.module.css";
 import Card from "../UI/Card";
+import { getAllQuotes, getQuote } from "../../hooks/quote-hooks";
+import Options from "../Options/Options";
 import { quoteList } from "../../store/quotes";
-import { getQuote, splitQuoteAndAuthor } from "../../hooks/quote-hooks";
-import { getRandomInt } from "../../hooks/utilities";
 
 function Question() {
   const [allQuotes, setAllQuotes] = useState([]);
   const [quote, setQuote] = useState([]);
   const [score, setScore] = useState([]);
-  // console.log("RUNNING Question");
+  const [gameRunning, setGameRunning] = useState(true);
+  const quoteArgs = [
+    allQuotes["allFetchedQuotesIds"],
+    allQuotes["allFetchedQuotes"],
+    score,
+    setScore,
+    setQuote,
+  ];
 
   useEffect(() => {
-    async function getAllQuotes() {
-      const fetchedQuotes = await quoteList();
-
-      // console.log("FETCHED RESULTS", fetchedQuotes);
-      setAllQuotes(fetchedQuotes);
-    }
-    getAllQuotes();
+    getAllQuotes(setAllQuotes, quoteList);
   }, []);
 
   useEffect(() => {
-    getQuote(
-      allQuotes["allFetchedQuotesIds"],
-      allQuotes["allFetchedQuotes"],
-      score,
-      setScore,
-      setQuote
-    );
+    getQuote(...quoteArgs);
   }, [allQuotes]);
 
   const newQuoteHandler = function () {
-    getQuote(
-      allQuotes["allFetchedQuotesIds"],
-      allQuotes["allFetchedQuotes"],
-      score,
-      setScore,
-      setQuote
-    );
+    const endOutput = getQuote(...quoteArgs);
+    if (endOutput === "QUOTES_DEPLETED") setGameRunning(false);
   };
-  // console.log("QUOTE: ", quote[getRandomInt(quote)]);
-  // console.log("QUOTE LENGTH: ", quote[quote["allQuotesIds"].length]);
-  // console.log("FINAL allQuotes: ", allQuotes);
-  // console.log("Final QUOTE: ", quote);
-  // console.log("Final SCORE: ", score);
-
+  console.log("quote", quote);
   return (
     <Card>
-      {quote && (
-        <p>
-          Quote:{quote.quote} <br /> Speaker:{quote.speaker}
-        </p>
+      {quote && gameRunning && (
+        <div className={classes["quote-container"]}>
+          <p>
+            Quote:{quote.quote} <br /> Speaker:{quote.speaker}
+          </p>
+          <Options
+            answer={quote.speaker}
+            allQuotes={allQuotes.allFetchedQuotes}
+            set
+          />
+        </div>
       )}
+      {!gameRunning && <p>You have answered all of the questions!</p>}
 
       <button onClick={newQuoteHandler}>New Quote</button>
     </Card>
