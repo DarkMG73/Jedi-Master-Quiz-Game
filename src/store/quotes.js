@@ -1,5 +1,5 @@
 export function quoteList() {
-  const allQuotes = () => ({
+  return {
     allFetchedQuotesIds: [
       36,
       31,
@@ -149,7 +149,5 @@ export function quoteList() {
         faction: 1,
       },
     ],
-  });
-
-  return allQuotes;
+  };
 }

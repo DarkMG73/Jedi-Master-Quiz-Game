@@ -3,7 +3,6 @@ import classes from "./Question.module.css";
 import Card from "../UI/Card";
 import { getAllQuotes, getQuote } from "../../hooks/quote-hooks";
 import Options from "../Options/Options";
-import { quoteList } from "../../store/quotes";
 
 function Question() {
   const [allQuotes, setAllQuotes] = useState([]);
@@ -19,13 +18,13 @@ function Question() {
   ];
 
   useEffect(() => {
-    getAllQuotes(setAllQuotes, quoteList);
+    getAllQuotes(setAllQuotes);
   }, []);
 
   useEffect(() => {
     getQuote(...quoteArgs);
   }, [allQuotes]);
-
+  console.log("allQuotes", allQuotes);
   const newQuoteHandler = function () {
     const endOutput = getQuote(...quoteArgs);
     if (endOutput === "QUOTES_DEPLETED") setGameRunning(false);

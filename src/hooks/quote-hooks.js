@@ -29,13 +29,21 @@ export function splitQuoteAndAuthor(str) {
 
 export async function getAllQuotes(setAllQuotes) {
   const fetchedQuotes = await quoteList();
-  console.log("fetchedQuotes", fetchedQuotes.length);
-  const allSiftedQuotes = [];
-  for (const quote in fetchedQuotes) {
-    allSiftedQuotes.push({ id: quote.id, ...splitQuoteAndAuthor(quote) });
+  console.log("fetchedQuotes", fetchedQuotes.allFetchedQuotes);
+  const allSiftedQuotes = {};
+  for (const quote of fetchedQuotes.allFetchedQuotes) {
+    console.log("SIFTED QUOTE", quote);
+    allSiftedQuotes[quote.id] = {
+      ...splitQuoteAndAuthor(quote.content),
+      faction: quote.faction,
+    };
   }
+
+  setAllQuotes({
+    allFetchedQuotesIds: fetchedQuotes.allFetchedQuotesIds,
+    allFetchedQuotes: allSiftedQuotes,
+  });
   console.log("allSiftedQuotes", allSiftedQuotes);
-  setAllQuotes(fetchedQuotes);
 }
 
 export function getQuote(
@@ -66,7 +74,7 @@ export function getQuote(
   }
   // If all quotes have been used, return
   const selectedQuote = allFetchedQuotes
-    ? splitQuoteAndAuthor(allFetchedQuotes[selectedId].content)
+    ? { ...allFetchedQuotes[usedId] }
     : { quote: "Are you ready?", speaker: "" };
 
   if (!selectedQuote) {
