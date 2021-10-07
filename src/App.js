@@ -1,16 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import HomePage from './pages/HomePage'
-import TopMenuBar from './components/TopMenuBar'
-import Footer from './components/Footer'
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import TopMenuBar from "./components/TopMenuBar";
+import Footer from "./components/Footer";
+import { ScoreProvider } from "./store/score-context";
 
 function App() {
   return (
-    <div className="App"><TopMenuBar />
+    <ScoreProvider>
+      <div className="App">
+        <TopMenuBar />
 
-      <HomePage />
-     <Footer />
-    </div>
+        <HomePage />
+        <Footer />
+      </div>
+    </ScoreProvider>
   );
 }
 

@@ -1,0 +1,55 @@
+.score-container {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.score-container > * {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  padding: 01em;
+  margin: auto;
+  box-sizing: border-box;
+}
+.current-knowledge-rank {
+  border: 1px outset green;
+}
+
+.pos-1 {
+  background: gray;
+  color: inherit;
+  border-color: white;
+}
+.pos-2 {
+  background: blue;
+  color: inherit;
+  border-color: white;
+}
+.pos-3 {
+  background: black;
+  color: white;
+  border-color: white;
+}
+.pos-4 {
+  background: orangered;
+  color: inherit;
+  border-color: white;
+}
+.pos-5 {
+  background: purple;
+  color: inherit;
+  border-color: white;
+}
+.pos-6 {
+  background: rgb(0, 255, 251);
+  color: inherit;
+  border-color: white;
+}
+.pos-7 {
+  background: green;
+  color: inherit;
+  border-color: white;
+}

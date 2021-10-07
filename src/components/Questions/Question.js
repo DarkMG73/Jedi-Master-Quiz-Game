@@ -1,52 +1,67 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import classes from "./Question.module.css";
-import Card from "../UI/Card";
+import Card from "../UI/Card/Card";
 import { getAllQuotes, getQuote } from "../../hooks/quote-hooks";
+// import { getAllQuotes } from "../../hooks/HTTP/HTTPRequest"; // re-gather quotes
 import Options from "../Options/Options";
+import ScoreContext from "../../store/score-context";
+import Timer from "../Timer/Timer";
 
-function Question() {
+function Question(props) {
   const [allQuotes, setAllQuotes] = useState([]);
   const [quote, setQuote] = useState([]);
-  const [score, setScore] = useState([]);
-  const [gameRunning, setGameRunning] = useState(true);
+  const setGameRunning = props.setGameRunning;
+  const gameRunning = props.gameRunning;
+
+  const scoreCtx = useContext(ScoreContext);
+  const setTimerRunning = scoreCtx.setTimerRunning;
+  const timerRunning = scoreCtx.timerRunning;
+  const gameOver = props.gameOver;
   const quoteArgs = [
     allQuotes["allFetchedQuotesIds"],
     allQuotes["allFetchedQuotes"],
-    score,
-    setScore,
+    scoreCtx,
     setQuote,
   ];
 
   useEffect(() => {
-    getAllQuotes(setAllQuotes);
+    if (gameRunning && !timerRunning) setTimerRunning(true);
+  }, [gameRunning]);
+
+  useEffect(() => {
+    getAllQuotes(setAllQuotes, props.setTotalQuestionNumber);
   }, []);
 
   useEffect(() => {
     getQuote(...quoteArgs);
   }, [allQuotes]);
-  console.log("allQuotes", allQuotes);
+
   const newQuoteHandler = function () {
     const endOutput = getQuote(...quoteArgs);
+    scoreCtx.setTimerRunning(true);
     if (endOutput === "QUOTES_DEPLETED") setGameRunning(false);
   };
-  console.log("quote", quote);
+
   return (
     <Card>
       {quote && gameRunning && (
-        <div className={classes["quote-container"]}>
-          <p>
-            Quote:{quote.quote} <br /> Speaker:{quote.speaker}
-          </p>
-          <Options
-            answer={quote.speaker}
-            allQuotes={allQuotes.allFetchedQuotes}
-            set
-          />
+        <div>
+          <div className={classes["quote-container"]}>
+            <p>
+              Quote:{quote.quote} <br /> Speaker:{quote.speaker}
+            </p>
+            {quote.answerOptions && (
+              <Options answerOptions={quote.answerOptions} />
+            )}
+          </div>
+          <Timer />
         </div>
       )}
       {!gameRunning && <p>You have answered all of the questions!</p>}
 
-      <button onClick={newQuoteHandler}>New Quote</button>
+      {!scoreCtx.timerRunning && !gameOver && (
+        <button onClick={newQuoteHandler}>Next Question</button>
+      )}
     </Card>
   );
 }

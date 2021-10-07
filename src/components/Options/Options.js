@@ -1,41 +1,85 @@
-import Card from "../../components/UI/Card";
-import { getRandomInt } from "../../hooks/utilities";
+import { useState, useEffect } from "react";
+import Card from "../UI/Card/Card";
+import classes from "./Options.module.css";
+import { convertID } from "../../hooks/utilities";
 
-function Options(props) {
-  const allQuotes = props.allQuotes;
-  const answer = props.answer;
-  const availableSpeakers = [];
-  for (const key in allQuotes) {
-    console.log("THE QUOTE", allQuotes[key].speaker);
-    if (answer !== allQuotes[key].speaker) {
-      availableSpeakers.push(allQuotes[key].speaker);
-    }
-  }
+const Options = (props) => {
+  const [isSelectedArray, setIsSelectedArray] = useState({});
+  const [disableAfterClick, setDisableAfterClick] = useState(true);
+  const answerOptions = props.answerOptions;
 
-  function twoUniqueRandomNumbers(highestLimit) {
-    const randomOne = getRandomInt(highestLimit);
-    const randomTwo = getRandomInt(highestLimit);
-    console.log("randomOne", randomOne);
-    console.log("randomTwo", randomTwo);
-    if (highestLimit > 0 && randomOne === randomTwo) {
-      twoUniqueRandomNumbers(highestLimit);
-      return;
+  useEffect(() => {
+    const isSelected = {};
+    for (const option of answerOptions) {
+      isSelected[convertID(option.answer)] = false;
     }
 
-    return [randomOne, randomTwo];
-  }
+    setIsSelectedArray({ ...isSelected });
+    setDisableAfterClick(true);
+  }, [answerOptions]);
 
-  const randomNumbers = twoUniqueRandomNumbers(availableSpeakers.length);
-  console.log("randomNumbers", randomNumbers);
-  console.log("randomNumbers[0]", randomNumbers[0]);
+  const handler = (e) => {
+    setIsSelectedArray({
+      [convertID(e.target.id)]: !isSelectedArray[convertID(e.target.id)],
+    });
+    const targetOption = answerOptions.filter(
+      (option) => option.answer === convertID(e.target.id, true)
+    );
+    targetOption[0].handler();
+    setDisableAfterClick(false);
+  };
 
   return (
     <Card>
-      <div className="option">{availableSpeakers[randomNumbers[0]]}</div>
-      <div className="option">{props.answer}</div>
-      <div className="option">{availableSpeakers[randomNumbers[1]]}</div>
+      <div className={classes["options-container"]}>
+        <div
+          id={convertID(answerOptions[0].answer)}
+          className={
+            classes.option +
+            " " +
+            (isSelectedArray[convertID(answerOptions[0].answer)] === true
+              ? classes.selected
+              : "") +
+            " " +
+            (!disableAfterClick && classes.inactive)
+          }
+          onClick={handler}
+        >
+          {answerOptions[0].answer}
+        </div>
+        <div
+          id={convertID(answerOptions[1].answer)}
+          className={
+            classes.option +
+            " " +
+            (isSelectedArray[convertID(answerOptions[1].answer)] === true
+              ? classes.selected
+              : "") +
+            " " +
+            (!disableAfterClick && classes.inactive)
+          }
+          onClick={handler}
+        >
+          {answerOptions[1].answer}
+        </div>
+        <div
+          id={convertID(answerOptions[2].answer)}
+          className={
+            classes.option +
+            " " +
+            (isSelectedArray[convertID(answerOptions[2].answer)] === true
+              ? classes.selected
+              : "") +
+            " " +
+            (!disableAfterClick && classes.inactive)
+          }
+          onClick={handler}
+        >
+          {answerOptions[2].answer}
+        </div>
+      </div>
     </Card>
   );
-}
+};
 
 export default Options;

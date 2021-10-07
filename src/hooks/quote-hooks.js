@@ -1,4 +1,5 @@
 import { quoteList } from "../store/quotes";
+import { createAnswerOptions } from "./options-hooks";
 
 export function splitQuoteAndAuthor(str) {
   let quote = str.split("—").shift().trim();
@@ -27,49 +28,45 @@ export function splitQuoteAndAuthor(str) {
   };
 }
 
-export async function getAllQuotes(setAllQuotes) {
+export async function getAllQuotes(setAllQuotes, setTotalQuestionNumber) {
   const fetchedQuotes = await quoteList();
-  console.log("fetchedQuotes", fetchedQuotes.allFetchedQuotes);
+  console.log("fetchedQuotes", fetchedQuotes);
   const allSiftedQuotes = {};
   for (const quote of fetchedQuotes.allFetchedQuotes) {
-    console.log("SIFTED QUOTE", quote);
     allSiftedQuotes[quote.id] = {
       ...splitQuoteAndAuthor(quote.content),
       faction: quote.faction,
     };
   }
 
+  setTotalQuestionNumber(fetchedQuotes.allFetchedQuotesIds.length);
   setAllQuotes({
     allFetchedQuotesIds: fetchedQuotes.allFetchedQuotesIds,
     allFetchedQuotes: allSiftedQuotes,
   });
-  console.log("allSiftedQuotes", allSiftedQuotes);
 }
 
 export function getQuote(
   allFetchedQuotesIds,
   allFetchedQuotes,
-  score,
-  setScore,
+  scoreCtx,
   setQuote
 ) {
   const totalQuotes = allFetchedQuotesIds ? allFetchedQuotesIds.length : 0;
   const selectedId = Math.floor(Math.random() * totalQuotes);
   const CurrentIdList = allFetchedQuotesIds ? allFetchedQuotesIds : [];
+  const scoreRecord = [...scoreCtx.incorrect, ...scoreCtx.correct];
 
-  console.log("totalQuotes", totalQuotes);
   let usedId;
-  console.log("CurrentIdList", CurrentIdList);
+
   if (totalQuotes > 0) usedId = CurrentIdList[selectedId];
 
-  if (usedId && score.includes(usedId.toString())) {
-    console.log("*** ID ALREADY USED ****");
-    if (totalQuotes > 0 && score.length >= totalQuotes) {
-      console.log("SHOULD BE THE END");
+  if (usedId && scoreRecord.includes(usedId.toString())) {
+    if (totalQuotes > 0 && scoreRecord.length >= totalQuotes) {
       return "QUOTES_DEPLETED";
     }
-    console.log("*** Repeat getQuote() ****");
-    getQuote(allFetchedQuotesIds, allFetchedQuotes, score, setScore, setQuote);
+
+    getQuote(allFetchedQuotesIds, allFetchedQuotes, scoreCtx, setQuote);
     return;
   }
   // If all quotes have been used, return
@@ -78,22 +75,24 @@ export function getQuote(
     : { quote: "Are you ready?", speaker: "" };
 
   if (!selectedQuote) {
-    getQuote();
+    getQuote(allFetchedQuotesIds, allFetchedQuotes, scoreCtx, setQuote);
   }
 
   if (
-    score &&
+    scoreRecord &&
     totalQuotes > 0 &&
     usedId &&
     typeof usedId !== "undefined" &&
     usedId !== "" &&
     usedId !== " "
   ) {
-    console.log("SETTING SCORE STATE", usedId);
-    setScore([...score, usedId.toString()]);
-    console.log("score", score);
+    scoreCtx.addCurrent(usedId.toString());
 
-    console.log("Setting quote state.");
+    selectedQuote.answerOptions = createAnswerOptions(
+      allFetchedQuotes,
+      selectedQuote.speaker,
+      scoreCtx
+    );
     setQuote(selectedQuote);
   } else {
   }

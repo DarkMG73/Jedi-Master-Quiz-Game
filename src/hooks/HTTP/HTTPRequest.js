@@ -28,5 +28,9 @@ export async function getAllQuotes() {
       checkAgain++;
     }
   }
+  console.log("ALL QUOTES & ID's OBJECT:", {
+    allFetchedQuotesIds,
+    allFetchedQuotes,
+  });
   return { allFetchedQuotesIds, allFetchedQuotes };
 }
