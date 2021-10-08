@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Card from "../UI/Card/Card";
 import classes from "./Options.module.css";
 import { convertID } from "../../hooks/utilities";
+import Logo from "../../assets/images/Anakin_Skywalker.webp";
 
 const Options = (props) => {
   const [isSelectedArray, setIsSelectedArray] = useState({});
@@ -28,7 +29,7 @@ const Options = (props) => {
     targetOption[0].handler();
     setDisableAfterClick(false);
   };
-
+  console.log("public url: ", process.env.PUBLIC_URL);
   return (
     <Card>
       <div className={classes["options-container"]}>
@@ -45,6 +46,12 @@ const Options = (props) => {
           }
           onClick={handler}
         >
+          <img
+            className="img-fluid"
+            src={`${process.env.PUBLIC_URL}/assets/images/Anakin_Skywalker.webp`}
+            alt="logo"
+          />
+          <img src={Logo} />
           {answerOptions[0].answer}
         </div>
         <div

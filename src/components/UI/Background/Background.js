@@ -3,10 +3,10 @@ import classes from "./Background.module.css";
 function Background(props) {
   return (
     <div className={classes.background}>
-      <div class={classes.stars}></div>
-      <div class={classes.twinkling}></div>
-      <div class={classes.clouds}></div>
-      <div class={classes.clouds2}></div>
+      <div className={classes.stars}></div>
+      <div className={classes.twinkling}></div>
+      <div className={classes.clouds}></div>
+      <div className={classes.clouds2}></div>
       {props.children}
     </div>
   );
