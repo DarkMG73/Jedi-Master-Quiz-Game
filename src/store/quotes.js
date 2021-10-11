@@ -99,6 +99,7 @@ export function quoteList() {
       54,
       55,
       56,
+      57,
     ],
     allFetchedQuotes: [
       {
@@ -416,7 +417,7 @@ export function quoteList() {
       },
       {
         id: 57,
-        content: "[That is why you fail. - Yoda",
+        content: "That is why you fail. - Yoda",
         faction: 0,
       },
     ],

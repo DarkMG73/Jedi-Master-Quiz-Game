@@ -4,17 +4,22 @@ import specialGradient from "../UI/Card/specialGradient.module.css";
 
 function TopMenuBar() {
   return (
-    <nav
-      className={`${styles["top-nav"]} ${specialGradient["special-gradient"]}`}
-    >
+    <nav className={`${styles["top-nav"]} `}>
       <ul className={styles["content-container"]}>
-        <li className={styles["inner-element"]}>
-          <Link to="/">Become a Jedi Master Quiz Game</Link>
-        </li>
-        <li className={styles["inner-element"]}>
+        <li
+          className={`${styles["inner-element"]} ${specialGradient["special-gradient"]}`}
+        >
           <Link to="/instructions">Quick Instructions</Link>
         </li>
-        <li className={styles["inner-element"]}>
+        <li
+          className={`${styles["inner-element"]} ${specialGradient["special-gradient"]}`}
+        >
+          <Link to="/">Become a Jedi Quiz Game</Link>
+        </li>
+
+        <li
+          className={`${styles["inner-element"]} ${specialGradient["special-gradient"]}`}
+        >
           <Link to="/ranking-system">How to Advance Your Jedi Rank</Link>
         </li>
       </ul>

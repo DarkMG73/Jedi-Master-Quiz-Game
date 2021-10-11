@@ -51,7 +51,10 @@ function Question(props) {
               Quote:{quote.quote} <br /> Speaker:{quote.speaker}
             </p>
             {quote.answerOptions && (
-              <Options answerOptions={quote.answerOptions} />
+              <Options
+                answerOptions={quote.answerOptions}
+                timerRunning={timerRunning}
+              />
             )}
           </div>
           <Timer />

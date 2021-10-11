@@ -7,11 +7,10 @@ function Score(props) {
   const scoreCtx = useContext(ScoreContext);
   const correct = scoreCtx.correct.length;
   const incorrect = scoreCtx.incorrect.length;
-  const resetScoreContext = scoreCtx.resetScoreContext;
   const totalQuestionNumber = props.totalQuestionNumber;
   const setGameOver = props.setGameOver;
   const gameOver = props.gameOver;
-  const skillLevelMod = props.skillLevelMod ?? 5;
+  const skillLevelMod = props.skillLevelMod ?? 30;
   const ranks = [
     { position: "pos-1", rank: "Youngling", threshold: 20 },
     { position: "pos-2", rank: "Padawan", threshold: 40 },

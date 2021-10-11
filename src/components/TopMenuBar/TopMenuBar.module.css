@@ -1,13 +1,16 @@
 .top-nav {
   z-index: 1000;
   padding: 0;
-  height: 2em;
   max-width: 1000px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0 0 100px 100px;
+  position: relative;
+  padding-left: 0;
+  padding-top: calc(50px + 5em);
+  z-index: 11;
 }
 
 .content-container {
@@ -20,8 +23,53 @@
 
 .inner-element {
   margin: 0 1em;
+  font-family: "sw-regular";
+  letter-spacing: 0.25em;
+  font-size: calc(10px + 0.1vw);
+  width: 14vw;
+  height: 14vw;
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  box-shadow: -1px -3px 1px -2px rgb(255 255 255 / 50%),
+    inset 1px 3px 17px -5px rgb(255 255 255 / 50%);
+  opacity: 0.7;
+  overflow: hidden;
 }
 
+/* .inner-element:before {
+  content: "";
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+}
+
+.inner-element:before:nth-child(1):before {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4),
+      rgba(55, 0, 0, 1)
+    ),
+    url(http://starwarsrumors.com/wp-content/uploads/2019/10/why-was-leia-not-trained-while-growing-up.jpg);
+  background-size: cover;
+  background-position: center;
+} */
+
+.inner-element:first-child {
+  margin: 0 1em;
+  font-family: "sw-hollow-regular";
+  letter-spacing: 0.25em;
+  font-size: calc(12px + 0.1vw);
+}
 .content-container a {
   text-decoration: none;
   color: inherit;

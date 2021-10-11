@@ -17,5 +17,6 @@ export function shuffleArray(array) {
 
 export function convertID(str, restore = false) {
   if (restore) return str.replaceAll("^", " ");
+
   return str.replaceAll(" ", "^");
 }

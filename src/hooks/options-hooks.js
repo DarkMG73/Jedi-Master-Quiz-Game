@@ -33,12 +33,14 @@ export function createAnswerOptions(allQuotes, answer, scoreCtx, startTimer) {
     {
       answer: availableSpeakers[randomNumbers[0]],
       handler: scoreCtx.addIncorrect,
+      class: "incorrect",
     },
     {
       answer: availableSpeakers[randomNumbers[1]],
       handler: scoreCtx.addIncorrect,
+      class: "incorrect",
     },
-    { answer: answer, handler: scoreCtx.addCorrect },
+    { answer: answer, handler: scoreCtx.addCorrect, class: "correct" },
   ];
 
   shuffleArray(optionsArray);

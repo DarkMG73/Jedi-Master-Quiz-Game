@@ -5,6 +5,7 @@ import TopMenuBar from "./components/TopMenuBar/TopMenuBar";
 import Footer from "./components/Footer";
 import { ScoreProvider } from "./store/score-context";
 import { createBrowserHistory } from "history";
+import "./assets/fonts/sw-WEBFONT_VERSIONS/stylesheet.css";
 
 function App() {
   const history = createBrowserHistory();
