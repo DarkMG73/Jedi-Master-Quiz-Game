@@ -1,0 +1,9 @@
+.opening-screen-wrap {
+  cursor: pointer;
+  z-index: 100;
+}
+
+.opening-screen-cta,
+.opening-screen-title {
+  pointer-events: none;
+}

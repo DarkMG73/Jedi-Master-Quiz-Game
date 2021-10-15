@@ -1,14 +1,20 @@
 import Card from "../UI/Card/Card";
+import styles from "./StartGame.module.css";
 
 function StartGame(props) {
   const StartGameHandler = () => {
+    console.log("CLICKED");
     props.setGameRunning(true);
   };
   return (
-    <Card>
-      <h3>Are you ready for the Jedi Trials?</h3>
-      <button onClick={StartGameHandler}>Begin, We Shall</button>
-    </Card>
+    <div className={styles["opening-screen-wrap"]} onClick={StartGameHandler}>
+      <Card>
+        <h3 className={styles["opening-screen-title"]}>
+          Ready for the Jedi Trials, you are.
+        </h3>
+        <h2 className={styles["opening-screen-cta"]}>Begin, We Shall &rarr;</h2>
+      </Card>
+    </div>
   );
 }
 

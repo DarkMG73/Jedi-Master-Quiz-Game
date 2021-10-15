@@ -65,8 +65,8 @@ const Options = (props) => {
   };
 
   return (
-    <Card>
-      <div className={classes["options-container"]}>
+    <div className={classes["options-container"]}>
+      <Card>
         <div
           id={convertID(answerOptions[0].answer)}
           className={
@@ -86,8 +86,15 @@ const Options = (props) => {
             backgroundImage: "url(" + imageOne.default + ")",
           }}
         >
-          <h3 className={classes["option-name"]}>{answerOptions[0].answer}</h3>
+          <Card>
+            <h3 className={classes["option-name"]}>
+              {answerOptions[0].answer}
+            </h3>
+          </Card>
         </div>
+      </Card>
+
+      <Card>
         <div
           id={convertID(answerOptions[1].answer)}
           className={
@@ -107,8 +114,14 @@ const Options = (props) => {
             backgroundImage: "url(" + imageTwo.default + ")",
           }}
         >
-          <h3 className={classes["option-name"]}>{answerOptions[1].answer}</h3>
+          <Card>
+            <h3 className={classes["option-name"]}>
+              {answerOptions[1].answer}
+            </h3>
+          </Card>
         </div>
+      </Card>
+      <Card>
         <div
           id={convertID(answerOptions[2].answer)}
           className={
@@ -128,10 +141,14 @@ const Options = (props) => {
             backgroundImage: "url(" + imageThree.default + ")",
           }}
         >
-          <h3 className={classes["option-name"]}>{answerOptions[2].answer}</h3>
+          <Card>
+            <h3 className={classes["option-name"]}>
+              {answerOptions[2].answer}
+            </h3>
+          </Card>
         </div>
-      </div>
-    </Card>
+      </Card>
+    </div>
   );
 };
 

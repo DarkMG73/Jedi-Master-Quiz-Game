@@ -1,0 +1,43 @@
+.questions-container {
+  position: relative;
+}
+
+.quote-container {
+  position: relative;
+}
+
+.quote-container > div {
+  padding: 0.5em;
+  margin: 0 auto 1.5rem;
+  font-size: 18px;
+}
+
+.quote-text {
+  background: #237b8a;
+  border-radius: inherit;
+  padding: 1em 2em;
+  margin: 0;
+  color: rgb(255 255 255 / 75%);
+  font-family: "Kodchasan", "Open Sans", sans-serif;
+}
+
+.button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  height: auto;
+  width: 80%;
+  font-size: 16px;
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.button > div {
+  margin: 0 auto;
+  padding: 0.5em 1em;
+  /* border-radius: 50px 50px 150px 150px / 50px 50px 25px 24px; */
+}

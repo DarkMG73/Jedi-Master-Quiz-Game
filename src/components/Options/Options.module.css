@@ -1,14 +1,37 @@
+.options-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 1.5rem auto;
+}
+
+.options-container > div {
+  padding: 1%;
+  min-height: 100%;
+  margin: 0 1em;
+  min-width: 100%;
+  min-width: calc(33.33% - 3em);
+}
+
+.option {
+  border-radius: inherit;
+}
+
 .option {
   position: relative;
   display: flex;
+  height: 300px;
   padding: 1em;
-  margin: 1em;
-  padding-top: 25%;
-  min-width: calc(33.33% - 3em);
+  padding-top: 80%;
+  min-width: 100%;
+  max-width: 100%;
   min-height: 100%;
   max-height: 100%;
   background-position: top center;
   transition: 0.7s all ease;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  border: 3px solid transparent;
 }
 
 .option:hover {
@@ -26,55 +49,54 @@
   opacity: 1;
 }
 
-.options-container {
+.correct {
+  border: 3px solid #217b8a;
+  box-shadow: inset 0 0 30px 0px rgb(33 123 138 / 75%),
+    0 0 10px 0px rgb(33 123 138 / 75%);
+}
+
+.correct:after,
+.selected.correct:after,
+.selected.incorrect:after {
+  color: rgb(255 255 255 / 72%);
+  width: 100%;
+  height: 2em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.option-name {
-  pointer-events: none;
-}
-
-.correct {
-  border: 3px solid blue;
-}
-
 .correct:after {
   content: "The correct Answer";
-  background: blue;
-  color: white;
-  width: 100%;
-  height: 2em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
+  background: #217b8a;
 }
 
 .selected.correct:after {
   content: "You are correct!";
-  background: blue;
-  color: white;
-  width: 100%;
-  height: 2em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
+  background: #217b8a;
 }
+
 .incorrect {
-  border: 3px solid red;
+  border: 3px solid #a00201;
+  box-shadow: inset 0 0 200px 0px rgb(160 2 1 / 75%),
+    0 0 10px 0px rgb(160 2 1 / 75%);
 }
 
 .selected.incorrect:after {
-  content: "Incorrect, youg one.";
-  background: red;
-  color: white;
-  width: 100%;
-  height: 2em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
+  content: "Incorrect, young one.";
+  background: #a00201;
+}
+
+.option > div {
+  width: 92%;
+  pointer-events: none;
+  padding: 0;
+}
+
+.option-name {
+  pointer-events: none;
 }

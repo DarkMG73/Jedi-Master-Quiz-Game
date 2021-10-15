@@ -10,14 +10,21 @@ import Background from "../components/UI/Background/Background";
 import PageContainer from "../components/UI/PageContainer/PageContainer";
 import Card from "../components/UI/Card/Card";
 
-function HomePage() {
+function HomePage(props) {
   const [gameRunning, setGameRunning] = useState(false);
   const [totalQuestionNumber, setTotalQuestionNumber] = useState();
   const [gameOver, setGameOver] = useState();
+  console.log("gameOver: HOME PAGE  ", gameOver);
+  const { setPassGameRunning } = props;
+  console.log("props: ", props);
 
   useEffect(() => {
     if (gameOver === false) setGameRunning(true);
   }, [gameOver]);
+
+  useEffect(() => {
+    props.setPassGameRunning(gameRunning);
+  }, [gameRunning]);
 
   return (
     <PageContainer maxWidth="1000px">

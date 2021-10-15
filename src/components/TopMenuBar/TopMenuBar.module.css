@@ -1,76 +1,169 @@
 .top-nav {
-  z-index: 1000;
-  padding: 0;
+  position: relative;
+  display: flex;
   max-width: 1000px;
   margin: 0 auto;
-  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 0 0 100px 100px;
+  padding-top: calc(50px + 1em);
+  font-family: "GoodTimes Reg", sans-serif;
+  transition: 0.2s all ease;
+}
+
+.app-title {
   position: relative;
-  padding-left: 0;
-  padding-top: calc(50px + 5em);
-  z-index: 11;
+  display: block;
+  /* transform: scale(1.5) translate(3.25%, 0);
+  margin-bottom: -220px;
+  margin-top: -118px; */
+  color: #fbdcb6;
+  font-size: 28px;
+  text-indent: 0.5em;
+  letter-spacing: 0.3em;
+  text-shadow: 0 0 10px #ff0000;
+  padding-bottom: 1em;
+  /* ALTERNATE COLOR SCHEME */
+  color: white;
+  text-shadow: -1px -1px 1px rgb(0 0 0 / 50%),
+    1px 1px 1px rgb(255 255 255 / 73%);
+}
+
+.curved-text-wrap {
+  font-size: 10px;
+  letter-spacing: 2em;
 }
 
 .content-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   min-width: 100%;
   list-style: none;
+  padding-bottom: 7%;
 }
 
 .inner-element {
-  margin: 0 1em;
-  font-family: "sw-regular";
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   letter-spacing: 0.25em;
+  text-indent: 0.25em;
   font-size: calc(10px + 0.1vw);
   width: 14vw;
   height: 14vw;
   max-width: 150px;
   max-height: 150px;
   border-radius: 50%;
-  position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
   box-shadow: -1px -3px 1px -2px rgb(255 255 255 / 50%),
     inset 1px 3px 17px -5px rgb(255 255 255 / 50%);
   opacity: 0.7;
   overflow: hidden;
+  color: #c7bca7;
+  padding: 11%;
 }
 
-/* .inner-element:before {
+.inner-element-image {
+  padding-bottom: 50%;
+  position: absolute;
+  display: flex;
+  min-width: 90%;
+  min-height: 90%;
+  border-radius: 50%;
+  background-position: center;
+}
+
+.inner-element-image:after {
   content: "";
   display: flex;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0px -250px 200px -150px rgb(0 0 0 / 75%);
+  transition: 0.2s all ease;
 }
 
-.inner-element:before:nth-child(1):before {
-  background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.4),
-      rgba(55, 0, 0, 1)
-    ),
-    url(http://starwarsrumors.com/wp-content/uploads/2019/10/why-was-leia-not-trained-while-growing-up.jpg);
-  background-size: cover;
-  background-position: center;
-} */
-
-.inner-element:first-child {
-  margin: 0 1em;
-  font-family: "sw-hollow-regular";
-  letter-spacing: 0.25em;
-  font-size: calc(12px + 0.1vw);
+.inner-element:nth-child(1) .inner-element-image:after {
+  background: rgb(0 220 255 / 75%);
 }
-.content-container a {
+.inner-element:nth-child(1):hover .inner-element-image:after {
+  background: hsl(188deg 100% 30% / 90%);
+  box-shadow: inset 0px -250px 200px -150px rgb(0 0 0 / 0%);
+}
+
+.inner-element:nth-child(2) .inner-element-image:after {
+  background: rgb(255 0 0 / 75%);
+}
+.inner-element:nth-child(2):hover .inner-element-image:after {
+  background: hsl(0deg 100% 40% / 90%);
+  box-shadow: inset 0px -250px 200px -150px rgb(0 0 0 / 10%);
+}
+
+.inner-element:nth-child(3) .inner-element-image:after {
+  background: rgb(0 220 255 / 75%);
+}
+.inner-element:nth-child(3):hover .inner-element-image:after {
+  background: hsl(188deg 100% 30% / 90%);
+  box-shadow: inset 0px -250px 200px -150px rgb(0 0 0 / 0%);
+}
+
+.inner-element:nth-child(1) {
+  transform: translateY(50%) translatex(10%) scale(0.75);
+}
+
+.inner-element:nth-child(3) {
+  transform: translateY(50%) translatex(-10%) scale(0.75);
+}
+.inner-element:nth-child(2) {
+  width: 40vw;
+  height: 40vw;
+  max-width: 300px;
+  max-height: 300px;
+  font-size: calc(37px + 0.2vw);
+  letter-spacing: 0.5em;
+  text-indent: 0.5em;
+}
+
+.inner-element:nth-child(2) a {
+  transform: scale(1.5, 1.5) translateY(-32%);
+}
+.inner-element a {
+  z-index: 1;
+  padding: 1.5em;
+  text-align: center;
+  font-size: calc(12px + 0.2vw);
+  position: absolute;
   text-decoration: none;
-  color: inherit;
+  font-weight: 700;
+  background: transparent;
+  top: 50%;
+  transform: translatey(-50%);
+  color: #c7bca7;
+  transition: 0.2s all ease;
+}
+
+.inner-element:hover a {
+  color: hsl(33deg 100% 85%);
+  text-shadow: 0 0 10px #ffffffb5, -1px -1px 1px rgb(0 0 0 / 73%),
+    1px 1px 1px rgb(255 255 255 / 73%);
+}
+/* GAME MODE */
+.top-nav-game-mode {
+  transform: scale(0.5);
+  height: 250px;
+}
+
+.top-nav-game-mode .inner-element:nth-child(1) {
+  transform: translateY(17%) translatex(-14%) scale(1);
+}
+.top-nav-game-mode .inner-element:nth-child(2) {
+  z-index: 3;
+}
+.top-nav-game-mode .inner-element:nth-child(3) {
+  transform: translateY(17%) translatex(14%) scale(1);
 }

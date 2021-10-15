@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import classes from "./GameOver.module.css";
+import styles from "./GameOver.module.css";
 import ScoreContext from "../../store/score-context";
 import Card from "../UI/Card/Card";
 import Score from "../Score/Score";
@@ -13,9 +13,9 @@ function GameOver(props) {
     props.setGameOver(false);
   };
   return (
-    <Backdrop>
+    <div className={styles["gameover-wrap"]}>
       <Card>
-        <div id="gameover-container" className={classes.container}>
+        <div id="gameover-container" className={styles["gameover-container"]}>
           <h3>GameOver</h3>
           <Score
             totalQuestionNumber={props.totalQuestionNumber}
@@ -25,7 +25,7 @@ function GameOver(props) {
           <button onClick={restartHandler}>Let's Play Again!</button>
         </div>
       </Card>
-    </Backdrop>
+    </div>
   );
 }
 export default GameOver;
