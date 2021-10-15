@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import ScoreContext from "../../store/score-context";
 import Card from "../UI/Card/Card";
-import jediCrest from "../../assets/images/jedi-crest.png";
+// import jediCrest from "../../assets/images/jedi-crest.png";
+import jediCrest from "../../assets/svg/JediCrest";
 import Lightsaber from "../Lightsaber/Lightsaber";
 import classes from "./Score.module.css";
 import { getRandomInt } from "../../hooks/utilities";
@@ -135,37 +136,41 @@ function Score(props) {
           )}
 
           {gameOver && (
-            <div className={classes["progress-wrap"]}>
-              <div className={classes["gameover-logo"]}>
-                <img src={jediCrest} alt="Jedi Crest" />
-              </div>
+            <div className={classes["gameover-score-wrap"]}>
+              <div className={classes["gameover-logo"]}>{jediCrest}</div>
 
               <div
                 className={classes["lightsaber-wrap"]}
                 style={{
-                  left: 61 - ratingWithRankModifiers + "%",
-                  top: "-27px",
+                  left: "-75%",
+                  top: "47px",
                 }}
               >
                 <Lightsaber
                   length={ratingWithRankModifiers}
-                  rotation="77"
+                  rotation="63"
                   transformOrigin="top right"
                 />
                 <div
                   className={classes["lightsaber-wrap"]}
                   style={{
-                    right: 61 - ratingWithRankModifiers + "%",
+                    right: "-125%",
                     top: "-10px",
                   }}
                 >
                   <Lightsaber
                     length={ratingWithRankModifiers}
-                    rotation="283"
+                    rotation="297"
                     transformOrigin="top left"
                   />
                 </div>
               </div>
+              {ratingWithRankModifiers >= 100 && (
+                <div className={classes["gameover-messsage"]}>
+                  Victory is yours! You have earned the coveted rank of
+                  {ranks[ranks.length - 1].rank}!
+                </div>
+              )}
             </div>
           )}
 

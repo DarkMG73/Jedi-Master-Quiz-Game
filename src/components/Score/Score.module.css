@@ -395,8 +395,22 @@ button {
 }
 
 .gameover-logo {
-  z-index: 100;
+  z-index: 1001;
 }
 .gameover-logo > img {
   max-width: 100px;
+}
+
+.gameover-messsage {
+  position: relative;
+  height: 7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 59px;
+}
+
+.gameover-score-wrap {
+  position: relative;
 }

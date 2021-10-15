@@ -7,6 +7,7 @@ import Backdrop from "../UI/Backdrop/Backdrop";
 
 function GameOver(props) {
   const scoreCtx = useContext(ScoreContext);
+  console.log("scoreCtx: ", scoreCtx);
 
   const restartHandler = () => {
     scoreCtx.resetScoreContext();
@@ -22,7 +23,7 @@ function GameOver(props) {
             gameOver={props.gameOver}
             setGameOver={props.setGameOver}
           />
-          <button onClick={restartHandler}>Let's Play Again!</button>
+          <button onClick={restartHandler}>Let's Play Again! &rarr;</button>
         </div>
       </Card>
     </div>
