@@ -10,16 +10,19 @@ import "./assets/fonts/Kodchasan/stylesheet.css";
 import "./assets/fonts/GoodTimes/stylesheet.css";
 
 function App() {
-  const [passGameRunning, setPassGameRunning] = useState(false);
-  console.log("setPassGameRunning: ", setPassGameRunning);
+  const [gameRunning, setGameRunning] = useState(false);
+  console.log("gameRunning: ", gameRunning);
 
   const history = createBrowserHistory();
   return (
     <BrowserRouter history={history}>
       <ScoreProvider>
         <div className="App">
-          <TopMenuBar gameRunning={passGameRunning} />
-          <HomePage setPassGameRunning={setPassGameRunning} />
+          <TopMenuBar
+            gameRunning={gameRunning}
+            setGameRunning={setGameRunning}
+          />
+          <HomePage setGameRunning={setGameRunning} gameRunning={gameRunning} />
           <Footer />
         </div>
       </ScoreProvider>

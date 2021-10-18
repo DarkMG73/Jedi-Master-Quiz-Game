@@ -1,0 +1,31 @@
+.close-btn {
+  position: absolute;
+  top: 1em;
+  right: 11%;
+}
+
+.ranking-detail {
+  font-family: "Kodchasan", "Open Sans", sans-serif;
+}
+
+.ranks {
+  list-style: none;
+  padding: 0;
+}
+
+.ranks li {
+  padding: 0;
+}
+
+.ranks li:last-child {
+  margin: 1em;
+  font-size: 150%;
+  display: inline-block;
+}
+
+.ranks li:last-child:before {
+  content: "The ultimate goal: ";
+  font-size: 75%;
+  opacity: 0.5;
+  display: block;
+}

@@ -133,11 +133,16 @@
   transform: scale(1.5, 1.5) translateY(-32%);
 }
 .inner-element a {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
   padding: 1.5em;
   text-align: center;
   font-size: calc(12px + 0.2vw);
-  position: absolute;
   text-decoration: none;
   font-weight: 700;
   background: transparent;
@@ -163,7 +168,80 @@
 }
 .top-nav-game-mode .inner-element:nth-child(2) {
   z-index: 3;
+  filter: saturate(1.25);
 }
 .top-nav-game-mode .inner-element:nth-child(3) {
   transform: translateY(17%) translatex(14%) scale(1);
+}
+
+.countdownAnimation {
+  animation: countdownSaturation 10s ease infinite;
+  transition: all 1s ease;
+}
+@keyframes pulseSaturation {
+  0% {
+    filter: saturate(1);
+  }
+  50% {
+    filter: saturate(4);
+  }
+  100% {
+    filter: saturate(1);
+  }
+}
+
+@keyframes countdownSaturation {
+  0% {
+    filter: saturate(0.1);
+  }
+
+  70% {
+    filter: saturate(1);
+  }
+  75% {
+    filter: saturate(1.25);
+  }
+  80% {
+    filter: saturate(1);
+  }
+  85% {
+    filter: saturate(1.25);
+  }
+
+  87% {
+    filter: saturate(1);
+  }
+  89% {
+    filter: saturate(1.25);
+  }
+  90% {
+    filter: saturate(1);
+  }
+  91% {
+    filter: saturate(1.25);
+  }
+  92% {
+    filter: saturate(1);
+  }
+  93% {
+    filter: saturate(1.25);
+  }
+  94% {
+    filter: saturate(1);
+  }
+  95% {
+    filter: saturate(1.25);
+  }
+  96% {
+    filter: saturate(1);
+  }
+  97% {
+    filter: saturate(1.35);
+  }
+  95% {
+    filter: saturate(1.5);
+  }
+  100% {
+    filter: saturate(1.5);
+  }
 }

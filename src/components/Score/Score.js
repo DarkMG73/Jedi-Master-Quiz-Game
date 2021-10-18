@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import ScoreContext from "../../store/score-context";
 import Card from "../UI/Card/Card";
-// import jediCrest from "../../assets/images/jedi-crest.png";
-import jediCrest from "../../assets/svg/JediCrest";
+import JediCrest from "../UI/JediCrest";
 import Lightsaber from "../Lightsaber/Lightsaber";
+import Ranks from "../Ranks/Ranks";
 import classes from "./Score.module.css";
 import { getRandomInt } from "../../hooks/utilities";
+
+console.log("Ranks: ", Ranks);
 
 function Score(props) {
   const [lightsaberAnimationClass, setLightsaberAnimationClass] = useState();
@@ -15,16 +17,7 @@ function Score(props) {
   const totalQuestionNumber = props.totalQuestionNumber;
   const setGameOver = props.setGameOver;
   const gameOver = props.gameOver;
-  const skillLevelMod = props.skillLevelMod ?? 2;
-  const ranks = [
-    { position: "pos-1", rank: "Youngling", threshold: 20 },
-    { position: "pos-2", rank: "Padawan", threshold: 40 },
-    { position: "pos-3", rank: "Jedi Knight", threshold: 50 },
-    { position: "pos-4", rank: "Jedi Master", threshold: 60 },
-    { position: "pos-5", rank: "Jedi Council Member", threshold: 85 },
-    { position: "pos-6", rank: "Master of the Order", threshold: 99 },
-    { position: "pos-7", rank: "Jedi Grand Master", threshold: 100 },
-  ];
+  const skillLevelMod = props.skillLevelMod ?? 1;
 
   /****************** 
      Calculate Rank
@@ -38,15 +31,15 @@ function Score(props) {
   let currentKnowledgeLevel;
 
   if (ratingWithRankModifiers != undefined && ratingWithRankModifiers < 100) {
-    currentKnowledgeLevel = ranks.filter(
+    currentKnowledgeLevel = Ranks.filter(
       (rank) => ratingWithRankModifiers <= rank.threshold
     );
   } else {
-    currentKnowledgeLevel = ranks.slice(-1);
+    currentKnowledgeLevel = Ranks.slice(-1);
   }
 
-  // If current rank exceeds ranks array, assign top rank.
-  if (!currentKnowledgeLevel) currentKnowledgeLevel = ranks;
+  // If current rank exceeds Ranks array, assign top rank.
+  if (!currentKnowledgeLevel) currentKnowledgeLevel = Ranks;
 
   const { rank: currentRank, position: currentPosition } =
     currentKnowledgeLevel[0] && currentKnowledgeLevel[0];
@@ -102,9 +95,25 @@ function Score(props) {
       <Card>
         <div className={classes["score-container"]}>
           <div className={classes["score-wrap"]}>
-            <div className={classes["subsection-title"]}>Score</div>
-            <div className={classes["subsection-text"]}>
-              {scoreCtx.correct.length} right &nbsp; &nbsp;|&nbsp; &nbsp;
+            <div
+              className={
+                classes["subsection-title"] +
+                " " +
+                (gameOver && classes["gameover-subsection-title"])
+              }
+            >
+              Score
+            </div>
+            <div
+              className={
+                classes["subsection-text"] +
+                " " +
+                (gameOver && classes["gameover-subsection-text"])
+              }
+            >
+              {scoreCtx.correct.length} right{" "}
+              {!gameOver && <span>&nbsp; &nbsp;|&nbsp; &nbsp;</span>}
+              {gameOver && <br />}
               {scoreCtx.incorrect.length} wrong
             </div>
           </div>
@@ -124,10 +133,10 @@ function Score(props) {
                   " " +
                   classes[lightsaberAnimationClass]
                 }
-                style={{ left: 61 - ratingWithRankModifiers - 10 + "%" }}
+                style={{ left: 61 - ratingWithRankModifiers + "%" }}
               >
                 <Lightsaber
-                  length={ratingWithRankModifiers + 10}
+                  length={ratingWithRankModifiers}
                   rotation="90"
                   transformOrigin="center"
                 />
@@ -137,13 +146,15 @@ function Score(props) {
 
           {gameOver && (
             <div className={classes["gameover-score-wrap"]}>
-              <div className={classes["gameover-logo"]}>{jediCrest}</div>
+              <div className={classes["gameover-logo"]}>
+                <JediCrest />
+              </div>
 
               <div
                 className={classes["lightsaber-wrap"]}
                 style={{
                   left: "-75%",
-                  top: "47px",
+                  top: "50%",
                 }}
               >
                 <Lightsaber
@@ -168,7 +179,21 @@ function Score(props) {
               {ratingWithRankModifiers >= 100 && (
                 <div className={classes["gameover-messsage"]}>
                   Victory is yours! You have earned the coveted rank of
-                  {ranks[ranks.length - 1].rank}!
+                  {Ranks[Ranks.length - 1].rank}!
+                </div>
+              )}
+
+              {ratingWithRankModifiers < 100 && (
+                <div
+                  className={
+                    classes["gameover-messsage"] +
+                    " " +
+                    classes["gameover-fail"]
+                  }
+                >
+                  Failed, you have to reach the coveted Jedi Grand Master Rank!
+                  Only worthy of a {currentRank}, you are! More training and
+                  study you need, young one.
                 </div>
               )}
             </div>
@@ -188,7 +213,6 @@ function Score(props) {
           {!gameOver && (
             <div className={classes["reset-button-wrap"]}>
               <Card>
-                {" "}
                 <button
                   className={classes["restart-game-btn"]}
                   onClick={restartGameBtnHandler}

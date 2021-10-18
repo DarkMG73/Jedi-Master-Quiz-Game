@@ -11,6 +11,7 @@
   margin: 0 1em;
   min-width: 100%;
   min-width: calc(33.33% - 3em);
+  cursor: pointer;
 }
 
 .option {

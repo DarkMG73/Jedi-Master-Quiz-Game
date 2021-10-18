@@ -1,0 +1,9 @@
+.close-btn {
+  position: absolute;
+  top: 1em;
+  right: 11%;
+}
+
+.instructions-container {
+  font-family: "Kodchasan", "Open Sans", sans-serif;
+}

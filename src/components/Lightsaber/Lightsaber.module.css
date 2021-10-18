@@ -19,6 +19,16 @@
   position: relative;
   transform: rotate(180deg);
 }
+
+@keyframes pulseSaturation {
+  0% {
+    filter: saturate(1);
+  }
+  50% {
+    filter: saturate(4);
+  }
+}
+
 .outer_glow {
   height: 0px;
   width: 26px;
@@ -28,8 +38,8 @@
   left: -8px;
   top: 85px;
   transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  /* animation: lightUp2 0.6s cubic-bezier(0.860, 0.000, 0.070, 1.000);
-  animation: glow_animation 0.8s infinite; */
+  /* animation: lightUp2 0.6s cubic-bezier(0.86, 0, 0.07, 1); */
+  animation: glow_animation 3s ease infinite;
 }
 .middle_glow {
   height: 0px;
@@ -39,8 +49,9 @@
   top: 85px;
   filter: blur(2px);
   transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  /* animation: lightUp1 0.6s cubic-bezier(0.860, 0.000, 0.070, 1.000);
-  animation: glow_animation 0.8s infinite ; */
+  /* animation: lightUp1 0.6s cubic-bezier(0.86, 0, 0.07, 1); */
+  /* animation: glow_animation 3s ease infinite, pulseSaturation 3s ease infinite; */
+  animation: pulseSaturation 3s ease infinite;
 }
 .core_glow {
   height: 0px;
@@ -51,7 +62,8 @@
   top: 85px;
   filter: blur(1px);
   transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-  /* animation: lightUp3 0.6s cubic-bezier(0.860, 0.000, 0.070, 1.000); */
+  /* animation: lightUp3 0.6s cubic-bezier(0.86, 0, 0.07, 1); */
+  animation: pulseSaturation 3s ease infinite;
   left: 2px;
 }
 
@@ -61,7 +73,6 @@
   position: absolute;
   top: 0;
   left: -22px;
-  cursor: pointer;
 }
 .handle img {
   width: 100%;
@@ -99,5 +110,17 @@
   }
   100% {
     transform: scaleX(1);
+  }
+}
+
+@keyframes pulseSaturation {
+  0% {
+    filter: saturate(1);
+  }
+  50% {
+    filter: saturate(1.5);
+  }
+  100% {
+    filter: saturate(1);
   }
 }

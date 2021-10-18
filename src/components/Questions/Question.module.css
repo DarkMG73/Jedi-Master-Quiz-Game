@@ -13,12 +13,17 @@
 }
 
 .quote-text {
+  min-height: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #237b8a;
   border-radius: inherit;
   padding: 1em 2em;
   margin: 0;
   color: rgb(255 255 255 / 75%);
   font-family: "Kodchasan", "Open Sans", sans-serif;
+  transition: 1s all ease;
 }
 
 .button {
@@ -34,10 +39,24 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  animation: pulseSaturation 3s ease infinite;
+  cursor: pointer;
 }
 
 .button > div {
   margin: 0 auto;
   padding: 0.5em 1em;
   /* border-radius: 50px 50px 150px 150px / 50px 50px 25px 24px; */
+}
+
+@keyframes pulseSaturation {
+  0% {
+    filter: saturate(1);
+  }
+  50% {
+    filter: saturate(4);
+  }
+  100% {
+    filter: saturate(1);
+  }
 }

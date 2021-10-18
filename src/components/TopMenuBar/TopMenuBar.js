@@ -1,13 +1,24 @@
-import { BrowserRouter, Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./TopMenuBar.module.css";
 import specialGradient from "../UI/Card/specialGradient.module.css";
 import ArcText from "../UI/ArcText";
 import Timer from "../Timer/Timer";
+import ScoreContext from "../../store/score-context";
 
 function TopMenuBar(props) {
+  const [timerStarted, setTimerStarted] = useState(false);
+  const location = useLocation();
   const imageOne = require(`../../assets/images/Leia_Organa.jpg`);
   const imageTwo = require(`../../assets/images/default.jpg`);
   const imageThree = require(`../../assets/images/Maul.jpg`);
+  const countdownAnimation = timerStarted ? styles["countdownAnimation"] : "";
+  console.log("countdownAnimation: ", countdownAnimation);
+
+  const StartGameHandler = () => {
+    console.log("CLICKED");
+    props.setGameRunning(true);
+  };
 
   return (
     <nav
@@ -44,20 +55,27 @@ function TopMenuBar(props) {
               backgroundImage: "url(" + imageOne.default + ")",
             }}
           ></div>
-          <Link to="/instructions">Quick Directions</Link>
+          {location.pathname !== "/instructions" && (
+            <Link to="/instructions">Quick Directions</Link>
+          )}
+          {location.pathname === "/instructions" && <Link to="/">Close</Link>}
         </li>
         <li
           className={`${styles["inner-element"]} ${specialGradient["special-gradient"]}`}
         >
           <div
-            className={styles["inner-element-image"]}
+            className={styles["inner-element-image"] + " " + countdownAnimation}
             style={{
               backgroundSize: "cover",
               backgroundImage: "url(" + imageTwo.default + ")",
             }}
           ></div>
-          {!props.gameRunning && <Link to="/">Play!</Link>}
-          {props.gameRunning && <Timer />}
+          {!props.gameRunning && (
+            <Link to="/" onClick={StartGameHandler}>
+              Play!
+            </Link>
+          )}
+          {props.gameRunning && <Timer passTimerStarted={setTimerStarted} />}
         </li>
 
         <li
@@ -70,7 +88,10 @@ function TopMenuBar(props) {
               backgroundImage: "url(" + imageThree.default + ")",
             }}
           ></div>
-          <Link to="/ranking-system">How to Advance Your Jedi Rank</Link>
+          {location.pathname !== "/ranking-system" && (
+            <Link to="/ranking-system">How to Advance Your Jedi Rank</Link>
+          )}
+          {location.pathname === "/ranking-system" && <Link to="/">Close</Link>}
         </li>
       </ul>
     </nav>

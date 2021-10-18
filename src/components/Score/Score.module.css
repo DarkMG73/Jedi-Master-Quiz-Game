@@ -82,13 +82,6 @@
   border-color: white;
 }
 
-.lightsaber-wrap {
-  position: relative;
-  top: 29px;
-  z-index: 1000;
-  transition: 1s all ease;
-}
-
 .reset-button-wrap {
   padding: 0;
   margin: 3em auto 0;
@@ -96,8 +89,28 @@
   display: flex;
   width: 100%;
   font-size: 10px;
+  opacity: 0.5;
+  transition: 0.7s all ease;
+  cursor: pointer;
 }
 
+.reset-button-wrap:hover {
+  opacity: 1;
+  transition: 0.2s all ease;
+  animation: pulseSaturation 3s ease infinite;
+}
+
+@keyframes pulseSaturation {
+  0% {
+    filter: saturate(1);
+  }
+  50% {
+    filter: saturate(4);
+  }
+  100% {
+    filter: saturate(1);
+  }
+}
 .reset-button-wrap > div {
   padding: 0.5em 1em;
   margin: 2em auto 0;
@@ -111,6 +124,7 @@ button {
   color: #237b8a;
 }
 
+/* LIGHTSABER SETTINGS AND ANIMATIONS */
 @keyframes animate-lightsaber0 {
   0% {
     transform: rotate(0deg) scale(1);
@@ -389,6 +403,13 @@ button {
   animation: animate-lightsaber7 2s ease;
 }
 
+.lightsaber-wrap {
+  position: relative;
+  top: 29px;
+  z-index: 1000;
+  transition: 1s all ease;
+}
+
 /* WHEN IN GAMEOVER SCREEN */
 .gameover-score {
   font-size: initial;
@@ -397,8 +418,13 @@ button {
 .gameover-logo {
   z-index: 1001;
 }
-.gameover-logo > img {
-  max-width: 100px;
+
+.gameover-logo > svg {
+  max-width: 100%;
+  max-width: 100%;
+  height: auto;
+  fill: #ffffff;
+  filter: drop-shadow(0px 0px 10px white);
 }
 
 .gameover-messsage {
@@ -408,9 +434,21 @@ button {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-top: 59px;
+  padding-top: 3%;
 }
 
 .gameover-score-wrap {
   position: relative;
+}
+
+.gameover-subsection-title {
+  position: relative;
+}
+
+.gameover-subsection-text {
+  position: relative;
+}
+
+.gameover-fail {
+  font-size: 14px;
 }

@@ -12,17 +12,20 @@ function Timer(props) {
   useEffect(() => {
     let timerInterval;
     if (timerRunning) {
+      props.passTimerStarted(true);
       timerInterval = setInterval(() => {
         setTimeCounter((timeCounter) => timeCounter - 1);
       }, 1000);
-
       return () => clearInterval(timerInterval);
+    } else {
+      props.passTimerStarted(false);
     }
   }, [timerRunning]);
 
   useEffect(() => {
     if (timeCounter <= 0) {
       setTimerRunning(false);
+
       addIncorrect();
     }
   }, [timeCounter]);
