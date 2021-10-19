@@ -8,7 +8,6 @@ const Options = (props) => {
   const [disableAfterClick, setDisableAfterClick] = useState(true);
   const answerOptions = props.answerOptions;
   const timerRunning = props.timerRunning;
-  console.log("answerOptions: ", answerOptions);
 
   const replSpace = (str) => {
     return str.trim().replaceAll(" ", "_");
@@ -59,7 +58,6 @@ const Options = (props) => {
     });
 
     targetOption[0].handler();
-    console.log("targetOption ", targetOption);
 
     setDisableAfterClick(false);
   };

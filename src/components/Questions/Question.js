@@ -11,18 +11,21 @@ function Question(props) {
   const [quote, setQuote] = useState([]);
   const setGameRunning = props.setGameRunning;
   const gameRunning = props.gameRunning;
-
   const scoreCtx = useContext(ScoreContext);
   const setTimerRunning = scoreCtx.setTimerRunning;
   const timerRunning = scoreCtx.timerRunning;
   const gameOver = props.gameOver;
-  console.log("gameOver IN QUESTION: ", gameOver);
+
+  console.log("*** Question 1 - allQuotes: ", allQuotes);
+
   const quoteArgs = [
     allQuotes["allFetchedQuotesIds"],
     allQuotes["allFetchedQuotes"],
     scoreCtx,
     setQuote,
   ];
+  console.log("*** Question 2 - allQuotes: ", allQuotes);
+  console.log("*** Question 3 - quoteArgs: ", quoteArgs);
 
   useEffect(() => {
     if (gameRunning && !timerRunning) setTimerRunning(true);
@@ -42,6 +45,7 @@ function Question(props) {
     if (endOutput === "QUOTES_DEPLETED") setGameRunning(false);
   };
 
+  console.log("quote: ", quote);
   return (
     <div className={styles["questions-container"]}>
       {quote && gameRunning && (
@@ -49,6 +53,9 @@ function Question(props) {
           <div className={styles["quote-container"]}>
             <Card>
               <p className={styles["quote-text"]}>
+                <span className={styles["quote-prequestion"]}>
+                  {quote.preQuestion}
+                </span>{" "}
                 "{quote.quote}" <br /> Speaker:{quote.speaker}
               </p>
             </Card>

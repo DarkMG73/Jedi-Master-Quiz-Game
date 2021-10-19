@@ -1,5 +1,4 @@
 import { quoteList } from "../store/quotes";
-import { randomQuestionsList } from "../store/random-questions";
 import { createAnswerOptions } from "./options-hooks";
 
 export function splitQuoteAndAuthor(str) {
@@ -30,9 +29,8 @@ export function splitQuoteAndAuthor(str) {
 }
 
 export async function getAllQuotes(setAllQuotes, setTotalQuestionNumber) {
-  // Grab quote questions
-  let fetchedQuotes = await quoteList();
-  console.log("*** getAllQuotes 1 - fetchedQuotes", fetchedQuotes);
+  const fetchedQuotes = await quoteList();
+  console.log("fetchedQuotes", fetchedQuotes);
   const allSiftedQuotes = {};
   for (const quote of fetchedQuotes.allFetchedQuotes) {
     const { content, ...restOfQuote } = quote;
@@ -42,30 +40,11 @@ export async function getAllQuotes(setAllQuotes, setTotalQuestionNumber) {
     };
   }
 
-  //Grab all other questions.
-  const fetchedQuestions = randomQuestionsList();
-  console.log('"*** getAllQuotes 1-B - fetchedQuestions: ', fetchedQuestions);
-
-  //Compile the above.
-  const allIds = [
-    ...fetchedQuotes.allFetchedQuotesIds,
-    ...fetchedQuestions.allFetchedQuestionIds,
-  ];
-  const allQuestions = {
-    ...allSiftedQuotes,
-    ...fetchedQuestions.allFetchedQuestions,
-  };
-  const AllQuestionsAndIds = {
-    allFetchedQuotesIds: allIds,
-    allFetchedQuotes: allQuestions,
-  };
-
-  console.log("*** getAllQuotes 3 - allIds: ", allIds);
-  console.log("*** getAllQuotes 4 - allQuestions: ", allQuestions);
-  console.log("*** getAllQuotes 5 - AllQuestionsAndIds: ", AllQuestionsAndIds);
-
-  setTotalQuestionNumber(allIds.length);
-  setAllQuotes(AllQuestionsAndIds);
+  setTotalQuestionNumber(fetchedQuotes.allFetchedQuotesIds.length);
+  setAllQuotes({
+    allFetchedQuotesIds: fetchedQuotes.allFetchedQuotesIds,
+    allFetchedQuotes: allSiftedQuotes,
+  });
 }
 
 export function getQuote(
@@ -78,14 +57,12 @@ export function getQuote(
   const selectedId = Math.floor(Math.random() * totalQuotes);
   const CurrentIdList = allFetchedQuotesIds ? allFetchedQuotesIds : [];
   const scoreRecord = [...scoreCtx.incorrect, ...scoreCtx.correct];
-  console.log("/// IN getQuote - allFetchedQuotes: ", allFetchedQuotes);
+  console.log("allFetchedQuotes: ", allFetchedQuotes);
   let usedId;
 
   if (totalQuotes > 0) usedId = CurrentIdList[selectedId];
 
   if (usedId && scoreRecord.includes(usedId.toString())) {
-    console.log("/// IN getQuote - usedId: ", usedId);
-    console.log("/// IN getQuote - scoreRecord: ", scoreRecord);
     if (totalQuotes > 0 && scoreRecord.length >= totalQuotes) {
       return "QUOTES_DEPLETED";
     }

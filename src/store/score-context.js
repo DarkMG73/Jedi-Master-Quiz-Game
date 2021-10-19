@@ -15,22 +15,23 @@ const ScoreContext = React.createContext({
   resetScoreContext: () => {},
 });
 
-let defaultScoreState = {
+const initDefaultScoreState = {
   current: null,
   correct: [],
   incorrect: [],
   timerRunning: false,
 };
-
+let defaultScoreState = { ...initDefaultScoreState };
 const localStorageContents = lSTools.getFromLocal(localStorageName);
 
-if (localStorageContents)
+if (localStorageContents) {
   defaultScoreState = {
     current: null,
     correct: localStorageContents.correct,
     incorrect: localStorageContents.incorrect,
     timerRunning: false,
   };
+}
 
 const scoreReducer = (state, action) => {
   if (action.type === "ADD_TO_CURRENT") {
@@ -72,7 +73,7 @@ const scoreReducer = (state, action) => {
 
   if (action.type === "CLEAR_SCORE") {
     lSTools.clearLocal(localStorageName);
-    return { ...defaultScoreState };
+    return initDefaultScoreState;
   }
 
   if (action.type === "TIMER_RUNNING") {

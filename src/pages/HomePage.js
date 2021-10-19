@@ -14,9 +14,7 @@ function HomePage(props) {
   const [totalQuestionNumber, setTotalQuestionNumber] = useState();
   const [gameOver, setGameOver] = useState();
   const gameRunning = props.gameRunning;
-  console.log("HOME PAGE gameRunning: ", gameRunning);
   const setGameRunning = props.setGameRunning;
-  console.log("gameOver: HOME PAGE  ", gameOver);
 
   useEffect(() => {
     if (gameOver === false) setGameRunning(true);

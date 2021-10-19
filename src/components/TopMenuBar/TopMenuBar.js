@@ -13,10 +13,8 @@ function TopMenuBar(props) {
   const imageTwo = require(`../../assets/images/default.jpg`);
   const imageThree = require(`../../assets/images/Maul.jpg`);
   const countdownAnimation = timerStarted ? styles["countdownAnimation"] : "";
-  console.log("countdownAnimation: ", countdownAnimation);
 
   const StartGameHandler = () => {
-    console.log("CLICKED");
     props.setGameRunning(true);
   };
 

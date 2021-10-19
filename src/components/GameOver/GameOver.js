@@ -7,12 +7,13 @@ import Backdrop from "../UI/Backdrop/Backdrop";
 
 function GameOver(props) {
   const scoreCtx = useContext(ScoreContext);
-  console.log("scoreCtx: ", scoreCtx);
+  console.log("BEGIN GAMEOVER scoreCtx: ", scoreCtx);
 
   const restartHandler = () => {
     scoreCtx.resetScoreContext();
     props.setGameOver(false);
   };
+
   return (
     <div className={styles["gameover-wrap"]}>
       <Card>

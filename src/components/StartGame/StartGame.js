@@ -3,7 +3,6 @@ import styles from "./StartGame.module.css";
 
 function StartGame(props) {
   const StartGameHandler = () => {
-    console.log("CLICKED");
     props.setGameRunning(true);
   };
   return (

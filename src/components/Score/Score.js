@@ -7,8 +7,6 @@ import Ranks from "../Ranks/Ranks";
 import classes from "./Score.module.css";
 import { getRandomInt } from "../../hooks/utilities";
 
-console.log("Ranks: ", Ranks);
-
 function Score(props) {
   const [lightsaberAnimationClass, setLightsaberAnimationClass] = useState();
   const scoreCtx = useContext(ScoreContext);
@@ -18,6 +16,7 @@ function Score(props) {
   const setGameOver = props.setGameOver;
   const gameOver = props.gameOver;
   const skillLevelMod = props.skillLevelMod ?? 1;
+  console.log("IN SCORE scoreCtx: ", scoreCtx);
 
   /****************** 
      Calculate Rank
@@ -88,7 +87,6 @@ function Score(props) {
       );
       setLightsaberAnimationClass(newClass);
     }
-    console.log("lightsaberAnimationClass: ", lightsaberAnimationClass);
   }, [correct, setLightsaberAnimationClass]);
   return (
     <div className={classes["score-outer-wrap"]}>
