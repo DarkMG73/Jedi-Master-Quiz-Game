@@ -29,6 +29,14 @@ export function splitQuoteAndAuthor(str) {
   };
 }
 
+const arrayToObject = (arr, key) => {
+  const res = {};
+  arr.forEach((obj) => {
+    res[obj[key]] = obj;
+  });
+  return res;
+};
+
 export async function getAllQuotes(setAllQuotes, setTotalQuestionNumber) {
   // Grab quote questions
   let fetchedQuotes = await quoteList();
@@ -44,8 +52,19 @@ export async function getAllQuotes(setAllQuotes, setTotalQuestionNumber) {
 
   //Grab all other questions.
   const fetchedQuestions = randomQuestionsList();
-  console.log('"*** getAllQuotes 1-B - fetchedQuestions: ', fetchedQuestions);
-
+  console.log(
+    '"*** getAllQuotes 1-B - fetchedQuestions: ',
+    fetchedQuestions.allFetchedQuestions
+  );
+  console.log(
+    "arrayToObject(fetchedQuestions.allFetchedQuestions): ",
+    arrayToObject(fetchedQuestions.allFetchedQuestions, "id")
+  );
+  const allSiftedQuestons = arrayToObject(
+    fetchedQuestions.allFetchedQuestions,
+    "id"
+  );
+  console.log("fetchedQuestions AS OBJECT: ", fetchedQuestions);
   //Compile the above.
   const allIds = [
     ...fetchedQuotes.allFetchedQuotesIds,
@@ -53,13 +72,19 @@ export async function getAllQuotes(setAllQuotes, setTotalQuestionNumber) {
   ];
   const allQuestions = {
     ...allSiftedQuotes,
-    ...fetchedQuestions.allFetchedQuestions,
+    ...allSiftedQuestons,
   };
   const AllQuestionsAndIds = {
     allFetchedQuotesIds: allIds,
     allFetchedQuotes: allQuestions,
   };
 
+  console.log(
+    "fetchedQuestions.allFetchedQuestions: ",
+    fetchedQuestions.allFetchedQuestions
+  );
+
+  console.log("allSiftedQuotes: ", allSiftedQuotes);
   console.log("*** getAllQuotes 3 - allIds: ", allIds);
   console.log("*** getAllQuotes 4 - allQuestions: ", allQuestions);
   console.log("*** getAllQuotes 5 - AllQuestionsAndIds: ", AllQuestionsAndIds);
@@ -82,9 +107,16 @@ export function getQuote(
   let usedId;
 
   if (totalQuotes > 0) usedId = CurrentIdList[selectedId];
+  console.log("/// IN getQuote - totalQuotes: ", totalQuotes);
+  console.log("/// IN getQuote - scoreRecord: ", scoreRecord);
+  console.log("/// IN getQuote - usedId: ", usedId);
+  console.log(
+    "usedId && scoreRecord.includes(usedId.toString()): ",
+    usedId && scoreRecord.includes(usedId.toString())
+  );
 
   if (usedId && scoreRecord.includes(usedId.toString())) {
-    console.log("/// IN getQuote - usedId: ", usedId);
+    console.log("/// IN *IF* getQuote - usedId: ", usedId);
     console.log("/// IN getQuote - scoreRecord: ", scoreRecord);
     if (totalQuotes > 0 && scoreRecord.length >= totalQuotes) {
       return "QUOTES_DEPLETED";
@@ -94,10 +126,12 @@ export function getQuote(
     return;
   }
   // If all quotes have been used, return
+  console.log("allFetchedQuotes: ", allFetchedQuotes);
   const selectedQuote = allFetchedQuotes
     ? { ...allFetchedQuotes[usedId] }
     : { quote: "Are you ready?", speaker: "" };
-
+  console.log("selectedQuote: ", selectedQuote);
+  console.log("!selectedQuote: ", !selectedQuote);
   if (!selectedQuote) {
     getQuote(allFetchedQuotesIds, allFetchedQuotes, scoreCtx, setQuote);
   }
@@ -111,6 +145,7 @@ export function getQuote(
     usedId !== " "
   ) {
     scoreCtx.addCurrent(usedId.toString());
+    console.log("scoreCtx: ", scoreCtx);
 
     selectedQuote.answerOptions = createAnswerOptions(
       allFetchedQuotes,

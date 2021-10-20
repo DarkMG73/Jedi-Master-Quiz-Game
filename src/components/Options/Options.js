@@ -61,7 +61,7 @@ const Options = (props) => {
 
     setDisableAfterClick(false);
   };
-
+  console.log("---------answerOptions: ", answerOptions);
   return (
     <div className={classes["options-container"]}>
       <Card>

@@ -113,6 +113,7 @@ export function randomQuestionsList() {
         id: 1,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -120,6 +121,7 @@ export function randomQuestionsList() {
         id: 2,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -127,6 +129,7 @@ export function randomQuestionsList() {
         id: 3,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -134,6 +137,7 @@ export function randomQuestionsList() {
         id: 4,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -141,6 +145,7 @@ export function randomQuestionsList() {
         id: 5,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -148,6 +153,7 @@ export function randomQuestionsList() {
         id: 6,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -155,6 +161,7 @@ export function randomQuestionsList() {
         id: 7,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -162,6 +169,7 @@ export function randomQuestionsList() {
         id: 8,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -169,6 +177,7 @@ export function randomQuestionsList() {
         id: 9,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -176,6 +185,7 @@ export function randomQuestionsList() {
         id: 10,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -183,6 +193,7 @@ export function randomQuestionsList() {
         id: 11,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -190,6 +201,7 @@ export function randomQuestionsList() {
         id: 12,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -197,6 +209,7 @@ export function randomQuestionsList() {
         id: 13,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -204,6 +217,7 @@ export function randomQuestionsList() {
         id: 14,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -211,6 +225,7 @@ export function randomQuestionsList() {
         id: 15,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -218,6 +233,7 @@ export function randomQuestionsList() {
         id: 16,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -225,6 +241,7 @@ export function randomQuestionsList() {
         id: 17,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -232,6 +249,7 @@ export function randomQuestionsList() {
         id: 18,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -239,6 +257,7 @@ export function randomQuestionsList() {
         id: 19,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -246,6 +265,7 @@ export function randomQuestionsList() {
         id: 20,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -253,6 +273,7 @@ export function randomQuestionsList() {
         id: 21,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -260,6 +281,7 @@ export function randomQuestionsList() {
         id: 22,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -267,6 +289,7 @@ export function randomQuestionsList() {
         id: 23,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -274,6 +297,7 @@ export function randomQuestionsList() {
         id: 24,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -281,6 +305,7 @@ export function randomQuestionsList() {
         id: 25,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -288,6 +313,7 @@ export function randomQuestionsList() {
         id: 26,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -295,6 +321,7 @@ export function randomQuestionsList() {
         id: 27,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -302,6 +329,7 @@ export function randomQuestionsList() {
         id: 28,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -309,6 +337,7 @@ export function randomQuestionsList() {
         id: 29,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -316,6 +345,7 @@ export function randomQuestionsList() {
         id: 30,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -323,6 +353,7 @@ export function randomQuestionsList() {
         id: 31,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -330,6 +361,7 @@ export function randomQuestionsList() {
         id: 32,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -337,6 +369,7 @@ export function randomQuestionsList() {
         id: 33,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -344,6 +377,7 @@ export function randomQuestionsList() {
         id: 34,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -351,6 +385,7 @@ export function randomQuestionsList() {
         id: 35,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -358,6 +393,7 @@ export function randomQuestionsList() {
         id: 36,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -365,6 +401,7 @@ export function randomQuestionsList() {
         id: 37,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -372,6 +409,7 @@ export function randomQuestionsList() {
         id: 38,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -379,6 +417,7 @@ export function randomQuestionsList() {
         id: 39,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -386,6 +425,7 @@ export function randomQuestionsList() {
         id: 40,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -393,6 +433,7 @@ export function randomQuestionsList() {
         id: 41,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -400,6 +441,7 @@ export function randomQuestionsList() {
         id: 42,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -407,6 +449,7 @@ export function randomQuestionsList() {
         id: 43,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -414,6 +457,7 @@ export function randomQuestionsList() {
         id: 44,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -421,6 +465,7 @@ export function randomQuestionsList() {
         id: 45,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -428,6 +473,7 @@ export function randomQuestionsList() {
         id: 46,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -435,6 +481,7 @@ export function randomQuestionsList() {
         id: 47,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -442,6 +489,7 @@ export function randomQuestionsList() {
         id: 48,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -449,6 +497,7 @@ export function randomQuestionsList() {
         id: 49,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -456,6 +505,7 @@ export function randomQuestionsList() {
         id: 50,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -463,6 +513,7 @@ export function randomQuestionsList() {
         id: 51,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -470,6 +521,7 @@ export function randomQuestionsList() {
         id: 52,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -477,6 +529,7 @@ export function randomQuestionsList() {
         id: 53,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -484,6 +537,7 @@ export function randomQuestionsList() {
         id: 54,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -491,6 +545,7 @@ export function randomQuestionsList() {
         id: 55,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -498,6 +553,7 @@ export function randomQuestionsList() {
         id: 56,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
       {
@@ -505,6 +561,7 @@ export function randomQuestionsList() {
         id: 57,
         preQuestion,
         content: "",
+        speaker: "",
         faction: -1,
       },
     ],
