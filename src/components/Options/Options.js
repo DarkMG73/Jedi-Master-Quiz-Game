@@ -7,6 +7,7 @@ const Options = (props) => {
   const [isSelectedArray, setIsSelectedArray] = useState({});
   const [disableAfterClick, setDisableAfterClick] = useState(true);
   const answerOptions = props.answerOptions;
+  console.log("answerOptions: ", answerOptions);
   const timerRunning = props.timerRunning;
 
   const replSpace = (str) => {
@@ -16,7 +17,7 @@ const Options = (props) => {
   let imageOne;
   try {
     imageOne = require(`../../assets/images/${replSpace(
-      answerOptions[0].answer
+      answerOptions[0].photo
     )}.jpg`);
   } catch {
     imageOne = require(`../../assets/images/default.jpg`);
@@ -24,7 +25,7 @@ const Options = (props) => {
   let imageTwo;
   try {
     imageTwo = require(`../../assets/images/${replSpace(
-      answerOptions[1].answer
+      answerOptions[1].photo
     )}.jpg`);
   } catch {
     imageTwo = require(`../../assets/images/default.jpg`);
@@ -33,7 +34,7 @@ const Options = (props) => {
   let imageThree;
   try {
     imageThree = require(`../../assets/images/${replSpace(
-      answerOptions[2].answer
+      answerOptions[2].photo
     )}.jpg`);
   } catch {
     imageThree = require(`../../assets/images/default.jpg`);
@@ -61,7 +62,7 @@ const Options = (props) => {
 
     setDisableAfterClick(false);
   };
-  console.log("---------answerOptions: ", answerOptions);
+
   return (
     <div className={classes["options-container"]}>
       <Card>

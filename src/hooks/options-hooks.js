@@ -1,77 +1,106 @@
 import { getRandomInt, shuffleArray } from "./utilities";
 
-export function createAnswerOptions(allQuotes, answer, scoreCtx, startTimer) {
-  console.log("createAnswerOptions: ", allQuotes, answer, scoreCtx, startTimer);
+export function createAnswerOptions(
+  allQuestions,
+  answer,
+  answerOptions,
+  photoOptions,
+  scoreCtx,
+  startTimer
+) {
   const availableSpeakers = [];
-  for (const key in allQuotes) {
-    if (answer !== allQuotes[key].speaker) {
-      console.log("allQuotes[key]: ", allQuotes[key]);
-      availableSpeakers.push(allQuotes[key].speaker);
+  for (const key in allQuestions) {
+    if (answer !== allQuestions[key].answer) {
+      availableSpeakers.push(allQuestions[key].answer);
     }
   }
 
-  console.log("availableSpeakers: ", availableSpeakers);
-
   function twoUniqueRandomNumbers(highestLimit) {
-    console.log("highestLimit: ", highestLimit);
     let randomOne = getRandomInt(highestLimit);
     let randomTwo = getRandomInt(highestLimit);
 
     // Ensure different number
     let limitCnt = 0;
-    console.log("limitCnt < 1000: ", limitCnt < 1000);
+
     while (limitCnt < 10 && highestLimit > 0 && randomOne === randomTwo) {
       randomOne = getRandomInt(highestLimit);
-      console.log("randomOne: ", randomOne);
+
       randomTwo = getRandomInt(highestLimit);
-      console.log("randomTwo: ", randomTwo);
+
       limitCnt++;
-      console.log("limitCnt: ", limitCnt);
     }
     return [randomOne, randomTwo];
   }
 
   let randomNumbers = twoUniqueRandomNumbers(availableSpeakers.length);
-  console.log("randomNumbers: ", randomNumbers);
 
   // Ensure different name
-  console.log("availableSpeakers.length > 0 : ", availableSpeakers.length > 0);
-  console.log(
-    "availableSpeakers[randomNumbers[0]] === availableSpeakers[randomNumbers[1]: ",
-    availableSpeakers[randomNumbers[0]] === availableSpeakers[randomNumbers[1]]
-  );
-  console.log(
-    "availableSpeakers[randomNumbers[0]]: ",
-    availableSpeakers[randomNumbers[0]]
-  );
   let limitCnt = 0;
-  console.log("limitCnt < 1000: ", limitCnt < 1000);
+
   while (
     limitCnt < 1000 &&
     availableSpeakers.length > 0 &&
     availableSpeakers[randomNumbers[0]] === availableSpeakers[randomNumbers[1]]
   ) {
-    console.log("randomNumbers: ", randomNumbers);
-    limitCnt++;
     randomNumbers = twoUniqueRandomNumbers(availableSpeakers.length);
-    console.log("randomNumbers: ", randomNumbers);
     limitCnt++;
   }
 
-  console.log("limitCnt < 1000: ", limitCnt < 1000);
+  let allPhotoOptions = {};
+  if (photoOptions) {
+    allPhotoOptions = {
+      photoOptionOne: photoOptions[1]
+        ? photoOptions[1]
+        : availableSpeakers[randomNumbers[0]],
+      photoOptionTwo: photoOptions[2]
+        ? photoOptions[2]
+        : availableSpeakers[randomNumbers[1]],
+      photoOptionThree: photoOptions[0] ? photoOptions[0] : answer,
+    };
+  } else {
+    allPhotoOptions = {
+      photoOptionOne: availableSpeakers[randomNumbers[0]],
+      photoOptionTwo: availableSpeakers[randomNumbers[1]],
+      photoOptionThree: answer,
+    };
+  }
+
+  let allAnswerOptions = {};
+  if (answerOptions) {
+    allAnswerOptions = {
+      answerOptionOne: answerOptions[1]
+        ? answerOptions[1]
+        : availableSpeakers[randomNumbers[0]],
+      answerOptionTwo: answerOptions[2]
+        ? answerOptions[2]
+        : availableSpeakers[randomNumbers[1]],
+    };
+  } else {
+    allAnswerOptions = {
+      answerOptionOne: availableSpeakers[randomNumbers[0]],
+      answerOptionTwo: availableSpeakers[randomNumbers[1]],
+    };
+  }
 
   let optionsArray = [
     {
-      answer: availableSpeakers[randomNumbers[0]],
+      answer: allAnswerOptions.answerOptionOne,
       handler: scoreCtx.addIncorrect,
       class: "incorrect",
+      photo: allPhotoOptions.photoOptionOne,
     },
     {
-      answer: availableSpeakers[randomNumbers[1]],
+      answer: allAnswerOptions.answerOptionTwo,
       handler: scoreCtx.addIncorrect,
       class: "incorrect",
+      photo: allPhotoOptions.photoOptionTwo,
     },
-    { answer: answer, handler: scoreCtx.addCorrect, class: "correct" },
+    {
+      answer: answer,
+      handler: scoreCtx.addCorrect,
+      class: "correct",
+      photo: allPhotoOptions.photoOptionThree,
+    },
   ];
 
   shuffleArray(optionsArray);

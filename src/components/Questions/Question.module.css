@@ -2,17 +2,17 @@
   position: relative;
 }
 
-.quote-container {
+.question-container {
   position: relative;
 }
 
-.quote-container > div {
+.question-container > div {
   padding: 0.5em;
   margin: 0 auto 1.5rem;
   font-size: 18px;
 }
 
-.quote-text {
+.question-text {
   min-height: 7em;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@
   transition: 1s all ease;
 }
 
-.quote-prequestion {
+.question-prequestion {
   font-size: smaller;
   font-style: italic;
   opacity: 0.5;

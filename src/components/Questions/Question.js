@@ -1,14 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import styles from "./Question.module.css";
 import Card from "../UI/Card/Card";
-import { getAllQuotes, getQuote } from "../../hooks/quote-hooks";
+import { getAllQuestions, getQuestion } from "../../hooks/questions-hooks";
 // import { getAllQuotes } from "../../hooks/HTTP/HTTPRequest"; // re-gather quotes
 import Options from "../Options/Options";
 import ScoreContext from "../../store/score-context";
 
 function Question(props) {
-  const [allQuotes, setAllQuotes] = useState([]);
-  const [quote, setQuote] = useState([]);
+  const [allQuestions, setAllQuestions] = useState([]);
+  const [question, setQuestion] = useState([]);
   const setGameRunning = props.setGameRunning;
   const gameRunning = props.gameRunning;
   const scoreCtx = useContext(ScoreContext);
@@ -16,53 +16,48 @@ function Question(props) {
   const timerRunning = scoreCtx.timerRunning;
   const gameOver = props.gameOver;
 
-  console.log("*** Question 1 - allQuotes: ", allQuotes);
-
-  const quoteArgs = [
-    allQuotes["allFetchedQuotesIds"],
-    allQuotes["allFetchedQuotes"],
+  const questionArgs = [
+    allQuestions["allFetchedQuestionsIds"],
+    allQuestions["allFetchedQuestions"],
     scoreCtx,
-    setQuote,
+    setQuestion,
   ];
-  console.log("*** Question 2 - allQuotes: ", allQuotes);
-  console.log("*** Question 3 - quoteArgs: ", quoteArgs);
 
   useEffect(() => {
     if (gameRunning && !timerRunning) setTimerRunning(true);
   }, [gameRunning]);
 
   useEffect(() => {
-    getAllQuotes(setAllQuotes, props.setTotalQuestionNumber);
+    getAllQuestions(setAllQuestions, props.setTotalQuestionNumber);
   }, []);
 
   useEffect(() => {
-    getQuote(...quoteArgs);
-  }, [allQuotes]);
+    getQuestion(...questionArgs);
+  }, [allQuestions]);
 
-  const newQuoteHandler = function () {
-    const endOutput = getQuote(...quoteArgs);
+  const newQuestionHandler = function () {
+    const endOutput = getQuestion(...questionArgs);
     scoreCtx.setTimerRunning(true);
-    if (endOutput === "QUOTES_DEPLETED") setGameRunning(false);
+    if (endOutput === "QUESTIONS_DEPLETED") setGameRunning(false);
   };
 
-  console.log("quote: ", quote);
   return (
     <div className={styles["questions-container"]}>
-      {quote && gameRunning && (
+      {question && gameRunning && (
         <div>
-          <div className={styles["quote-container"]}>
+          <div className={styles["question-container"]}>
             <Card>
-              <p className={styles["quote-text"]}>
-                <span className={styles["quote-prequestion"]}>
-                  {quote.preQuestion}
+              <p className={styles["question-text"]}>
+                <span className={styles["question-prequestion"]}>
+                  {question.preQuestion}
                 </span>{" "}
-                "{quote.quote}" <br /> Speaker:{quote.speaker}
+                "{question.questionText}" <br /> Answer:{question.answer}
               </p>
             </Card>
           </div>
-          {quote.answerOptions && (
+          {question.answerOptions && (
             <Options
-              answerOptions={quote.answerOptions}
+              answerOptions={question.answerOptions}
               timerRunning={timerRunning}
             />
           )}
@@ -71,7 +66,7 @@ function Question(props) {
       {!gameRunning && <p>You have answered all of the questions!</p>}
 
       {!scoreCtx.timerRunning && !gameOver && (
-        <button className={styles.button} onClick={newQuoteHandler}>
+        <button className={styles.button} onClick={newQuestionHandler}>
           <Card>Next Question</Card>
         </button>
       )}
