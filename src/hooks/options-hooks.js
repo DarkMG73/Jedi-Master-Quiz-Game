@@ -10,11 +10,15 @@ export function createAnswerOptions(
 ) {
   const availableSpeakers = [];
   for (const key in allQuestions) {
-    if (answer !== allQuestions[key].answer) {
+    if (
+      answer !== allQuestions[key].answer &&
+      allQuestions[key].answer &&
+      allQuestions[key].answer != ""
+    ) {
       availableSpeakers.push(allQuestions[key].answer);
     }
   }
-
+  console.log("answer: ", answer);
   function twoUniqueRandomNumbers(highestLimit) {
     let randomOne = getRandomInt(highestLimit);
     let randomTwo = getRandomInt(highestLimit);
@@ -66,13 +70,14 @@ export function createAnswerOptions(
   }
 
   let allAnswerOptions = {};
+
   if (answerOptions) {
     allAnswerOptions = {
-      answerOptionOne: answerOptions[1]
-        ? answerOptions[1]
+      answerOptionOne: answerOptions[0]
+        ? answerOptions[0]
         : availableSpeakers[randomNumbers[0]],
-      answerOptionTwo: answerOptions[2]
-        ? answerOptions[2]
+      answerOptionTwo: answerOptions[1]
+        ? answerOptions[1]
         : availableSpeakers[randomNumbers[1]],
     };
   } else {
@@ -81,6 +86,21 @@ export function createAnswerOptions(
       answerOptionTwo: availableSpeakers[randomNumbers[1]],
     };
   }
+
+  console.log("availableSpeakers: ", availableSpeakers);
+  console.log("randomNumbers: ", randomNumbers);
+  console.log("OPTIONS-HOOKS answerOptions: ", answerOptions);
+  console.log("photoOptions: ", photoOptions);
+  console.log(
+    "availableSpeakers[randomNumbers[0]]: ",
+
+    availableSpeakers[randomNumbers[0]]
+  );
+  console.log(
+    "availableSpeakers[randomNumbers[1]]: ",
+    availableSpeakers[randomNumbers[1]]
+  );
+  console.log("allAnswerOptions: ", allAnswerOptions);
 
   let optionsArray = [
     {

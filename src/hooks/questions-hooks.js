@@ -30,19 +30,29 @@ export function splitQuoteAndAuthor(str) {
 }
 
 const arrayToObject = (arr, key) => {
+  console.log("|||||||||||||||");
+  console.log("key: ", key);
+  console.log("arr: ", arr);
+  let cntr = 0;
   const res = {};
   arr.forEach((obj) => {
-    res[obj[key]] = obj;
+    console.log("obj: ", obj);
+    res[cntr] = obj;
+    cntr++;
   });
   return res;
 };
 
 const combineQuestionObjsToArray = (obj1, obj2) => {
+  console.log("-----------------");
+  console.log("obj2: ", obj2);
+  console.log("obj1: ", obj1);
   const combinedObj = {};
   let cntr = 0;
   for (const key in obj1) {
     obj1[key].id = cntr;
     combinedObj[cntr] = obj1[key];
+    console.log("combinedObj[cntr] : ", combinedObj[cntr]);
     cntr++;
   }
 
@@ -85,8 +95,8 @@ export async function getAllQuestions(setAllQuestions, setTotalQuestionNumber) {
 
   //Compile the above.
   const allQuestions = combineQuestionObjsToArray(
-    allSiftedQuotes,
-    allSiftedQuestions
+    allSiftedQuestions,
+    allSiftedQuotes
   );
 
   let allIds = [
@@ -105,7 +115,7 @@ export async function getAllQuestions(setAllQuestions, setTotalQuestionNumber) {
     "fetchedQuestions.allFetchedQuestions: ",
     fetchedQuestions.allFetchedQuestions
   );
-
+  console.log("AllQuestionsAndIds: ", AllQuestionsAndIds);
   setTotalQuestionNumber(allIds.length);
   setAllQuestions(AllQuestionsAndIds);
 }
@@ -178,12 +188,12 @@ export function getQuestion(
     usedId !== " "
   ) {
     scoreCtx.addCurrent(usedId.toString());
-
+    console.log("selectedQuestion: ", selectedQuestion);
     const finalAnswer =
       selectedQuestion.answer != ""
         ? selectedQuestion.answer
-        : selectedQuestion.answerNonHuman;
-
+        : selectedQuestion.answerNotPerson;
+    console.log("finalAnswer: ", finalAnswer);
     selectedQuestion.answerOptions = createAnswerOptions(
       allFetchedQuestions,
       finalAnswer,
