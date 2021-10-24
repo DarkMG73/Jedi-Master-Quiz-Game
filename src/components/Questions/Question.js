@@ -40,6 +40,7 @@ function Question(props) {
     scoreCtx.setTimerRunning(true);
     if (endOutput === "QUESTIONS_DEPLETED") setGameRunning(false);
   };
+  console.log("question: ", question);
 
   return (
     <div className={styles["questions-container"]}>
@@ -53,6 +54,21 @@ function Question(props) {
                 </span>{" "}
                 "{question.questionText}" <br /> Answer:{question.answer}
               </p>
+              {
+                <p
+                  className={
+                    styles["question-text"] +
+                    " " +
+                    styles["answer-explanation"] +
+                    " " +
+                    (timerRunning &&
+                      question.answerExplanation &&
+                      styles["no-opacity"])
+                  }
+                >
+                  {question.answerExplanation}
+                </p>
+              }
             </Card>
           </div>
           {question.answerOptions && (

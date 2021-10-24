@@ -199,6 +199,7 @@ export function getQuestion(
       finalAnswer,
       selectedQuestion.answerOptions,
       selectedQuestion.photoOptions,
+      selectedQuestion.answerExplanation,
       scoreCtx
     );
     setQuestion(selectedQuestion);

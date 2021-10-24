@@ -5,6 +5,7 @@ export function createAnswerOptions(
   answer,
   answerOptions,
   photoOptions,
+  answerExplanation,
   scoreCtx,
   startTimer
 ) {
@@ -120,6 +121,7 @@ export function createAnswerOptions(
       handler: scoreCtx.addCorrect,
       class: "correct",
       photo: allPhotoOptions.photoOptionThree,
+      answerExplanation,
     },
   ];
 
