@@ -20,3 +20,27 @@ export function convertID(str, restore = false) {
 
   return str.replaceAll(" ", "^");
 }
+
+export const combineArraysNoDups = (arrayOne, arrayTwo) => [
+  ...new Set([...arrayOne, ...arrayTwo]),
+];
+// combineArraysNoDups(arrayOne, arrayTwo);
+
+function getAllValues(selector) {
+  const allValues = document.querySelectorAll(selector);
+  console.log("allValues: ", allValues);
+
+  const output = [];
+
+  allValues.forEach((item) => {
+    const text = item.innerText;
+    if (text && text.trim() != "") output.push(text);
+  });
+
+  return output;
+}
+// getAllValues("a.category-page__member-link");
+
+getAllValues(
+  "table.wikitable.sortable.jquery-tablesorter tbody tr td:first-child a"
+);

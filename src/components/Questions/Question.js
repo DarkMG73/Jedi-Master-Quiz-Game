@@ -41,6 +41,10 @@ function Question(props) {
     if (endOutput === "QUESTIONS_DEPLETED") setGameRunning(false);
   };
   console.log("question: ", question);
+  console.log("!!question: ", !!question);
+  console.log("!!gameRunning: ", !!gameRunning);
+  console.log("question.questionText: ", question.questionText);
+  console.log("question.preQuestion: ", question.preQuestion);
 
   return (
     <div className={styles["questions-container"]}>
@@ -57,16 +61,16 @@ function Question(props) {
               {
                 <p
                   className={
-                    styles["question-text"] +
-                    " " +
                     styles["answer-explanation"] +
                     " " +
-                    (timerRunning &&
-                      question.answerExplanation &&
-                      styles["no-opacity"])
+                    styles["question-text"] +
+                    " " +
+                    (!timerRunning && styles["full-opacity"])
                   }
                 >
-                  {question.answerExplanation}
+                  {question.answerExplanation
+                    ? question.answerExplanation
+                    : question.answer}
                 </p>
               }
             </Card>

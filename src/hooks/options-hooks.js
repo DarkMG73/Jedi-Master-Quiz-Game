@@ -101,6 +101,11 @@ export function createAnswerOptions(
     "availableSpeakers[randomNumbers[1]]: ",
     availableSpeakers[randomNumbers[1]]
   );
+
+  console.log("availableSpeakers: ", availableSpeakers);
+  const dupsRemoved = [...new Set(availableSpeakers)];
+  console.log("*******dupsRemoved: ", dupsRemoved);
+
   console.log("allAnswerOptions: ", allAnswerOptions);
 
   let optionsArray = [

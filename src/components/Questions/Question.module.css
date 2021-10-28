@@ -27,9 +27,8 @@
   transition: 1s all ease;
 }
 
-.no-opacity {
-  opacity: 0;
-  pointer-events: none;
+.full-opacity {
+  opacity: 1 !important;
 }
 
 .answer-explanation {
@@ -39,6 +38,7 @@
   width: 97%;
   transform: translate(-50%, -50%);
   max-height: 54%;
+  opacity: 0;
 }
 
 .question-prequestion {
