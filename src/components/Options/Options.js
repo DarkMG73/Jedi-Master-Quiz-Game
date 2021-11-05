@@ -1,43 +1,76 @@
 import { useState, useEffect } from "react";
 import Card from "../UI/Card/Card";
 import classes from "./Options.module.css";
-import { convertID } from "../../hooks/utilities";
+import { convertID, replSpace } from "../../hooks/utilities";
 
 const Options = (props) => {
   const [isSelectedArray, setIsSelectedArray] = useState({});
   const [disableAfterClick, setDisableAfterClick] = useState(true);
   const answerOptions = props.answerOptions;
-  console.log("answerOptions: ", answerOptions);
+  const category = props.category;
   const timerRunning = props.timerRunning;
 
-  const replSpace = (str) => {
-    return str.trim().replaceAll(" ", "_");
-  };
+  console.log("%c--- BEGIN Options ---", "background: blue;color:white");
+  console.log("%ccategory: ", "background:blue, color:white", category);
 
   let imageOne;
   try {
+    // console.log(
+    //   "imageOne: ",
+    //   `../../assets/images/${replSpace(answerOptions[0].category)}/${replSpace(
+    //     answerOptions[0].photo
+    //   )}.jpg`
+    // );
     imageOne = require(`../../assets/images/${replSpace(
-      answerOptions[0].photo
-    )}.jpg`);
+      answerOptions[0].category
+    )}/${replSpace(answerOptions[0].photo)}.jpg`);
   } catch {
-    imageOne = require(`../../assets/images/default.jpg`);
+    imageOne = require(`../../assets/images/${replSpace(
+      answerOptions[0].category
+    )}/default.jpg`);
   }
   let imageTwo;
   try {
+    // console.log(
+    //   "imageTwo: ",
+    //   `../../assets/images/${replSpace(answerOptions[1].category)}/${replSpace(
+    //     answerOptions[1].photo
+    //   )}.jpg`
+    // );
     imageTwo = require(`../../assets/images/${replSpace(
-      answerOptions[1].photo
-    )}.jpg`);
+      answerOptions[1].category
+    )}/${replSpace(answerOptions[1].photo)}.jpg`);
   } catch {
-    imageTwo = require(`../../assets/images/default.jpg`);
+    imageTwo =
+      category === "battles"
+        ? require(`../../assets/images/${replSpace(
+            answerOptions[1].category
+          )}/default-2.jpg`)
+        : require(`../../assets/images/${replSpace(
+            answerOptions[1].category
+          )}/default.jpg`);
   }
 
   let imageThree;
   try {
+    // console.log(
+    //   "imageThree: ",
+    //   `../../assets/images/${replSpace(answerOptions[2].category)}/${replSpace(
+    //     answerOptions[2].photo
+    //   )}.jpg`
+    // );
     imageThree = require(`../../assets/images/${replSpace(
-      answerOptions[2].photo
-    )}.jpg`);
+      answerOptions[2].category
+    )}/${replSpace(answerOptions[2].photo)}.jpg`);
   } catch {
-    imageThree = require(`../../assets/images/default.jpg`);
+    imageThree =
+      category === "battles"
+        ? require(`../../assets/images/${replSpace(
+            answerOptions[2].category
+          )}/default-3.jpg`)
+        : require(`../../assets/images/${replSpace(
+            answerOptions[2].category
+          )}/default.jpg`);
   }
 
   useEffect(() => {

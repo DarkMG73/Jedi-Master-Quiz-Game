@@ -16,7 +16,9 @@ function Score(props) {
   const setGameOver = props.setGameOver;
   const gameOver = props.gameOver;
   const skillLevelMod = props.skillLevelMod ?? 1;
-  console.log("IN SCORE scoreCtx: ", scoreCtx);
+
+  console.log("%c--- BEGIN SCORE ---", "background: purple;color:white");
+  console.log("%cscoreCtx: ", "background:purple, color:white", scoreCtx);
 
   /****************** 
      Calculate Rank

@@ -28,7 +28,6 @@ export const combineArraysNoDups = (arrayOne, arrayTwo) => [
 
 function getAllValues(selector) {
   const allValues = document.querySelectorAll(selector);
-  console.log("allValues: ", allValues);
 
   const output = [];
 
@@ -44,3 +43,7 @@ function getAllValues(selector) {
 getAllValues(
   "table.wikitable.sortable.jquery-tablesorter tbody tr td:first-child a"
 );
+
+export const replSpace = (str) => {
+  return str.trim().replaceAll(" ", "_");
+};

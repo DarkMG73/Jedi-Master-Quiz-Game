@@ -15,6 +15,19 @@ function Question(props) {
   const setTimerRunning = scoreCtx.setTimerRunning;
   const timerRunning = scoreCtx.timerRunning;
   const gameOver = props.gameOver;
+  const totalQuestionNumber = props.totalQuestionNumber;
+  const questionsAmountUsed =
+    scoreCtx.correct.length + scoreCtx.incorrect.length + 1;
+
+  console.log(
+    "%c--------------------------------",
+    "background: black;color:white"
+  );
+  console.log("%c--- BEGIN QUESTION ---", "background: black;color:white");
+  console.log(
+    "%c--------------------------------",
+    "background: black;color:white"
+  );
 
   const questionArgs = [
     allQuestions["allFetchedQuestionsIds"],
@@ -36,15 +49,19 @@ function Question(props) {
   }, [allQuestions]);
 
   const newQuestionHandler = function () {
+    console.log("%c--- BEGIN newQuestionHandler ---", "background:pink");
     const endOutput = getQuestion(...questionArgs);
+    console.log("%cendOutput: ", "background:pink", endOutput);
     scoreCtx.setTimerRunning(true);
     if (endOutput === "QUESTIONS_DEPLETED") setGameRunning(false);
   };
-  console.log("question: ", question);
-  console.log("!!question: ", !!question);
-  console.log("!!gameRunning: ", !!gameRunning);
-  console.log("question.questionText: ", question.questionText);
-  console.log("question.preQuestion: ", question.preQuestion);
+  console.log(": ");
+  console.log("%cquestion", "background: black;color:white", question);
+  console.log(
+    "%cquestion.questionText: ",
+    "background: black;color:white",
+    question.questionText
+  );
 
   return (
     <div className={styles["questions-container"]}>
@@ -52,32 +69,40 @@ function Question(props) {
         <div>
           <div className={styles["question-container"]}>
             <Card>
-              <p className={styles["question-text"]}>
-                <span className={styles["question-prequestion"]}>
-                  {question.preQuestion}
-                </span>{" "}
-                "{question.questionText}" <br /> Answer:{question.answer}
-              </p>
-              {
-                <p
+              {timerRunning && (
+                <div className={styles["question-text"]}>
+                  <p className={styles["special-scrollbar"]}>
+                    <span className={styles["question-prequestion"]}>
+                      {question.preQuestion}
+                    </span>
+                    <br />
+                    {question.questionText} <br />
+                  </p>
+                </div>
+              )}
+
+              {!timerRunning && (
+                <div
                   className={
-                    styles["answer-explanation"] +
-                    " " +
-                    styles["question-text"] +
-                    " " +
-                    (!timerRunning && styles["full-opacity"])
+                    styles["answer-explanation"] + " " + styles["question-text"]
                   }
                 >
-                  {question.answerExplanation
-                    ? question.answerExplanation
-                    : question.answer}
-                </p>
-              }
+                  <p className={styles["special-scrollbar"]}>
+                    {question.answerExplanation
+                      ? question.answerExplanation
+                      : question.answer}
+                  </p>
+                </div>
+              )}
+              <div className={styles["question-count"]}>
+                Question {questionsAmountUsed} / {totalQuestionNumber}
+              </div>
             </Card>
           </div>
           {question.answerOptions && (
             <Options
               answerOptions={question.answerOptions}
+              category={question.category}
               timerRunning={timerRunning}
             />
           )}

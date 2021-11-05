@@ -13,7 +13,8 @@
 }
 
 .question-text {
-  min-height: 7em;
+  min-height: 9em;
+  max-height: 9em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,18 +28,14 @@
   transition: 1s all ease;
 }
 
-.full-opacity {
-  opacity: 1 !important;
+.question-text p {
+  overflow: auto;
+  padding: 0 1em;
 }
 
-.answer-explanation {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 97%;
-  transform: translate(-50%, -50%);
-  max-height: 54%;
-  opacity: 0;
+.full-opacity {
+  opacity: 1 !important;
+  transform: translate(-50%, -50%) scale(1, 1);
 }
 
 .question-prequestion {
@@ -47,7 +44,18 @@
   opacity: 0.5;
   font-weight: 700;
 }
-
+.question-count {
+  position: absolute;
+  background: inherit;
+  background-color: #d5d5d5;
+  padding: 0.5em 3em;
+  font-size: 12px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 25px 25px 10px 10px;
+  box-shadow: inherit;
+}
 .button {
   background: transparent;
   border: none;
@@ -81,4 +89,31 @@
   100% {
     filter: saturate(1);
   }
+}
+
+/*
+ *  STYLE 10
+ */
+.special-scrollbar::-webkit-scrollbar-track {
+  /* 	border: 1px inset lightgray; */
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: inset 0 0 6px rgb(255 255 255 / 30%);
+}
+
+.special-scrollbar::-webkit-scrollbar {
+  width: 7px;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.special-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 50%;
+  background: #dedede;
+  background-color: hsl(0deg 0% 91%);
+  border: none;
+  text-shadow: -1px -1px 1px rgb(0 0 0 / 50%),
+    1px 1px 1px rgb(255 255 255 / 73%);
+  box-shadow: inset -2px -2px 2px -1px rgb(0 0 0 / 50%),
+    inset 3px 3px 5px -3px rgb(0 0 0 / 61%);
 }

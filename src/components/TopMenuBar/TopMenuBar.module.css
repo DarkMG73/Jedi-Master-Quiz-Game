@@ -1,6 +1,7 @@
 .top-nav {
-  position: relative;
+  position: sticky;
   display: flex;
+  top: -105px;
   max-width: 1000px;
   margin: 0 auto;
   flex-direction: column;
@@ -9,6 +10,7 @@
   padding-top: calc(50px + 1em);
   font-family: "GoodTimes Reg", sans-serif;
   transition: 0.2s all ease;
+  z-index: 10000;
 }
 
 .app-title {
@@ -27,6 +29,7 @@
   color: white;
   text-shadow: -1px -1px 1px rgb(0 0 0 / 50%),
     1px 1px 1px rgb(255 255 255 / 73%);
+  transition: 0.3s all ease;
 }
 
 .curved-text-wrap {
@@ -161,6 +164,88 @@
 .top-nav-game-mode {
   transform: scale(0.5);
   height: 250px;
+}
+
+.small-timer {
+  transform: scale(0.2);
+  transition: 0.3s all ease;
+  background: none;
+}
+
+.small-timer * {
+  transform: none;
+}
+.small-timer:hover {
+  transform: scale(0.5);
+  height: 250px;
+  top: 0;
+  transition: 0.3s all ease;
+}
+
+.small-timer:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 190%;
+  background: transparent;
+  transform: translateY(-27%) scale(0);
+  transform-origin: center;
+  background-image: linear-gradient(
+    350deg,
+    hsla(0, 0%, 0%, 0.62) 0%,
+    hsla(0, 0%, 100%, 0) 50%,
+    transparent
+  );
+  background-color: hsl(0deg 0% 100%);
+  border: none;
+  border-radius: 100px;
+  box-shadow: inset -7px -7px 10px -7px rgb(0 0 0 / 50%),
+    inset 7px 7px 10px -7px rgb(0 0 0 / 73%);
+  transition: 0.5s all ease;
+  opacity: 0;
+}
+
+.small-timer:hover:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 190%;
+  background: white;
+  transform: translateY(-27%) scale(1);
+  background-image: linear-gradient(
+    350deg,
+    hsla(0, 0%, 0%, 0.62) 0%,
+    hsla(0, 0%, 100%, 0) 50%,
+    transparent
+  );
+  background-color: hsl(0deg 0% 100%);
+  border: none;
+  border-radius: 100px;
+  box-shadow: inset -7px -7px 10px -7px rgb(0 0 0 / 50%),
+    inset 7px 7px 10px -7px rgb(0 0 0 / 73%);
+  transition: 0.2s all ease;
+  opacity: 1;
+}
+
+.small-timer .app-title {
+  opacity: 0;
+  transform: translateY(100%) scale(0);
+}
+
+.small-timer:hover .app-title {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  color: hsl(189deg 60% 34%);
+}
+
+.small-timer:hover * {
+  opacity: 1;
 }
 
 .top-nav-game-mode .inner-element:nth-child(1) {

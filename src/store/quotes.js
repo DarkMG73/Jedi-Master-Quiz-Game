@@ -25,7 +25,7 @@
 //       {
 //         type: 'quote', id: 55,
 //         preQuestion, answerExplanation: '',  photoOptions: null, questionText:
-//           "The dark side of the Force is a pathway to many abilities some consider to be unnatural. — Chancellor Palpatine",
+//           "The dark side of the Force is a pathway to many abilities some consider to be unnatural. — Darth Sidious",
 //         faction: 2,
 //       },
 //     ],
@@ -250,7 +250,7 @@ export function quoteList() {
         preQuestion,
         answerExplanation: null,
         questionText:
-          "The Sith took everything from me. Ripped me from my mother’s arms, murdered my brother, used me as a weapon, and then cast me aside. Abandoned me. Once, I had power — now I have nothing. — Maul",
+          "The Sith took everything from me. Ripped me from my mother’s arms, murdered my brother, used me as a weapon, and then cast me aside. Abandoned me. Once, I had power — now I have nothing. — Darth Maul",
         faction: 1,
       },
       {
@@ -638,7 +638,7 @@ export function quoteList() {
         preQuestion,
         answerExplanation: null,
         questionText:
-          "The dark side of the Force is a pathway to many abilities some consider to be unnatural. — Chancellor Palpatine",
+          "The dark side of the Force is a pathway to many abilities some consider to be unnatural. — Darth Sidious",
         faction: 2,
       },
       {

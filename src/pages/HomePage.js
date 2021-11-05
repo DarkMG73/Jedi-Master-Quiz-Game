@@ -44,6 +44,7 @@ function HomePage(props) {
           <Question
             gameRunning={gameRunning}
             setGameRunning={setGameRunning}
+            totalQuestionNumber={totalQuestionNumber}
             setTotalQuestionNumber={setTotalQuestionNumber}
             gameOver={gameOver}
           />

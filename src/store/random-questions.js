@@ -25,7 +25,7 @@
 //       {
 //         type: 'questionText', id: 55,
 //         preQuestion, questionText:
-//           "The dark side of the Force is a pathway to many abilities some consider to be unnatural. — Chancellor Palpatine",
+//           "The dark side of the Force is a pathway to many abilities some consider to be unnatural. — Darth Sidious",
 //         faction: 2,
 //       },
 //     ],
@@ -36,29 +36,21 @@
  * FOR PRODUCTION
  ***/
 // Cleanse after fetching:
-//     Chnage ? to — (where needed)
-//     Remove change "Hope" questionText to "Never Be Afraid Of Who You Are"
-//     Remove (Season One, Episode 15, Trespass)
-//     Change "[Luke:] I can’t believe it. [Yoda:] That is why you fail. Speaker:Yoda / Luke" - remove the names from the questionText and split into two
-// Must add the following to each:
-//        type,
-//        preQuestion,
+//     Look for references to "actor", "actress", "who played", etc to get rid of references to non-movie content. This should be filtered out because the answers must be in the popularStarWarsInfo array. Some cases have the character name along with the actor/actress.
+// Look for references to specific movies, Sith, Jedi, Yoda and bounty hunters in the questions. These likely need specific answerOptions added.
+// Search for Jimmy Smits and remove his name and the end of the question asking about him.
 
-// PIC NEEDED LIST
-// Boba Fett
-// Dengar
-// Bossk
 const type = "random-question";
 const preQuestion = "Do you know...";
 export function randomQuestionsList() {
   return {
-    allFetchedQuestionIds: [...Array(16).keys()],
+    allFetchedQuestionIds: [...Array(137).keys()],
     allFetchedQuestions: [
       {
         type: "random-question",
         category: "characters",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "characters-Boba Fett150345",
         questionText:
           'To which bounty hunter does Darth Vader warn that Han and his friends must not be disintegrated, to which the bounty hunter replies, "As you wish..."?',
         answer: "Boba Fett",
@@ -72,7 +64,7 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "characters",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "characters-Darth Sidious180227",
         questionText:
           "The Empire started out in the brain of a Sith Lord, who went by the name Palpatine. He was called the Emperor in the original three episodes. What was the proper name of this Sith?",
         answer: "Darth Sidious",
@@ -84,9 +76,9 @@ export function randomQuestionsList() {
       },
       {
         type: "random-question",
-        category: "planets",
+        category: "battles",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "battles-Battle of Coruscant190267",
         questionText:
           "In which battle did Obi-Wan Kenobi and Anakin Skywalker fly a rescue mission to save Supreme Chancellor Palpatine, who had been captured by General Grievous during the Separatists' invasion?",
         answer: "Battle of Coruscant",
@@ -100,7 +92,7 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "characters",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "characters-Obi-Wan Kenobi51177",
         questionText: 'In "Attack of the Clones", who says "Oh, not good"?',
         answer: "Obi-Wan Kenobi",
         answerExplanation:
@@ -113,15 +105,12 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "battles",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "battles-Battle of Yavin53297",
         questionText: "Which space battle did Darth Vader personally fly in?",
-        answer: 'Battle of Yavin ("Episode IV")',
+        answer: "Battle of Yavin",
         answerExplanation:
           'Anakin Skywalker was an excellent pilot, and he carried his skill with him when he became Darth Vader. That being said, Vader only intervened personally once in the movies. In "Episode IV - A New Hope" he flew his unique TIE Advance and was responsible for the death of many Rebel Alliance pilots.',
-        answerOptions: [
-          'Battle of Hoth ("Episode V")',
-          'Battle of Endor ("Episode VI")',
-        ],
+        answerOptions: ["Battle of Hoth", "Battle of Endor"],
         photoOptions: null,
         faction: -1,
       },
@@ -129,16 +118,13 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "moviesAndShows",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "moviesAndShows-A New Hope861266",
         questionText:
           "In which movie did Han Solo and Luke Skywalker free Princess Leia from the Death Star?",
-        answer: "Episode IV - A New Hope",
+        answer: "A New Hope",
         answerExplanation:
           "When the Millennium Falcon came out of hyperspace to find no Alderaan, they followed a lone TIE Fighter to what they realized, too late, was no moon. They were pulled onboard the Death Star, and commandeered some disguises in order to move about freely while looking for a solution to their problems. After Obi-Wan left to deactivate the tractor beam, Luke learned that Princess Leia had been captured and was scheduled to be executed. He then enlisted the help of Han and Chewie to stage a rescue. The trio made their way to the detention block and quickly took control of it. Luke found and freed the princess, but didn't have any escape plan, which resulted in the cell-block shootout, before the group bailed into the garbage chute. They were almost crushed by the masher, but R2-D2 was able to shut it down just in time. The gang then made their way through the Death Star back to the Falcon, where they were eventually able to leave, but only with the sacrifice of Obi-Wan Kenobi at the hands of Darth Vader. Once clear of the Death Star, Han and Luke still had to fend off four pursuing TIE Fighters. However, it had been Vader's plan for the Falcon to escape with a tracking beacon that would lead the Imperials straight to the hidden Rebel Base on Yavin IV.",
-        answerOptions: [
-          "Episode VI - The Return of the Jedi",
-          "Episode II - Attack of the Clones",
-        ],
+        answerOptions: ["Return Of The Jedi", "Attack of the Clones"],
         photoOptions: null,
         faction: -1,
       },
@@ -146,16 +132,13 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "moviesAndShows",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "moviesAndShows-The Empire Strikes Back56367",
         questionText:
           "In which movie did the famous Battle of Hoth take place?",
-        answer: "Episode V - The Empire Strikes Back",
+        answer: "The Empire Strikes Back",
         answerExplanation:
           'Hoth, the icy world seen in "The Empire Strikes Back", was where the Rebel Alliance had built Echo Base. The Imperials sent out probe droids to a variety of locations, including Hoth, and it found the Rebel shield generator before Han Solo and Chewbacca managed to destroy it. They Imperials sent the fleet to Hoth, but had to use a ground invasion due to the shield.',
-        answerOptions: [
-          "Episode IV - A New Hope",
-          "Episode II - Attack of the Clones",
-        ],
+        answerOptions: ["A New Hope", "Attack of the Clones"],
         photoOptions: null,
         faction: -1,
       },
@@ -163,21 +146,7 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "planets",
         preQuestion: "Do you know...",
-        id: 1,
-        questionText:
-          'Forrest Gump\'s accounts in this quiz are solely based on his observations. Therefore, Forrest only tells the story according to what he saw or what he thought he saw. Your job is to interpret each account using your knowledge of the "Star Wars" movies. You do not need to know the plotline of the 1994 movie "Forrest Gump" to answer the questions from this quiz. However, in order to make the correct interpretations, you must know that Forrest has an IQ of 75, and he has a limited understanding of his surroundings. This forces him to look at his surroundings with his heart more so than with his mind. Let us begin with this account from Forrest: "Hello. My name\'s Forrest, Forrest Gump. You know, my Mama always told me that the hottest place she could imagine was that convenience store three blocks from our old house. Turned out, she was wrong. Y\'see, I once came to this desert place. I saw all these weird creatures, and they told me that there are two suns there." To which of these planets does Forrest most likely refer?',
-        answer: "Tatooine",
-        answerExplanation:
-          'Tatooine, the homeworld of both Anakin and Luke Skywalker, is situated beneath two suns. Appropriately, the suns are called "Tatoo 1" and "Tatoo 2".',
-        answerOptions: ["Coruscant", "Hoth"],
-        photoOptions: null,
-        faction: -1,
-      },
-      {
-        type: "random-question",
-        category: "planets",
-        preQuestion: "Do you know...",
-        id: 1,
+        id: "planets-Alderaan35255",
         questionText: "Which planet is Princess Leia from?",
         answer: "Alderaan",
         answerExplanation:
@@ -190,13 +159,13 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "moviesAndShows",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "moviesAndShows-The Phantom Menace62105",
         questionText:
           'In which "Star Wars" movie does Liam Neeson play Qui-Gon Jinn?',
-        answer: "Episode I: The Phantom Menace",
+        answer: "The Phantom Menace",
         answerExplanation:
           'Qui-Gon Jinn is killed near the end of "The Phantom Menace" by Darth Maul, who is then killed by Obi-Wan.',
-        answerOptions: ["Episode II: Attack Of The Clones", "None of them"],
+        answerOptions: ["Attack of the Clones", "None of them"],
         photoOptions: null,
         faction: -1,
       },
@@ -204,23 +173,23 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "characters",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "characters-Darth Vader17093",
         questionText:
           'When Master Yoda told Anakin Skywalker, "I sense much fear in you", it foreshadowed his future development into which evil Sith Lord? This took place in "Phantom Menace."',
         answer: "Darth Vader",
         answerExplanation:
           "Darth Vader became one of the leading servants of the Emperor in exterminating the Jedi race.",
-        answerOptions: ["Jabba the Hutt", "Darth Tyrannus"],
+        answerOptions: ["Jabba the Hutt", "Count Dooku"],
         photoOptions: null,
         faction: -1,
       },
       {
         type: "random-question",
-        category: "characters",
+        category: "planets",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "planets-Jedi Temple, Coruscant3877",
         questionText: "Where is the Council Chambers located?",
-        answer: "Jedi Temple, Coruscant",
+        answer: "Coruscant",
         answerExplanation:
           "The Temple was said to be built on a spot of great evil to conquer that evil.",
         answerOptions: [],
@@ -231,7 +200,7 @@ export function randomQuestionsList() {
         type: "random-question",
         category: "characters",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "characters-C-3PO65112",
         questionText:
           'In "Episode IV (A New Hope)", who is the first character to talk?',
         answer: "C-3PO",
@@ -243,23 +212,9 @@ export function randomQuestionsList() {
       },
       {
         type: "random-question",
-        category: "characters",
-        preQuestion: "Do you know...",
-        id: 1,
-        questionText:
-          'In "A New Hope," the hologram message that Leia sent to Obi-Wan via R2 said that Obi-Wan served Leia\'s father during the Clone Wars. Who is the person Leia was referring to, and what actor played him in "Attack of the Clones?"',
-        answer: "Bail Organa / Jimmy Smits",
-        answerExplanation:
-          'At some point after Anakin falls to the Dark Side, Obi-Wan sends Padme to Alderaan, and Leia is adopted by the Royal Family. Bail Organa is her adopted father. Jimmy Smits played him in "Attack of the Clones."',
-        answerOptions: [],
-        photoOptions: null,
-        faction: -1,
-      },
-      {
-        type: "random-question",
         category: "planets",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "planets-Naboo123139",
         questionText:
           'What planet, never previously mentioned in a "Star Wars" movie, is invaded by the Trade Federation in "The Phantom Menace"?',
         answer: "Naboo",
@@ -271,14 +226,1694 @@ export function randomQuestionsList() {
       },
       {
         type: "random-question",
-        category: "planets",
+        category: "species",
         preQuestion: "Do you know...",
-        id: 1,
+        id: "species-Mon Calamari55162",
         questionText: "Which wasn't seen at Jabba's Palace or his space craft?",
         answer: "Mon Calamari",
         answerExplanation:
           "Jawas were seen beside Jabba in 'Episode VI', Quarren are seen laughing at Luke's threat in 'Episode VI', and Gamorrean look like pigs with tusks in 'Episode VI'.",
-        answerOptions: ["Jawa", "Gamorrean"],
+        answerOptions: ["Jawas", "Gamorrean"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Qui-Gon Jinn2738",
+        questionText: "Who trained Obi-Wan Kenobi?",
+        answer: "Qui-Gon Jinn",
+        answerExplanation: "Obi-Wan was Qui-Gon's Padawan learner.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Admiral Motti6188",
+        questionText:
+          "Who was rebuked with 'I find your lack of faith disturbing.'?",
+        answer: "Admiral Motti",
+        answerExplanation:
+          "Vader was choking him, and Grand Moff Tarkin saved him by ordering Vader to release him.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-TC-1410942",
+        questionText:
+          "What is the name of the 'protocol droid' who first approaches the two Jedi in the opening scene of Episode I?",
+        answer: "TC-14",
+        answerExplanation: "TC-14 is a silver, feminine model of C3PO.",
+        answerOptions: ["C-3PO", "K-2SO"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Tatooine112247",
+        questionText:
+          "Over which planet was Princess Leia's ship flying when she was attacked by an Imperial Star Destroyer and Vader?",
+        answer: "Tatooine",
+        answerExplanation:
+          "R2-D2 and C-3PO were sent to Tatooine below to stop Darth Vader getting the plans for the Death Star from Leia. In addition, Leia had kept a message inside R2-D2 asking Ben Kenobi to help. Luke Skywalker and Ben went with R2 and C-3PO to help her.",
+        answerOptions: ["Dantooine", "Alderaan"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Kamino129261",
+        questionText:
+          "The basis for the Empire's army was an army of clones, originally built for the Republic. From what planet did these clones come?",
+        answer: "Kamino",
+        answerExplanation:
+          'Obi-Wan Kenobi found the Kaminoan cloners working on the army in "Episode II". They made their grand entrance to save the Jedi on Geonosis and then drove the Separatist droids off the planet. Coruscant was the capital of the Republic, and Cloninium is not real.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Naboo136443",
+        questionText:
+          "In which battle did the Gungan army fight Trade Federation droid forces on the grassy plains while Queen Amidala infiltrated the palace?",
+        answer: "Battle of Naboo",
+        answerExplanation:
+          'The Battle of Naboo was seen in "Star Wars Episode I: The Phantom Menace". It was fought between the natives of Naboo and the Trade Federation droid armies that were blockading the planet. Queen Amidala fled to Coruscant to resolve the dispute diplomatically, but the Republic refused to help her in a timely manner while her people were dying. The queen returned to Naboo to enlist the help of the native Gungans against the Trade Federation.',
+        answerOptions: ["Battle of Geonosis", "Battle of Endor"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Sidious61137",
+        questionText:
+          'In "Return of the Jedi", who says "You want this, don\'t you?"',
+        answer: "Darth Sidious",
+        answerExplanation:
+          "When Luke is aboard the Death Star, the Emperor has confiscated his lightsaber, and is trying to persuade Luke to take it and attack him.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Return of the Jedi581108",
+        questionText:
+          "In which movie did we see the Speeder Bike chase on Endor?",
+        answer: "Return of the Jedi",
+        answerExplanation:
+          'In "Episode VI", before the main assault on the second Death Star could commence, the shield had to be removed. The shield generator for the second Death Star was on the surface of the Forest Moon of Endor (sometimes just called "Endor"). A small Rebel team, led by Han Solo, snuck onto the moon in the stolen Imperial shuttle, Tyderium. When making their way to the generator, the team spotted an Imperial patrol, and Han moved in to quietly neutralize the Scout Troopers. He accidentally stepped on a branch that snapped, alerting the troopers to his presence. Luke and Leia rushed down to help, and spotted two more troops already on speeder bikes. Luke and Leia jumped on the last remaining bike, and a chase through the trees ensued. During the chase, Luke commandeered another bike, and he and Leia split up to take on different targets. Luke eventually had to bail off his bike when struggling with his adversary, but managed to finish off the biker with his lightsaber. Leia continued on forward and was eventually thrown from her bike, and she passed out, only to be woken later by Wicket, the Ewok.',
+        answerOptions: ["A New Hope", "Attack of the Clones"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Phantom Menace277366",
+        questionText:
+          'Every saga has a beginning - that of "Star Wars" could have been called THE ILLUSORY THREATENER. Although, the shadowy figure referred to in the title is, rather than something of the supernatural as the real title suggests, using holograms and cowls to hide his real identity.',
+        answer: "The Phantom Menace",
+        answerExplanation:
+          'Episode I: "The Phantom Menace," the first of the prequel trilogy, was released in 1999, starring Liam Neeson, Ewan McGregor, Natalie Portman, and Ian McDiarmid as the aforementioned threatener: seemingly beneficent Senator/Chancellor Palpatine, who has an evil Sith Lord for an alter ego. This film is generally not considered one of the more popular of the series.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Phantom Menace70327",
+        questionText:
+          "In which movie did Anakin Skywalker win the famous Boonta Eve Podrace?",
+        answer: "The Phantom Menace",
+        answerExplanation:
+          "When the Queen of Naboo had to flee her planet during its occupation, the ship was damaged. They needed to land their ship and make repairs, and settled for Tatooine. There, they found out that Republic credits were not accepted as currency, and had to resort to betting in order to acquire the parts needed to repair the ship.",
+        answerOptions: ["Attack of the Clones", "Return of the Jedi"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Yoda3459",
+        questionText: "Who was the oldest on the Council?",
+        answer: "Yoda",
+        answerExplanation:
+          "Yoda is the oldest Jedi ever, clocking in at 900 years old.",
+        answerOptions: ["Shaak Ti", "Plo Koon"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Vader4471",
+        questionText: '"Episode 6": Who is Luke Skywalker\'s father?',
+        answer: "Darth Vader",
+        answerExplanation:
+          "Darth Vader was unaware of where Luke was taken soon after he was born.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "species-Twi'lek30132",
+        questionText: "What species massaged Sebulba?",
+        answer: "Twi'lek",
+        answerExplanation:
+          "Twi'lek are the blue women and light white men that have extended heads. I've also seen them in pink, light green, and light purple.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Empire Strikes Back8021",
+        questionText:
+          "In which movie did the Empire employ bounty hunters such as 4-LOM and Boba Fett?",
+        answer: "The Empire Strikes Back",
+        answerExplanation: "'No disintegrations!'",
+        answerOptions: ["The Phantom Menace", "Return of the Jedi"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Ki-Adi-Mundi124310",
+        questionText:
+          "Which Jedi suggested that if Chancellor Palpatine stays in office after General Grievous is destroyed, he should be removed?",
+        answer: "Ki-Adi-Mundi",
+        answerExplanation:
+          "Jedi Master Ki-Adi-Mundi and his fellow Jedi, legendary Plo Koon and Twi'lek Aayla Secura were betrayed and murdered by their clone troopers. Ki-Adi-Mundi was killed on Mygeeto by Commander Bacara and his troopers. Plo Koon was shot down in his own star-fighter and Aayla was killed by her troopers on Felucia.",
+        answerOptions: ["Mace Windu", "Kit Fisto"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Yavin129701",
+        questionText:
+          "In which battle did Luke Skywalker fly for the Rebel Alliance in an X-Wing, and destroy the Empire's superweapon, the Death Star?",
+        answer: "Battle of Yavin",
+        answerExplanation:
+          'The first space battle to ever be seen was the Battle of Yavin in "Star Wars Episode IV: A New Hope". The Rebel base at the time was on the fourth moon of the gas giant Yavin. The Empire tracked the Millennium Falcon to the base, and moved their station towards the moon. They were making their way around Yavin to get a clear shot at Yavin IV when the Rebels attacked the Death Star with X-wings and Y-wings. Darth Vader personally flew in the Battle of Yavin to ensure the safety of the Death Star. The Rebels were down to their last chance to destroy the Death Star when Luke flew down the trench. The timely arrival of Han Solo stopped Vader from blasting Luke, letting Luke fire the killing shot.',
+        answerOptions: ["Battle of Endor", "Battle of Coruscant"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Mace Windu80398",
+        questionText:
+          'In "The Phantom Menace", which jedi says, "He\'s too old to begin the training."?',
+        answer: "Mace Windu",
+        answerExplanation:
+          "In the \"Phantom Menace\", Windu informs Qui-Gon that Anakin is too old to be trained, although later he is trained by Obi-Wan. Qui-Gon was apparently a jedi who could be on the council, but wasn't, because he didn't always listen to the council. He was planning to train Anakin even after he learned this. He probably would have, if he'd had the chance (he was stabbed in the stomach by Darth Maul).",
+        answerOptions: ["Yoda", "Kit Fisto"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Anakin Skywalker73840",
+        questionText:
+          'Who destroyed the droid control ship in "Episode I - The Phantom Menace"?',
+        answer: "Anakin Skywalker",
+        answerExplanation:
+          "Anakin Skywalker must have been guided by The Force, because the sheer number of unlikely events that happened to help him save the day are statistically near impossible. Anakin Skywalker, who had no actual starfighter training, was told to hide, so he chose a starfighter which used its autopilot to take him to the space battle above Naboo. He was eventually hit and spun into the hanger of the droid control ship, where he managed to avoid a collision in the confined and crowded spaces, and came to a screeching halt without tearing his ship apart. Droids quickly surrounded his ship, but did not attempt to take him prisoner while the ship cooled. When the ship was good to go again, Anakin started firing at the droids around his ship, and just happened to fire a pair of proton torpedoes into a conveniently unprotected reactor core.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Clone Wars253489",
+        questionText:
+          "Jedi Knights such as Obi-Wan Kenobi took on the role of Generals and served in a history-altering series of battles that might be defined as THE CONFLICTS OF REPLICATED BEINGS. What more common term did Yoda coin for this time in the Republic's history?",
+        answer: "The Clone Wars",
+        answerExplanation:
+          'The Replicated Beings I referenced, despite misinformation found in early Expanded Universe novels, are the "good guys," clone soldiers fighting for the crumbling and corrupt Republic under the command of the Jedi. They are clones of Mandalorian Jango Fett, who was killed in the first battle of The Clone Wars: the Battle of Geonosis. Timothy Zahn\'s "Heir to the Empire" novel trilogy would lead you to believe, however, that this war comprised of insane clones who attacked the Republic.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Return of the Jedi67465",
+        questionText:
+          "In which movie did Jabba the Hutt die, at the great Pit of Carkoon?",
+        answer: "Return of the Jedi",
+        answerExplanation:
+          "In the first half of \"Return of the Jedi\", Jabba the Hutt had Han Solo encased in Carbonite. An elaborate plan that involved Luke Skywalker, Princess Leia, Chewbacca, Lando Calrissian, and the droids, was set in motion to free their friend. Things didn't go quite according to plan, but it was flexible. Luke Skywalker tried to bargain with Jabba, but the crime lord instead attempted to kill Luke with his pet Rancor (the large beast in the pit at Jabba's palace).",
+        answerOptions: ["The Phantom Menace", "The Empire Strikes Back"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "species-Clawdite675254",
+        questionText:
+          "\"I stayed in that same desert place for another ten years or so. After that, one of them pilots sent me to this other place they called Coruscant. For the first time, I actually rode on an airplane. They all said it was frightening to fly, but I didn't think so. There was this one time though, when our airplane almost hit this man with a blue helmet while he was playing this dart game. Believe me, that man sure could fly. Good thing that the pilot made a turn before hitting him, 'cause if he got hit, he couldn't target the bullseye.\" Forrest refers to Jango Fett using the Kamino saberdart to kill a fellow bounty hunter, Zam Wessell. What is the name of Zam's species?",
+        answer: "Clawdite",
+        answerExplanation:
+          'A Clawdite is also referred to as a changeling in the "Star Wars" universe due to its unique ability to change its outward appearance. Furthermore, by killing a fellow bounty hunter, Jango Fett had broken a portion of the bounty hunters\' "code of honor".',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Nute Gunray4391",
+        questionText: "Who is the viceroy of the Trade Federation?",
+        answer: "Nute Gunray",
+        answerExplanation:
+          'Gunray appears in both "Episode I" and "Episode II" as the viceroy of the Trade Federation.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Bib Fortuna7835",
+        questionText:
+          "Who greets people in Jabba's kingdom and was fooled by Luke's Jedi mind trick?",
+        answer: "Bib Fortuna",
+        answerExplanation: "Jabba calls him a weak-minded fool.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Empire Strikes Back102151",
+        questionText:
+          "Which of the four 'Star Wars' films took in the least amount of money at the United States box office?",
+        answer: "The Empire Strikes Back",
+        answerExplanation:
+          "Empire, with domestic box office receipts of {$290} million, is only the tenth-biggest film of all time. The other three 'Star Wars' movies did better.",
+        answerOptions: ["A New Hope", "The Phantom Menace"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Bail Organa5346",
+        questionText: "What was the name of Princess Leia's adoptive father?",
+        answer: "Bail Organa",
+        answerExplanation: "They were part of the Royal house of Alderaan.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-R5-D487305",
+        questionText:
+          "What is the designation of the red droid that blew its motivator at the Lars homestead?",
+        answer: "R5-D4",
+        answerExplanation:
+          'According to Bill Slavicsek\'s Third Edition "Guide to the Star Wars Universe", R5-D4 is "an inexpensive astromech droid commenly referred to as Red.... allowed R2-D2 to program its motivator to blow up after it learned of R2-D2\'s mission". Apparently, "Red" was later repaired and sold to a moisture farm.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Watto93295",
+        questionText:
+          "What is the name of the trader who Anakin Skywalker helped while on Tatooine with his mother?",
+        answer: "Watto",
+        answerExplanation:
+          "After Anakin left with Jedi Knight Qui-Gon Jinn, his Padawan Obi-Wan Kenobi, handmaiden Padme, Jar Jar Wings and the two droids, Watto sold his mother to a moisture farmer some time later. Anakin would come to Tatooine when he is a Padawan to find his mother and rescue her from the Sand People.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Dagobah225190",
+        questionText:
+          "The Empire then entered the period of its greatest power. Nineteen years elapsed between the formation of the Empire and the destruction of the first Death Star. During these years, which planet did Yoda go into hermitage on?",
+        answer: "Dagobah",
+        answerExplanation:
+          'Dagobah is especially featured in "Episode V", when Yoda trains Luke Skywalker in the ways of the Force. Luke also comes back in "Episode VI", just in time to see Yoda before he passes away.',
+        answerOptions: ["Tatooine", "Anaxes"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Kamino112234",
+        questionText:
+          "While talking to Dex in the cafe in 'Episode II', Obi Wan was told the Saberdart he found was from which planet?",
+        answer: "Kamino",
+        answerExplanation:
+          "In the cafe Obi Wan wanted to talk to Dex to figure out what was used to kill Zam Wesell. His answer was the Kamino Saberdart that was made in the system, Kamino. The Kamino Saberdart was a toxic dart that was used to kill Zam Wesell.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Utapau125501",
+        questionText:
+          "In which battle was Obi-Wan Kenobi able to track down and kill General Grievous, the leader of the Separatists' droid armies?",
+        answer: "Battle of Utapau",
+        answerExplanation:
+          'The Battle of Utapau was seen in "Star Wars Episode III: Revenge of the Sith". General Grievous, after escaping the Battle of Coruscant, fled to Utapau to hide and regroup. Clone Intelligence agents found Grievous, and Kenobi took a group to Utapau to kill Grievous. It was at Utapau that the feared General Grievous was slain by Kenobi himself. The death of Grievous was a significant blow to the Separatists, and though the droids continued to fight, it essentially marked the end of the Clone Wars.',
+        answerOptions: ["Battle of Kashyyyk", "Battle of Coruscant"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Endor88468",
+        questionText:
+          "In which battle was the Executor, Darth Vader's personal Super Star Destroyer, involved?",
+        answer: "Battle of Endor",
+        answerExplanation:
+          'The Executor was a massive ship at 19,000 meters long, compared to the standard Imperial Star Destroyer at 1,600 meters. It was first seen in "Episode V - The Empire Stries Back" where it led the Imperial fleet during the assault on Hoth, and later led the search for the Millennium Falcon. It was finally used to move Vader to Bespin where he set a trap for Luke Skywalker. However, the Executor was never actually involved in combat during the events of "Episode V".',
+        answerOptions: ["Battle of Coruscant", "Battle of Yavin"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Phantom Menace631147",
+        questionText:
+          "In which movie did Qui-Gon Jinn die at the hands of Darth Maul?",
+        answer: "The Phantom Menace",
+        answerExplanation:
+          "Qui-Gon Jinn and Obi-Wan Kenobi, in \"Episode I\", were charged with protecting Queen Amidala. Because of the sluggishness of the Galactic Senate, she returned to her planet to remove the Trade Federation herself. While the Gungan Grand Army fought the Trade Federation Battle Droid Army, at the Battle of the Grassy Planes, the Queen infiltrated the palace at Theed to confront the Viceroy, while also taking control of the hangar in order to send starfighters to destroy the orbiting Droid Control Ship. While making their way out of the hangar, the Queen's party was stopped by Darth Maul. The Queen elected to take the long way to the throne room, while the Jedi fought Maul. The Jedi and Sith engaged in battle, and moved into the power generator room of Theed. The two Jedi were separated by energy fields, and Obi-Wan Kenobi was unable to aid his master in fighting the Sith. It was then that the young, agile and vicious Maul was able to defeat the aged and slow Jedi Master. Obi-Wan then had his turn to fight Maul, and cut the Sith in half. Fighting Maul was the Jedi's first real indication that the Sith were still present in the galaxy.",
+        answerOptions: ["Revenge of the Sith", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-General Grievous307321",
+        questionText:
+          '"Army or not, you must realize: You Are Doomed," boldly declares the UNSPECIFIC MONSTROUS one in that villainous, rasping voice. A classic line from Episode III: "Revenge of the Sith," its speaker might object to being called by that unusual title! How does the fiendish droid leader prefer to be addressed?',
+        answer: "General Grievous",
+        answerExplanation:
+          'General Grievous, a cyborg, was intended to be a foreshadowing of Darth Vader. His trademark cough was designed to show he was an imperfect prototype of the technology used to transform Anakin Skywalker into Vader. Prior to being "borged," Grievous was a member of the Kaleesh species, a warlord named Qymaen jai Sheelal.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Revenge of the Sith105498",
+        questionText:
+          "Which movie had the Battle of Coruscant in which two Jedi knights rescued the Chancellor of the Republic?",
+        answer: "Revenge of the Sith",
+        answerExplanation:
+          '"The Revenge of the Sith" opened up with space portion of the Battle of Coruscant. Anakin Skywalker and Obi-Wan Kenobi flew their ships through the maze of capital ships and fighters, eventually coming to the Invisible Hand, General Grievous\' flagship. Once onboard they made their way through the ship until they found the Supreme Chancellor on the observation deck. It was here that they confronted Count Dooku. Dooku met his demise at the hands of Anakin Skywalker, and the Chancellor was freed.',
+        answerOptions: ["A New Hope", "Return of the Jedi"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Queen Jamillia470296",
+        questionText:
+          '"For no particular reason, them pilots asked me to transfer to the biggest airplane I\'ve seen. To tell you the truth, I saw a familiar face in that airplane. He won that race that I told you about in that desert place. I also saw this robot thing with blue stripes and this girl." Forrest is riding on the AA-9 Coruscant Freighter that is destined to transport refugees to a certain planet. What is the name of the current ruler of the planet to which the ship is going?',
+        answer: "Queen Jamillia",
+        answerExplanation:
+          'The AA-9 Coruscant Freighter is destined to go to the planet Naboo, and the ruler of Naboo during that time is Queen Jamillia. In Forrest\'s description, the "familiar face" is Anakin Skywalker. The "robot... with blue stripes" is R2-D2, and "the girl" is Padmé Amidala, the former queen of Naboo.',
+        answerOptions: ["Lando Calrissian", "Prime Minister Lama Su"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Empire Strikes Back9260",
+        questionText:
+          'In which "Star Wars" movie does Luke Skywalker first go to Dagobah to receive Jedi training?',
+        answer: "The Empire Strikes Back",
+        answerExplanation:
+          "Luke and R2D2 travel to Dagobah for Jedi training from Yoda.",
+        answerOptions: ["None of them", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "characters-Echo Base5182",
+        questionText: "On which planet was Echo Base?",
+        answer: "Hoth",
+        answerExplanation:
+          'This is the base used by the rebels at the beginning of "The Empire Strikes Back".',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Tatooine144106",
+        questionText:
+          'Last question on Anakin for awhile. On what planet was Anakin in "Attack of the Clones" when his shadow on a hut resembled the Darth Vader mask?',
+        answer: "Tatooine",
+        answerExplanation:
+          "Tatooine was the home to not only him, but his son Luke Skywalker. It is also home to the malicious Hutts.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "planets-Quermian28132",
+        questionText: "What species is Yarael Poof?",
+        answer: "Quermian",
+        answerExplanation:
+          'Yarael Poof is a Quermian, not a Kaminoan as some believe. He was removed from "Episode II" due to his resemblance to the Kaminoans.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "species-Ewok2972",
+        questionText: "Which species doesn't belong?",
+        answer: "Ewok",
+        answerExplanation:
+          "Ewoks were never seen on Tatooine! I think they would be very, very hot.",
+        answerOptions: ["Tuskan", "Jawas"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Kashyyyk3057",
+        questionText: "What planet is Chewbacca from?",
+        answer: "Kashyyyk",
+        answerExplanation:
+          "Chewbacca is a Wookie, and all Wookies are from Kashyyyk.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Yaddle9771",
+        questionText:
+          "This is from 'The Phantom Menace': on the Jedi Council, there is a female Yoda! What is her name?",
+        answer: "Yaddle",
+        answerExplanation:
+          "I've heard of her but never seen her. My sister told me about this one.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Admiral Ackbar99124",
+        questionText:
+          "Who is the only character to refer to a certain kind of Star Destroyer as a 'Super Star Destroyer'?",
+        answer: "Admiral Ackbar",
+        answerExplanation:
+          "Although the Empire shunned women and aliens, Admiral Ackbar is Mon Calamari, and the Rebellion had many alien contributors.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Vader80102",
+        questionText:
+          "Who said 'Asteroids do not concern me, Admiral. I want that ship, not excuses.'?",
+        answer: "Darth Vader",
+        answerExplanation:
+          'Well, at least he didn\'t follow it up with a resounding "Weeee!" as they navigated the asteroid field.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Yoda1665",
+        questionText: "'He is too old.'",
+        answer: "Yoda",
+        answerExplanation:
+          "Yoda said this about both Luke and Anakin when he first met them.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Captain Antilles201222",
+        questionText:
+          'Welcome to "Episode IV". The opening scene is a firefight between a diplomatic vessel, Tantive IV, from Alderaan and an Imperial Star Destroyer. What was the name of the captain of the diplomatic ship?',
+        answer: "Captain Antilles",
+        answerExplanation:
+          'Captain Raymus Antilles was a ship commander for Senator Bail Organa, and he was very loyal to Princess Leia. He captained the Tantive IV (the diplomatic ship) in "Episodes III and IV". He is no relation to Wedge Antilles.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Endor132675",
+        questionText:
+          "In which battle did the Rebel Alliance receive aid from the native Ewoks to destroy a shield generator guarded by two-legged AT-STs?",
+        answer: "Battle of Endor",
+        answerExplanation:
+          "The Battle of Endor was the final battle in \"Star Wars Episode VI: Return of the Jedi\". The Rebel Alliance had a plan to destroy the Empire's second Death Star, but it was protected by a shield generator on the surface of the moon. A small team of Rebels, including Han Solo, Princess Leia, Luke Skywalker, R2-D2, and C-3PO, snuck behind enemy lines to disable the shield generator before the Rebel fleet arrived. The ground team ran into a few problems, but thankfully they were able to recruit the native Ewoks to help. The Imperials had brought in deadly two-legged AT-STs (All Terrain Scout Walkers), but even they were destroyed by the Ewoks' simple but effective traps.",
+        answerOptions: ["Battle of Kashyyyk", "Battle of Hoth"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Han Solo143843",
+        questionText:
+          'In the original trilogy, who is the only one of the following four characters to call Boba Fett by his actual name, instead of "bounty hunter"?',
+        answer: "Han Solo",
+        answerExplanation:
+          'In "The Empire Strikes Back," Lando, Darth Vader and Threepio all refer to Boba Fett as "bounty hunter." When discussing the deal with Vader wherein Leia and Chewie would have to remain in Cloud City, Lando angrily says, "That was never a part of our agreement nor was giving Han to this bounty hunter!" Just after Han Solo is frozen in carbonite, Vader turns to Fett and says, "He\'s all yours, bounty hunter." And when the heroes are racing to stop Fett from leaving Cloud City with the frozen Solo, Threepio hollers out to Artoo, "We\'re trying to save Han from the bounty hunter!" But during the sail barge fight in "Return of the Jedi," Chewie lets Han Solo know that Boba Fett is behind him. Han cries, "Boba Fett? Boba Fett! Where?!" just before Han swings a staff that hits Fett on his rocket pack, causing him to accidentally blast off.',
+        answerOptions: ["C-3PO", "Darth Vader"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Revenge of the Sith681397",
+        questionText:
+          "In which movie did the Galactic Republic become the Galactic Empire?",
+        answer: "Revenge of the Sith",
+        answerExplanation:
+          'Palpatine was a Sith Lord, and his single goal in his life was to create a Sith-run galaxy. He joined politics, first seen in "Episode I", as the senator from Naboo. He was then elected as Supreme Chancellor of the Galactic Republic, and was in office when the Clone Wars broke out. The Senate chose to keep him in office until the war\'s end. At the same time, it was Dath Sidious, the same man, who was secretly manipulating galactic events, including the leaders of the Trade Federation, and later, the Separatist Alliance. Thus, the entire Clone Wars were engineered by a single man in order to gain Sith dominance over the galaxy. In "Episode III", the Clone Wars ended with the death of General Grievous, and surrender of the Separatist Leaders. The Jedi learned from Anakin that Palpatine was a Sith Lord, and moved to arrest him, but the Sith Lord was able to defeat the Jedi (with the help of Anakin Skywalker at the last minute). Palpatine then issued Order 66 to the Grand Army of the Republic, ordering the clones to kill all Jedi. He also fabricated a story about the Jedi\'s attempts to take over the Republic, branding the Jedi as evil. Thus, Palpatine had the power of the Grand Army of the Republic behind him. His enemies, the Jedi, were all but destroyed, and the Senate allowed him to reform the Galactic Republic into the Galactic Empire with the promise of peace and stability.',
+        answerOptions: ["Return Of The Jedi", "The Phantom Menace"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Stormtroopers258732",
+        questionText:
+          'In "A New Hope" Stormtroopers missed shooting the heros by large margins. We found out later in the movie they were trying to miss to make sure the heros got away and, with a tracking beacon secretly placed, the Emire could floow the heros to the Rebel base. Still, people often still claim that Stormtroopers are bad shots. Which character directly refutes this claim in the movie, and tells us that Imperial Stormtroopers are actually known to be very accurate. ',
+        answer: "Obi-Wan Kenobi",
+        answerExplanation:
+          "Despite the fact that they can never strike their targets when aiming at the movies' heroes, Obi-Wan lays claim to the skills of the Galactic Empire's soldiers when looking at an attacked Jawa Sandcrawler, saying that \"Only Imperial stormtroopers are so precise.\" Of course, one could excuse the contradictions, saying that these elite soldiers are under orders not to kill the people the Empire wished to track.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Attack of the Clones77250",
+        questionText:
+          "Which movie included the launch of the Clone Wars, at the Battle of Geonosis?",
+        answer: "Attack of the Clones",
+        answerExplanation:
+          'The Battle of Geonosis was the climactic battle of "Attack of the Clones". Geonosis was a dusty planet whose inhabitants lived underground. There, the leaders of the Confederacy had large hidden droid factories, preparing for war against he Republic.',
+        answerOptions: ["The Empire Strikes Back", "The Phantom Menace"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Attack of the Clones81534",
+        questionText:
+          "In which movie is no character with the last name of Antilles mentioned or shown?",
+        answer: "Attack of the Clones",
+        answerExplanation:
+          'Senator Antilles of Alderaan is a candidate for Chancellor in "The Phantom Menace". Captain Antilles is in both "Revenge of the Sith" and "A New Hope". Wedge Antilles is in "A New Hope", "The Empire Strikes Back" and "Return of the Jedi".\nDenis Lawson, who plays Wedge Antilles, is the uncle of Ewan McGregor (Obiwan). When Ewan McGregor was offered the part of Obiwan, he called his uncle to ask if it he should join the "Star Wars" family. Denis actually discouraged Ewan from taking the part. Luckily, Ewan did not take the advice.',
+        answerOptions: ["Revenge of the Sith", "The Empire Strikes Back"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Vader576122",
+        questionText:
+          "\"After getting off that giant airplane, because I didn't have no place to live in, I just went looking for them pilots to send me anywhere they went. I did this for twenty-two years, until I found this place they called Yavin, where I stayed for a little while. Oh, and you won't believe what I'm about to tell you. Y'know that familiar face from that giant airplane that I told you about? They said he turned into some robot. Must be hard for him livin' like a human. I wonder how I'd feel if I was a robot.\" So, who exactly is this \"robot\" that Forrest keeps babbling about?",
+        answer: "Darth Vader",
+        answerExplanation:
+          '"Star Wars: Episode III - Revenge of the Sith" is the film in which Anakin Skywalker\'s turn to the Dark Side is explained.',
+        answerOptions: ["Dengar", "C-3PO"],
+        photoOptions: null,
+        faction: -1,
+      },
+
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Phantom Menace8592",
+        questionText:
+          "In which film does Jar Jar Binks make his first appearance?",
+        answer: "The Phantom Menace",
+        answerExplanation:
+          "Some love him and some hate him, but his role in the plot was important, beyond just lightening the dialog child-like antics. A good-hearted and naive character was needed to be trusted by the heroes, but easily manipulated by the senate. Being led to believe a vote of no confidence in Chancellor Valorum was the best thing for Naboo, it was Jar Jar's naivety installed Palpatine in power and sealed the fate of the Republic.",
+        answerOptions: ["Attack of the Clones", "Return of the Jedi"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Depa Billaba51149",
+        questionText: "Who on the Council did Mace Windu train personally?",
+        answer: "Depa Billaba",
+        answerExplanation:
+          'In the "Shatterpoint" novel, Mace goes to his home planet, Haruun Kal, to rescue Billaba. The novel plays out like "Apocalypse Now" with lightsabers.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-R5-D411185",
+        questionText:
+          "What is the name of the droid that Luke's uncle would have bought instead of R2-D2 if it had not malfunctioned?",
+        answer: "R5-D4",
+        answerExplanation:
+          "R5-D4 did not make it very far and the Jawas were accused of selling faulty products.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Maul5295",
+        questionText: '"Episode 1": Who is the apprentice to Darth Sidious?',
+        answer: "Darth Maul",
+        answerExplanation:
+          "Darth Sidious trained Darth Maul secretly to destroy the rebellion. Darth Maul was a sith lord.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Palpatine8952",
+        questionText:
+          'Who becomes elected chancellor at the end of "The Phantom Menace"? (name only, not title)',
+        answer: "Darth Sidious",
+        answerExplanation:
+          "The Senator from Naboo gains more power...dangerous.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "species-Zabrakian2789",
+        questionText: "What species is Darth Maul?",
+        answer: "Zabrak",
+        answerExplanation:
+          "Zabrakian's faces aren't all like that. Maul got his face tatooed after joining the Sith.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "planets-Toydarian2248",
+        questionText: "What species is Watto?",
+        answer: "Toydarian",
+        answerExplanation: "\"Mind tricks won't work on me, I'm a Toydarian!\"",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Anoat7659",
+        questionText:
+          "What star system was the Falcon in when it detached itself from the Avenger?",
+        answer: "Anoat",
+        answerExplanation:
+          "Boba Fett saw them, though, and tracked them to Cloud City.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Tyranus37108",
+        questionText: "What is Count Dooku's alternate name?",
+        answer: "Darth Tyranus",
+        answerExplanation:
+          "Sidious called him Tyranus at the end of Episode 2 when he arrived on his ship after the battle of Geonosis.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Geonosis229681",
+        questionText:
+          "Which battle started off as a rescue mission for Obi-Wan Kenobi, Anakin Skywalker, and Senator Amidala, but became the first major engagement of the Clone Wars between the Republic's clone army and the Confederacy's droid forces?",
+        answer: "Battle of Geonosis",
+        answerExplanation:
+          "The Battle of Geonosis took place at the end of \"Star Wars Episode II: Attack of the Clones\". Obi-Wan Kenobi tracked Jango Fett to Geonisis and was captured by the locals. Anakin Skywalker and Padme Amidala attempted to rescue Obi-Wan, but were also captured. Mace Windu then led a team of 200 Jedi to Geonosis to rescue the trio. Things escalated when Count Dooku revealed the Confederacy's massive droid army. The Jedi were surrounded by the droids, and about to be executed. Master Yoda arrived performed a third rescue attempt, which was finally successful, with the debut of the Republic's clone army, and the two sides were suddenly in the first engagement of the Clone Wars.",
+        answerOptions: ["Battle of Hoth", "Battle of Naboo"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Maul181625",
+        questionText:
+          '"Darth" is the formal title given to all Sith Lords. Four Dark Lords of the Sith appear in person in the "Star Wars" movies. Of the four, who is known by only one name/one identity?',
+        answer: "Darth Maul",
+        answerExplanation:
+          'Only Darth Maul is known by one name. Darth Sidious is also Naboo senator and then Supreme Chancellor Palpatine, Darth Tyrannus is Count Dooku, and Darth Vader is Anakin Skywalker. Note that when Darth Vader and Obi-Wan fight in "A New Hope," Kenobi calls Vader "Darth." ("You can\'t win, Darth. If you strike me down, I shall become more powerful than you can possibly imagine.") It\'s possible that George Lucas hadn\'t yet established that all Sith lords are titled Darth. The only other Sith Lord mentioned in the six movies is Darth Plegius; Palpatine tells Anakin about him during the opera scene in "Revenge of the Sith."',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Coruscant43296",
+        questionText: "Which battle did Wedge Antilles NOT fly in?",
+        answer: "Battle of Coruscant",
+        answerExplanation:
+          'Wedge Antilles was a pilot for the Rebel Alliance and first appeared in "Episode IV - A New Hope" in the Battle of Yavin. During the battle he saved Luke from a pursuing TIE Fighter, and then flew down the trench with Luke and Biggs. Wedge was hit and had to pull out. Biggs never got the chance.',
+        answerOptions: ["Battle of Endor", "Battle of Yavin"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Attack of the Clones1051247",
+        questionText:
+          "In which movie did Anakin Skywalker and Obi-Wan Kenobi chase Zam Wessel through the streets of Coruscant?",
+        answer: "Attack of the Clones",
+        answerExplanation:
+          "Zam Wessel was a bounty hunter, and associate of Jango Fett. She was hired to kill senator Amidala, which she tried to do at the beginning of \"Episode II\", when she detonated the senator's ship. Fortunately, Padme had been switched with a decoy, and was unharmed. The second attempt was when Zam sent two kouhuns, via assassin droid, to the Padme's apartment. The poisonous bugs were almost able to end Padme's life, but Obi-Wan Kenobi and Anakin Skywalker jumped in, and saved the day. Obi-Wan noticed the assassin droid hovering outside the window, and jumped out the window to grab onto it. Anakin then commandeered a speeder to go after his master. When Zam saw Obi-Wan coming at her, she used a sniper rifle to take down the droid, letting Obi-Wan plummet through the Coruscant traffic. Anakin caught his master, while Zam jumped into her own speeder, and a chase ensued. Anakin eventually jumped onto Zam's speeder, and made her crash on a pedestrian walkway. When on the ground, Anakin and Obi-Wan followed Zam into a cantina, where she attempted to kill Obi-Wan. But the Jedi was too fast for her, and she was disarmed. She was taken outside for interrogation, but was killed by Jango Fett's saberdart before she could reveal his identity.",
+        answerOptions: ["The Phantom Menace", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Empire Strikes Back65706",
+        questionText:
+          "In which movie was Han Solo encassed in carbonite, on Cloud City?",
+        answer: "The Empire Strikes Back",
+        answerExplanation:
+          "Darth Vader set up a trap on Cloud City and lured Luke Skywalker in by causing his friends to suffer. Vader wanted to freeze Luke in the carbon freezing chamber so he could easily be transported to the Emperor. Han Solo was chosen to be the test subject to see if someone could survive the process of carbon freezing. He was encased and then given to Boba Fett after his vital signs were confirmed. Fett then took Solo to Jabba the Hutt on Tatooine. During the lightsaber fight on Cloud City, Luke did fall into freezing chamber once, but used a Force assisted jump to escape while Vader threw the switch. The chamber took a lot of preparation to set up, so the same tactic could not be used a second time.",
+        answerOptions: ["Attack of the Clones", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Empire Strikes Back61223",
+        questionText:
+          'In which "Star Wars" movie do we first meet Lando Calrissian?',
+        answer: "The Empire Strikes Back",
+        answerExplanation:
+          'Lando is played by Billy Dee Williams. In "The Empire Strikes Back", Lando is tricked into betraying Han and company. He participates in the rescue of Han from Jabba and the attack on the Death Star in "Return of the Jedi".',
+        answerOptions: ["Return of the Jedi", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Qui-Gon Jinn73110",
+        questionText:
+          '"Episode 1": Whose lightsaber does Obi-Wan Kenobi use to kill Darth Maul?',
+        answer: "Qui-Gon Jinn",
+        answerExplanation:
+          "Obi-Wan's own lightsaber was cast into the pit by Darth Maul while Obi-Wan was hanging onto a jut in the wall.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "species-Human3094",
+        questionText: "What species is Admiral Daala?",
+        answer: "Human",
+        answerExplanation:
+          "She is said to destroy an entire Rebel base with only one fleet after the Empire banished her.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-On the moon of Endor43174",
+        questionText: "When did Luke tell Leia she was his sister?",
+        answer: "The Forest Moon of Endor",
+        answerExplanation:
+          'After the New Republic was formed, Leia and Han had children who went on to become Jedi. Remember, Luke told Leia she was Force-sensitive on the moon of Endor in "Episode 6".',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Naboo168865",
+        questionText:
+          "In which battle did royal pilots fly N-1 Starfighters against the Trade Federation Droid Control Ship, ultimately destroying it with the help of young Anakin Skywalker?",
+        answer: "Battle of Naboo",
+        answerExplanation:
+          "The Battle of Naboo was an elaborate operation by the people of Naboo to wrest control of their planet back from the Trade Federation. The Gungan Grand Army distracted the Trade Federation's droid forces while Amidala and her security detail infiltrated the palace. To help the gungans, the humans sent what pilots they had to try to destroy the orbiting Droid Control Ship. Anakin was ordered to hide, so he got into the cockpit of an N1 Starfighter. He accidentally initiated the launch sequence, and took off to join the battle in space. The Naboo pilots were unable to significantly damage the Droid Control Ship; it was too well armed and shielded. Anakin was shot, and tumbled into the Control Ship's hangar, where he was given a clear shot at the main reactor. He destroyed the Control Ship, deactivating all the droids in the palace and holding the Gungans.",
+        answerOptions: ["Battle of Yavin", "Battle of Coruscant"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Empire Strikes Back701413",
+        questionText:
+          "In which movie was the Millennium Falcon nearly eaten by a Space Slug?",
+        answer: "The Empire Strikes Back",
+        answerExplanation:
+          'In "Episode V", the Millennium Falcon was chock-full of problems, most notably, the hyperdrive wasn\'t working. When the Empire found the hidden Rebel base on Hoth, the Rebels had to make a hasty evacuation. Han, Chewie, Leia, and C-3PO made their escape on the Falcon, but were unable to jump to hyperspace. They had to outrun and out-fly Imperial forces through an asteroid field. Han dodged and weaved, and the pursuing TIE Fighters were destroyed by hurtling rocks. Then Han hid the Falcon in a cave, in a larger asteroid, where they could hide and make further repairs. Han soon realized that they weren\'t hiding in a cave, and quickly powered up the Falcon to make yet another escape, this time from being eaten by a giant Space Slug. Once again, out in open space, Han was pursued by the Imperials and unable to jump to hyperspace. His only option was to pull a daring manoeuvre, and hide on the back of a Star Destroyer. When the Star Destroyer ejected its garbage before jumping to hyperspace, Han detached his ship and floated away with it (it did look like a piece of junk). After the Imperials were gone, Han made his way for Bespin, to visit his old friend Lando Calrissian, to get the Falcon in working order. Unfortunately for Han, Boba Fett knew this trick, courtesy of Obi-Wan Kenobi in "Episode II", in the asteroids circling Geonosis, and tracked Han, allowing the Imperials to set up an ambush.',
+        answerOptions: ["Revenge of the Sith", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Revenge of the Sith92234",
+        questionText:
+          "In which movie did Anakin Skywalker and Obi-Wan Kenobi duel on the volcanic world, Mustafar?",
+        answer: "Revenge of the Sith",
+        answerExplanation:
+          'This lightsaber duel is one of the most memorable and emotional fights of the series. It was the climactic sequence in "Revenge of the Sith" when two fellow Jedi, who had once been like brothers, fought for the survival of the galaxy.',
+        answerOptions: ["The Empire Strikes Back", "The Phantom Menace"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-A New Hope68144",
+        questionText:
+          'Which "Star Wars" movie won an Oscar for Best Music, Original Score?',
+        answer: "A New Hope",
+        answerExplanation:
+          '"Star Wars", "The Empire Strikes Back" and "Return of the Jedi" were all nominated for John Williams\' original scores, but only "Star Wars" won.',
+        answerOptions: ["Return of the Jedi", "All of them"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Anakin Skywalker141231",
+        questionText:
+          'As explained in "Attack of the Clones" and "The Phantom Menace", which person had the highest midi-cholorian count "ever seen in a lifeform"?',
+        answer: "Anakin Skywalker",
+        answerExplanation:
+          'Midi-chlorians, according to "Star Wars", are the force that brings life to individuals, and is burrowed in every living cell of a lifeform. Qui-Gonn thought Anakin was conceived by the midi-chlorians, since he had no known father.',
+        answerOptions: ["Luke Skywalker", "Obi-Wan Kenobi"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Tatooine2393",
+        questionText: "Where did Luke grow up?",
+        answer: "Tatooine",
+        answerExplanation:
+          "Luke grew up on Tatooine with Owen and Beru. Leia grew up on Alderaan with the Organa family.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Corellia3148",
+        questionText: "What is Han Solo's home planet?",
+        answer: "Corellia",
+        answerExplanation: "Han's ship, the Millennium Falcon, is Corellian.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Bespin27999",
+        questionText:
+          'At the end of "Episode V", Vader and company go to Cloud City to ambush Han and Leia. They force Lando Calrissian, Han\'s old friend, to betray Han and Leia. Then Luke is lured into a lightsaber duel with Vader himself. What is the name of the planet the Cloud City is located on?',
+        answer: "Bespin",
+        answerExplanation:
+          "Bespin is a planet with cities built on tall structures in the clouds (hence the name of the city).",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Hoth255760",
+        questionText:
+          "The Rebel Alliance had a secret base that was discovered by Imperial probe droids. The Rebels stalled Imperial ground forces while the base was evacuated. Rogue Squadron used their snowspeeders' tow-cables to bring down the massive AT-ATs in which battle?",
+        answer: "Battle of Hoth",
+        answerExplanation:
+          'The Battle of Hoth took place near the beginning of "Star Wars Episode V: The Empire Strikes Back". The Rebels had a secret base on the frozen planet of Hoth, which the Empire managed to find using large numbers of probe droids. The Imperial fleet set a course for Hoth to capture or kill as many Rebels as possible. The Rebels, on the other hand, scrambled to evacuate. They sent the famous Rogue Squadron, led by Luke Skywalker, to delay the Imperials\' advance. The Empire used heavily armored AT-ATs (All-Terrain Armored Transports) that the Rebel lasers could not harm. The Rogues had to use tow cables to tie up the legs of the walkers to slow them down. Despite the best efforts of the Rebels, their shield generator was destroyed and their base overrun.',
+        answerOptions: ["Battle of Utapau", "Battle of Kashyyyk"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Vader50368",
+        questionText: 'In "A New Hope", who says, "Now, I am the master"?',
+        answer: "Darth Vader",
+        answerExplanation:
+          "Darth Vader prepares to duel with Kenobi on the Death Star. Luke, Han, Leia, Chewie, R2, and 3PO have many adventures, including nearly getting smashed in a trash compactor. While this is going on, Kenobi has turned off the tractor beam, so the Millenium Falcon can escape. As Obi-Wan and Vader duel, the others escape to the ship. At the end of the duel, Kenobi dies.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-A New Hope73399",
+        questionText:
+          "In which movie was the first Death Star destroyed in the Battle of Yavin?",
+        answer: "A New Hope",
+        answerExplanation:
+          'The Battle of Yavin took place at the end of "A New Hope" and was named after the gas giant Yavin where it took place. The Imperial forces were attempting to move the Death Star around Yavin to get a clear shot at Yavin IV, the moon of Yavin that the Rebel Alliance had built their secret base on. The Rebels launched X-Wings and Y-Wings to assault the Death Star and exploit its one known weakness.',
+        answerOptions: ["Attack of the Clones", "Return of the Jedi"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Lobot868364",
+        questionText:
+          "\"While I was flying one of those airplanes when they finally allowed me to, I got lost. So I landed on the nearest place that I could find. I didn't know what the place was actually called, so I just called it Cloud City because I sure did see a lot of clouds there. So I stayed in Cloud City for a little while, but I didn't do much. The only thing that I remember was this voice that I heard. No one else seemed to have heard it because whenever I asked anyone if they heard it, they always said 'no'. I guess I could hear pretty well. And just in case you want to know what the voice said, it was somethin' like, 'No, I am your father.' Y'know what? I think he just found his son.\" I think what Forrest is saying is easy to understand. So, if I may ask, what is the name of the aide of the Baron Administrator of Cloud City during the time of Forrest's description?",
+        answer: "Lobot",
+        answerExplanation:
+          "The Baron Administrator of Cloud City during that time was Lando Calrissian, and his aide's name is Lobot. If that name doesn't ring a bell, Lobot is the human being from \"The Empire Strikes Back\" whom we could see wearing a semi-circle shaped device around the back of his head. The purpose of that device was to connect him to the central computer of Cloud City.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-A New Hope181180",
+        questionText:
+          'A young guy named Luke ends up with a droid containing a message for a man named Obi-Wan Kenobi, regarding the Empire\'s Death Star plans. In which "Star Wars" movie did that happen?',
+        answer: "A New Hope",
+        answerExplanation:
+          "Princess Leia stored the message in R2D2 before she was captured. R2D2 ends up at the farm of Luke's uncle on Tatooine, and sets out to find Obi-Wan with Luke and C-3PO in pursuit.",
+        answerOptions: ["The Empire Strikes Back", "Return of the Jedi"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Coruscant, Naboo, Kamino, Tatooine, Geonosis78180",
+        questionText:
+          'Which is the first planet shown in "Attack of the Clones?"',
+        answer: "Coruscant",
+        answerExplanation:
+          "Coruscant was the capital of the Republic, Naboo is Amidala's home, Kamino the home of the cloners, Tatooine, the Lars' home, and Geonosis where Padme confessed her love to Anakin.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Jango Fett6031",
+        questionText:
+          "Which of the following was not an apprentice to the Emperor?",
+        answer: "Jango Fett",
+        answerExplanation: "Jango Fett was a bounty hunter.",
+        answerOptions: ["Darth Maul", "Count Dooku"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Geonosis309123",
+        questionText:
+          "\"Attack of the Clones\" takes place on 5 planets. Beginning on Coruscant, Anakin must escort Padmé to Naboo. While there, Obi-Wan travels to Kamino. Anakin returns to Tatooine, then learns of Obi-Wan's capture on a different planet. Where do he, Padmé, and all the Jedi travel for the film's climactic battles?",
+        answer: "Geonosis",
+        answerExplanation:
+          "Geonosis is a new planet, introduced in Episode 2. An arid planet, it houses a major center for the construction of droids.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Admiral Ackbar71106",
+        questionText:
+          "'At that close range we won't last long against those Star Destroyers.'",
+        answer: "Admiral Ackbar",
+        answerExplanation:
+          "They lasted longer than they would have against that Death Star and they did take a few of them with them.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Kashyyyk99443",
+        questionText:
+          "In which battle did Yoda oversee clone troopers as they helped the Wookiees defend their homeworld?",
+        answer: "Battle of Kashyyyk",
+        answerExplanation:
+          'The Battle of Kashyyyk was one of the many battles seen in "Star Wars Episode III: Revenge of the Sith". Kashyyyk was the Wookiee homeworld, and extremely important to the Republic. Yoda volunteered to travel to Kashyyyk to help the Wookiees repel Separatist forces. During the battle, Order 66 was given, and Yoda\'s clones tried to assassinate him. The Wookiees decided to help the Jedi on Kashyyyk, and the clones started targeting them too.',
+        answerOptions: ["Battle of Utapau", "Battle of Endor"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Mace Windu56233",
+        questionText:
+          'In "Attack of the Clones", who says "This party\'s over"?',
+        answer: "Mace Windu",
+        answerExplanation:
+          "This takes place at the Geonosian arena. Padme, Kenobi and Anakin are about to be killed by wild beasts, when Mace comes to the rescue with all the other Jedi. He says, \"This party's over\", as he turns on his saber at Dooku's throat.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Phantom Menace55167",
+        questionText: "Which movie did NOT feature the loss of someone's hand?",
+        answer: "The Phantom Menace",
+        answerExplanation:
+          "It seems that the Jedi practiced the art of 'disarming' quite a bit when training. There were quite a few arms lost through the \"Star Wars\" series, due to lightsabers.",
+        answerOptions: ["Revenge of the Sith", "The Empire Strikes Back"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Phantom Menace87409",
+        questionText:
+          "In which movie did the Trade Federation invade and occupy the peaceful planet of Naboo?",
+        answer: "The Phantom Menace",
+        answerExplanation:
+          'The Trade Federation was a galaxy-spanning corporation that fell under the influence of the Dark Lord of the Sith. When the Republic attempted to tax the free trade zones, the Trade Federation blockaded the planet of Naboo in protest. When Jedi were sent to resolve the crisis (the beginning of "The Phantom Menace"), the Trade Federation, under the guidance of Darth Sidious, invaded and occupied the planet.',
+        answerOptions: ["Revenge of the Sith", "The Empire Strikes Back"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Empire Strikes Back85181",
+        questionText:
+          'In which "Star Wars" movie does Princess Leia say, "I\'d just as soon kiss a Wookiee"?',
+        answer: "The Empire Strikes Back",
+        answerExplanation:
+          'She says it to Han Solo when he asks "Afraid I was gonna leave without giving you a goodbye kiss?". He responds to her remark with, "I can arrange that! You could use a good kiss!".',
+        answerOptions: ["Return of the Jedi", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Yoda9060",
+        questionText:
+          "Out of these answers, who is the first one who knows Luke and Leia are brother and sister?",
+        answer: "Yoda",
+        answerExplanation:
+          '"That\'s our last hope"-Obi Wan. "No, there is another"-Yoda.',
+        answerOptions: ["Darth Vader", "Darth Maul"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Adi Gallia66145",
+        questionText:
+          'Which of these Council members are still alive as of "Episode II"?',
+        answer: "Adi Gallia",
+        answerExplanation:
+          'Micah Giett was killed in the Jedi Council comic book, Sifo-Dyas\' death is mentioned in "Episode II", and Poof died in the Zam Wesell comic book.',
+        answerOptions: ["Micah Giiett", "Yarael Poof"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Vader40120",
+        questionText: "According to Yoda, who is Luke's father?",
+        answer: "Darth Vader",
+        answerExplanation:
+          "Darth Vader, as we now know, was consumed by his emotions and was seduced by the dark side shortly before Luke was born.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-The Forest Moon of Endor63164",
+        questionText:
+          "What was the name of the planet where the rebels met the ewoks?",
+        answer: "The Forest Moon of Endor",
+        answerExplanation:
+          "It actually is NOT Endor. Listen carefully to what is said, they land on THE FOREST MOON OF ENDOR. So, in fact, they went to one of Endor's moons, not Endor itself.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Coruscant104133",
+        questionText:
+          "Where do we see fireworks after the Emperor dies (in the special edition) that we had never seen before?",
+        answer: "Coruscant",
+        answerExplanation:
+          "I don't know why they would be celebrating the Emperor's death, seeing that that was the Imperial City, but, whatever works, I guess.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Greedo117119",
+        questionText:
+          "What was the name of the bounty hunter Han Solo shot on Tatooine in the Mos Eisley cantina when Luke and Ben arrived?",
+        answer: "Greedo",
+        answerExplanation:
+          "Greedo was seeking a reward from Jabba by bringing Han to him, but met an unfortunate end from the Corellian's blaster.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Endor107835",
+        questionText:
+          "In which battle did Wedge Antilles and Lando Calrissian fly into the second Death Star to destroy its core?",
+        answer: "Battle of Endor",
+        answerExplanation:
+          "The Empire built a new Death Star after their first one was destroyed during the Battle of Yavin. The secret construction site of the new super weapon was in orbit of the forest moon of Endor. Imperial engineers fixed the trench and thermal exhaust port design flaw of the first one, which meant that the Rebels would have to get to the main reactor to destroy it. Luckily, the Death Star was still under construction, and the Rebels were able to pilot their ships through the unfinished super weapon. Of the Rebel ships that entered the Death Star, some were destroyed, some diverted pursuit, and two actually made it through the narrow, twisting tunnels to the core. Wedge Antilles destroyed a power regulator while Lando Calrissian shot the main reactor itself. The two pilots barely made it out before they were engulfed in flames.",
+        answerOptions: ["Battle of Hoth", "Battle of Coruscant"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "battles",
+        preQuestion: "Do you know...",
+        id: "battles-Battle of Yavin71176",
+        questionText:
+          "Which battle did not take place simultaneously with a lightsaber fight?",
+        answer: "Battle of Yavin",
+        answerExplanation:
+          'In "Episode I - The Phantom Menace", the battle around the droid control ship was underway while Obi-Wan Kenobi and Qui-Gon Jinn fought Darth Maul in the reactor room on Naboo.',
+        answerOptions: ["Battle of Coruscant", "Battle of Naboo"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Empire Strikes Back37197",
+        questionText: "Which movie did not feature Tatooine?",
+        answer: "The Empire Strikes Back",
+        answerExplanation:
+          'Five of the six "Star Wars" movies featured the planet Tatooine, the planet where both Anakin and Luke Skywalker grew up, despite being the planet "farthest from the bright center of the universe".',
+        answerOptions: ["Return of the Jedi", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Return of the Jedi55335",
+        questionText: "In which movie did the epic Battle of Endor take place?",
+        answer: "Return of the Jedi",
+        answerExplanation:
+          'The Battle of Endor was the final battle seen in the "Star Wars" saga (chronologically). The Rebel Alliance fleet attacked the Empire\'s ultimate weapon, the Death Star II, in their bid to return democracy to the galaxy. It turned out to be a trap, and the Imperial fleet was waiting, resulting in one of the largest space battles ever.',
+        answerOptions: ["A New Hope", "Attack of the Clones"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Moff Jerjerrod829253",
+        questionText:
+          "\"I couldn't come up with a reason on why I should stay on Tatooine, so I decided to travel again. This time, I got myself into this huge battle. I didn't really want to fight them airplanes, so I entered this sphere shaped thing that I saw. When I came in, I couldn't believe what my eyes saw. That person who won the race back in Tatooine was there. I was about to talk to him, but I realized that someone else was talking to him. Also, because I saw everyone running around and leaving that place, I decided to do that too. I didn't know where to go, so I told myself that I should go back to our old house. You know how I got back? I just opened my eyes and for some weird reason, I got back home.\" Forrest made his way to the interior of the Second Death Star. The question is, who was the commander of the Second Death Star?",
+        answer: "Moff Jerjerrod",
+        answerExplanation:
+          "Moff Jerjerrod, the commander of the Second Death Star, was quite anxious of Emperor Palpatine's visit to the space station. Perhaps, he feared that if they didn't accomplish the completion of the Second Death Star in time, the Emperor would punish him.",
+        answerOptions: ["Grand Moff Tarkin", "Moff Gideon"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Vader65124",
+        questionText:
+          '"Episode 4": Who kills Obi-Wan Kenobi physically as Luke watches?',
+        answer: "Darth Vader",
+        answerExplanation:
+          "Afterwards Luke tries to avenge Obi-Wan's death by attempting to kill Darth Vader, until Obi-Wan's spirit tells Luke to run.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Mace Windu6344",
+        questionText:
+          "What is the character (Jedi) played by Samuel L. Jackson named?",
+        answer: "Mace Windu",
+        answerExplanation: "This character also originated in Episode 1.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "planets-Lannik39105",
+        questionText: "What species is Jedi Master Even Piell?",
+        answer: "Lannik",
+        answerExplanation:
+          "Lanniks look like pigs that walk on two feet. He looks like Oolong in 'Dragon Ball Z'. Scary, just scary.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Vader2281",
+        questionText: "Who was Luke's father?",
+        answer: "Darth Vader",
+        answerExplanation:
+          "Luke didn't know Vader was his father until the end of 'The Empire Strikes Back'.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-The Phantom Menace50121",
+        questionText: 'Padme Amidala is Queen in which "Star Wars" movie?',
+        answer: "The Phantom Menace",
+        answerExplanation:
+          'Played by Natalie Portman, Padme is Queen Amidala in "The Phantom Menace", and Senator Amidala in "Attack of the Clones".',
+        answerOptions: ["None of them", "Attack of the Clones"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-General Crix Madine8755",
+        questionText:
+          "'ROTJ' - Who briefs the commandoes on the sabotage mission going to the Sanctuary Moon?",
+        answer: "General Crix Madine",
+        answerExplanation:
+          "He defected to the Alliance. He is a brilliant general.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "species",
+        preQuestion: "Do you know...",
+        id: "species-Mon Calamari4067",
+        questionText: "What species of alien is Admiral Ackbar?",
+        answer: "Mon Calamari",
+        answerExplanation:
+          "He looks like a fish, or a squid. But he is a brilliant strategist.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-Attack of the Clones103627",
+        questionText:
+          'The insult "scum" is used in five of the first six "Star Wars" movies. Which movie does not have this insult?',
+        answer: "Attack of the Clones",
+        answerExplanation:
+          'The insult appears in all of the first six movies except "Attack of the Clones." For example, just before the pod race in "The Phantom Menace," Sebulba calls Anakin "slave scum" in Huttese (which is "translated" in the subtitles). In "Revenge of the Sith," General Grievous calls Obi-Wan and Anakin "Jedi scum" on his flagship. In "A New Hope," Ben Kenobi refers to Mos Eisley as "a wretched hive of scum and villainy." Admiral Piett calls bounty hunters "scum" in "The Empire Strikes Back." And in "Return of the Jedi," an Imperial officer in the bunker on Endor calls Han, Chewie and Leia "You rebel scum!"',
+        answerOptions: ["Return of the Jedi", "A New Hope"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Darth Sidious37293",
+        questionText: "Darth Maul was the apprentice of who?",
+        answer: "Darth Sidious",
+        answerExplanation:
+          'Darth Maul kills Qui-Gon Jinn in "The Phantom Menace" and is killed by young Obi-Wan later on in the movie.Obi-Wan later takes on an apprentice, Anakin Skywalker, though Yoda thinks that Anakin is too old to begin training.(He is nine. Most children entered the Jedi temple at six months old.)',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-A New Hope74108",
+        questionText:
+          'In which "Star Wars" movie is Chewbacca referred to as a "walking carpet"?',
+        answer: "A New Hope",
+        answerExplanation:
+          'When pushing past Chewbacca, Princess Leia says, "Will somebody get this big walking carpet out of my way?".',
+        answerOptions: ["The Empire Strikes Back", "None of them"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Yoda6991",
+        questionText:
+          'Who says this to Luke? "Looking? Found someone you have I would say."',
+        answer: "Yoda",
+        answerExplanation:
+          'Yoda says this in "The Empire Strikes Back" before Luke knows who he really is, in Dagobah.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "moviesAndShows",
+        preQuestion: "Do you know...",
+        id: "moviesAndShows-A New Hope11344",
+        questionText:
+          'In which movie did Han Solo tell Luke about travelling through hyperspace, "This ain\'t like dusting crops, boy!"?',
+        answer: "A New Hope",
+        answerExplanation: 'This is right after they leave "Mos Eisley."',
+        answerOptions: ["The Empire Strikes Back", "The Phantom Menace"],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Han Solo5747",
+        questionText:
+          'In "Empire Strikes Back", who does Harrison Ford portray?',
+        answer: "Han Solo",
+        answerExplanation: "Harrison Ford has been featured in many movies.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Endor221107",
+        questionText:
+          'Luke made the following quote to Leia in "Return of the Jedi": "The force is strong in my family. I have it. My father has it. And... my sister has it. Yes, Leia. That\'s you." On which planet\'s moon did he tell Leia this?',
+        answer: "The Forest Moon of Endor",
+        answerExplanation:
+          "Also, Endor was the home of the Ewoks. On a bit of a light note, they believed C-3PO to be a God of theirs.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Dagobah79112",
+        questionText:
+          'What planet does Luke travel to in search of Yoda in "The Empire Strikes Back"?',
+        answer: "Dagobah",
+        answerExplanation:
+          'Yoda is in "retirement" in the swampy, humid planet of Dagobah. Luke is trained as a Jedi in the Dagobah system.',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Dagobah119108",
+        questionText:
+          'Luke only addresses Obi-Wan Kenobi by his real name one time. The rest of the time he says "Ben." Where did this happen',
+        answer: "Dagobah",
+        answerExplanation:
+          "This shows Luke's maturity as a Jedi. He has grown so much under Ben's instruction. Even Vader denounced it.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "planets",
+        preQuestion: "Do you know...",
+        id: "planets-Coruscant226151",
+        questionText:
+          'Cloud City, Mos Eisley and which other planet were added in the special addition of "Return of the Jedi" in the ending celebration sequences? (hint: they are shown partying once the Death Star was destroyed.) VHS version only.',
+        answer: "Coruscant",
+        answerExplanation:
+          "When Lucas added in this sequence, it was the first time movie-goers had ever seen Coruscant. The capital city became a major setting for the prequels.",
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "monsters",
+        preQuestion: "Do you know...",
+        id: "characters-Sarlacc105182",
+        questionText:
+          'What type of creature does Jabba intend to feed Luke and Han to in the beginning of "Return of the Jedi"?',
+        answer: "Sarlacc",
+        answerExplanation:
+          'The Sarlacc pit on Tatooine is the site of a major action sequence of "Jedi," in which Luke and Han must escape the hungry creature, and a thousand years of digestion in its stomach!',
+        answerOptions: [],
+        photoOptions: null,
+        faction: -1,
+      },
+      {
+        type: "random-question",
+        category: "characters",
+        preQuestion: "Do you know...",
+        id: "characters-Obi-Wan Kenobi47131",
+        questionText: "Which of the following Jedi survived the purge?",
+        answer: "Obi-Wan Kenobi",
+        answerExplanation:
+          "The four who survived were Anakin, Yoda, Obi Wan, and Palpatine. Palpatine is classified as a Jedi because of his Dark Side powers.",
+        answerOptions: ["Mace Windu", "Kit Fisto"],
         photoOptions: null,
         faction: -1,
       },
@@ -342,7 +1977,6 @@ const allStarWarsInfo = {
     "BB-8",
     "BB-9E",
     "Bacara",
-    "Bail Antilles",
     "Bail Organa",
     "Bana Breemu",
     "Bantha",
@@ -393,12 +2027,8 @@ const allStarWarsInfo = {
     "Cassus Fett",
     "Category:Dark Jedi",
     "Category:Droids",
-    "Category:First Order characters",
-    "Category:Galactic Empire characters",
     "Category:Jedi",
-    "Category:Resistance characters",
     "Category:Sith",
-    "Category:The Mandalorian characters",
     "Cay Qel-Droma",
     "Cerasi",
     "Chalmun",
@@ -613,7 +2243,6 @@ const allStarWarsInfo = {
     "Jawa",
     "Jawas",
     "Jaxxon",
-    "Jedi",
     "Jedi Exile",
     "Jedi Temple Guards",
     "Jek Porkins",
@@ -1009,6 +2638,218 @@ const allStarWarsInfo = {
     "Zorneth",
     "Zsinj",
     "Zuckuss",
+  ],
+  species: [
+    "Abednedo",
+    "Abyssin",
+    "Aleena",
+    "Amani",
+    "Amaran",
+    "Annoo dat Prime",
+    "Anomid",
+    "Ansionian",
+    "Anzati",
+    "Aqualish",
+    "Arcona",
+    "Argazdan",
+    "Aruzan",
+    "Askajian",
+    "Azumel",
+    "Balosar",
+    "Bando Gora",
+    "Barabel",
+    "Besalisk",
+    "Bith",
+    "Blarina",
+    "Blood Carver",
+    "Boltrunian",
+    "B'omarr monks",
+    "Bothan",
+    "Bouncer",
+    "Caamasi",
+    "Cathar",
+    "Celegian",
+    "Cerean",
+    "Chadra-Fan",
+    "Chalactan",
+    "Chagrian",
+    "Chikarri",
+    "Chironian",
+    "Chiss",
+    "Chistori",
+    "Clawdite",
+    "Codru-Ji",
+    "Colicoid",
+    "Coway",
+    "Cragmoloid",
+    "Dashade",
+    "Defel",
+    "Devaronian",
+    "Dowutin",
+    "Drach'nam",
+    "Dressellian",
+    "Droch",
+    "Drovian",
+    "Dug",
+    "Dulok",
+    "Duros",
+    "Echani",
+    "Elomin",
+    "Epicanthix",
+    "Er'Kit",
+    "Ewok",
+    "See also",
+    "References",
+    "External links",
+    "Near-Human",
+    "Near-human",
+    "Altiri",
+    "Anarrian",
+    "Andalese",
+    "Anzat ",
+    "Aquar",
+    "Argullian",
+    "Arhan",
+    "Arkanian",
+    "Arkanian Offshoot",
+    "Arpor-Lan",
+    "Voe Atell's species",
+    "Atoan",
+    "Berchestian",
+    "Biituian",
+    "Bimm",
+    "Blubreen",
+    "Borneck",
+    "Bpfasshi",
+    "Brosin",
+    "Centran",
+    "Chev",
+    "Christophsian",
+    "Cilare ",
+    "City people",
+    "Constancian",
+    "Cthon",
+    "Czerialan",
+    "Dantari",
+    "Darga ",
+    "Dathomirian",
+    "Deaon",
+    "Emmerian",
+    "Enso",
+    "Enu",
+    "Etti",
+    "Evocii",
+    "Excargan",
+    "Ferroan",
+    "Firrerreo",
+    "Fisher",
+    "Fondorian",
+    "Gamorrean",
+    "Galacian",
+    "Galandan",
+    "Gamandar",
+    "Ganathan",
+    "Geranite",
+    "Godoan",
+    "Grannan",
+    "Jawa",
+    "Hamadryas",
+    "Hapan",
+    "Hill people",
+    "Hrakian",
+    "Human",
+    "Icarii",
+    "Iktotchi",
+    "Imzig",
+    "Kage",
+    "Kalzerian",
+    "Keed",
+    "Keshian",
+    "Keshiri",
+    "Khommite",
+    "Kiffar",
+    "Koorivar",
+    "Kerch Kushi's species",
+    "Locan",
+    "Lowen",
+    "Lurker",
+    "Meerian",
+    "Mind-witch",
+    "Ming Po",
+    "Miraluka",
+    "Mirialan",
+    "Mon Calamari",
+    "Morellian",
+    "Morganian",
+    "Mosciive",
+    "Mugaari",
+    "Myke",
+    "Nagai",
+    "Nelwyn",
+    "Niordi",
+    "Nish",
+    "Null",
+    "Nyriaanan",
+    "O'reenian",
+    "Ocsin",
+    "Ogemite",
+    "Omwati",
+    "Orlak",
+    "Palliduvan",
+    "Pantoran",
+    "Pau'an",
+    "Peroenian",
+    "PL-40112-CE-021105 natives",
+    "Pyn'gani",
+    "Qiraash",
+    "Ragithian Human",
+    "Rattataki",
+    "Reussi",
+    "Ropagu",
+    "Ruusanian",
+    "Samhari",
+    "Samuac",
+    "Sarkhai ",
+    "Sea people",
+    "Sephi",
+    "Sernpidalian",
+    "Shi'ido",
+    "Shorak",
+    "Shownarri",
+    "Sith ",
+    "Skup",
+    "Snogar",
+    "Sorrusian",
+    "Stennes",
+    "Stennes Shifter",
+    "Sullustan",
+    "Taung",
+    "Teevan",
+    "Theelin",
+    "Themian",
+    "Tholothian",
+    "Thyrsian",
+    "Tof",
+    "Torine",
+    "Turian",
+    "Twi'lek",
+    "Ubese",
+    "Umbaran",
+    "Uugteen",
+    "Vahla",
+    "Velabri",
+    "Vendaran",
+    "Ventooinan",
+    "Vindalian",
+    "Vorzydiak",
+    "Vultan",
+    "Wroonian",
+    "Xa Fel",
+    "Yaka",
+    "Zabrak",
+    "Zelosian",
+    "Zeltron",
+    "Zisian",
   ],
   planets: [
     "5251977",
@@ -1975,7 +3816,6 @@ const allStarWarsInfo = {
     "Mission to Kamino",
     "Dogfight over Geonosis",
     "Mission to rescue Shmi Skywalker Lars",
-    "Clone Wars",
     "First Battle of Geonosis",
     "Attack on a Republic troop transport",
     "Battle of Arantara",
@@ -2718,7 +4558,7 @@ const allStarWarsInfo = {
     "Attack of the Clones",
     "Yoda Chronicles",
     "Padawan Menace",
-    "Clone Wars",
+    "The Clone Wars",
     "Revenge of the Sith",
     "Bad Batch",
     "Solo",
@@ -2747,6 +4587,7 @@ const allStarWarsInfo = {
     "Star Wars: Forces of Destiny",
     "A New Hope",
     "The Empire Strikes Back",
+    "The Return of the Jedi",
     "Return of the Jedi",
     "Rogue One: A Star Wars Story",
     "Solo: A Star Wars Story",
@@ -2762,11 +4603,65 @@ const allStarWarsInfo = {
 /////////////////////////////////////
 /////////////////////////////////////
 
+/////////////////////////////////////
+/////////////////////////////////////
+
+const textToRemove = [
+  "Episode IX",
+  "Episode VIII",
+  "Episode VII",
+  "Episode VI",
+  "Episode IV",
+  "Episode V",
+  "Episode III",
+  "Episode II",
+  "Episode I",
+  "species",
+  "(",
+  ")",
+  '""',
+  "*",
+  "/",
+  "!",
+  "- ",
+  " -",
+  "_",
+  "?",
+  ":",
+];
+
+/////////////////////////////////////
+/////////////////////////////////////
+const nonSWReferences = ["Gump", "Baldwin", "actor", "actress"];
+const removeNonSWQuestions = (str, nonSWArray = nonSWReferences) => {
+  for (const text of nonSWArray) {
+    if (str.includes(text)) return true;
+  }
+  return false;
+};
+
+/////////////////////////////////////
+/////////////////////////////////////
+
 // console.log('RAW: ', scrapeQuestions(allStarWarsInfo));
 // console.log('FILTERED OF UNDEFINED CATEGORY: ', scrapeQuestions(allStarWarsInfo).filter(item => item.category));
 
 /////////////////////////////////////
 /////////////////////////////////////
+
+function removeUnwantedText(str, textToRemoveArray = textToRemove) {
+  if (typeof str === "string") {
+    for (const text of textToRemoveArray) {
+      str = str.replaceAll(text, "").trim();
+    }
+    return str;
+  }
+  return "Not a string";
+}
+
+/////////////////////////////////////
+/////////////////////////////////////
+
 function scrapeQuestions(allStarWarsInfo) {
   const mainElm = document.querySelectorAll('[itemprop="mainEntity"]');
   const questionElms = [];
@@ -2778,23 +4673,18 @@ function scrapeQuestions(allStarWarsInfo) {
   const output = [];
 
   for (const key of mainElm.keys()) {
-    const questionText = mainElm[key].querySelector('[itemprop="name"]')
+    let questionText = mainElm[key].querySelector('[itemprop="name"]')
       ? mainElm[key].querySelector('[itemprop="name"]').innerText
       : "";
+    if (removeNonSWQuestions(questionText)) {
+      console.log("************* SKIPPING THIS QUESTION: ", questionText);
+      continue;
+    }
 
-    const answer = mainElm[key].querySelector('[itemprop="text"] u')
+    let answer = mainElm[key].querySelector('[itemprop="text"] u')
       ? mainElm[key].querySelector('[itemprop="text"] u').innerText
       : "";
-
-    const gatheredAnswerOptions = questionElms[key].querySelectorAll("font");
-    if (gatheredAnswerOptions) {
-      var answerOptions = [];
-      gatheredAnswerOptions.forEach((answerOption) => {
-        if (answerOption.innerText !== answer && answerOptions.length < 2) {
-          answerOptions.push(answerOption.innerText);
-        }
-      });
-    }
+    answer = removeUnwantedText(answer);
 
     const answerExplanation = mainElm[key]
       .querySelector('[itemprop="text"]')
@@ -2807,19 +4697,193 @@ function scrapeQuestions(allStarWarsInfo) {
     let category;
     let catOutput;
     for (const key in allStarWarsInfo) {
-      catOutput = allStarWarsInfo[key].filter((item) => answer.includes(item));
-
+      if (answer.includes("Battle")) {
+        catOutput = "Battles";
+        category = "battles";
+        break;
+      } else {
+        catOutput = allStarWarsInfo[key].filter((item) => {
+          return answer.includes(item);
+        });
+      }
       if (catOutput.length > 0) {
         category = key;
         break;
       }
     }
 
+    const gatheredAnswerOptions = questionElms[key].querySelectorAll("font");
+    if (gatheredAnswerOptions) {
+      var answerOptions = [];
+      gatheredAnswerOptions.forEach((answerOption) => {
+        const optionInnerText = removeUnwantedText(answerOption.innerText);
+        if (optionInnerText !== answer && answerOptions.length < 2) {
+          if (optionInnerText === "C3-PO") optionInnerText = "C-3PO";
+          if (optionInnerText === "Attack Of The Clones")
+            optionInnerText = "Attack of the Clones";
+          if (optionInnerText === "Zabrakian") optionInnerText = "Zabrak";
+
+          answerOptions.push(optionInnerText);
+        }
+      });
+    }
+
+    // cleanse of answers that might be problematic for the options logic in the game
+    if (answer === "Star Wars  A New Hope") answer = "A New Hope";
+    if (answer === "Empire Strikes Back") answer = "The Empire Strikes Back";
+    if (answer === "Phantom Menace") answer = "The Phantom Menace";
+    if (answer === "The Attack of the Clones") answer = "Attack of the Clones";
+    if (
+      answer === "The Revenge of the Sith" ||
+      answer === "Revenge of the Sith"
+    ) {
+      category = "moviesAndShows";
+      answer = "Revenge of the Sith";
+    }
+    if (answer === "Rise of Skywalker") answer = "The Rise of Skywalker";
+    if (answer === "Last Jedi") answer = "The Last Jedi";
+    if (answer === "The Return of the Jedi" || answer === "Return Of The Jedi")
+      answer = "Return of the Jedi";
+    if (answer === "Force Awakens") answer = "The Force Awakens";
+    if (answer === "Cody") answer = "Commander Cody";
+    if (answer === "Anakin SkywalkerDarth Vader") answer = "Darth Vader";
+    if (answer === "Kamino Saberdart") {
+      questionText =
+        "While talking to Dex in the cafe in 'Episode II', Obi Wan was told the Saberdart he found was from which planet?";
+      answer = "Kamino";
+    }
+    if (answer === "In the Dagobah system") {
+      answer = "Dagobah";
+      questionText =
+        'Luke only addresses Obi-Wan Kenobi by his real name one time. The rest of the time he says "Ben." Where did this happen';
+    }
+    if (answer === "Coruscant, Naboo, Kamino, Tatooine, Geonosis") {
+      questionText =
+        'Which is the first planet shown in "Attack of the Clones?"';
+      answer = "Coruscant";
+    }
+    if (answer === "Echo Base") {
+      questionText = "On which planet was Echo Base?";
+      answer = "Hoth";
+      category = "planets";
+    }
+
+    if (answer === "Cloud City, Mos Eisley, Coruscant") {
+      answer = "Coruscant";
+      questionText =
+        'Cloud City, Mos Eisley and which other planet were added in the special addition of "Return of the Jedi" in the ending celebration sequences? (hint: they are shown partying once the Death Star was destroyed.) VHS version only.';
+    }
+
+    if (answer === '"Attack of the Clones" and "The Empire Strikes Back"') {
+      answer = "Attack of the Clones";
+      questionText =
+        '"The Empire Strikes Back" and which other Star Wars film featured a chase through an asteroid field?';
+    }
+    if (answer === "Jedi Temple, Coruscant") {
+      answer = "Coruscant";
+    }
+
+    if (
+      questionText ===
+      'The insult "scum" is used in five of the six "Star Wars" movies. Which movie does not have this insult?'
+    ) {
+      questionText =
+        'The insult "scum" is used in five of the first six "Star Wars" movies. Which movie does not have this insult?';
+      answerExplanation =
+        'The insult appears in all of the first six except "Attack of the Clones." For example, just before the pod race in "The Phantom Menace," Sebulba calls Anakin "slave scum" in Huttese (which is "translated" in the subtitles). In "Revenge of the Sith," General Grievous calls Obi-Wan and Anakin "Jedi scum" on his flagship. In "A New Hope," Ben Kenobi refers to Mos Eisley as "a wretched hive of scum and villainy." Admiral Piett calls bounty hunters "scum" in "The Empire Strikes Back." And in "Return of the Jedi," an Imperial officer in the bunker on Endor calls Han, Chewie and Leia "You rebel scum!"';
+    }
+    if (
+      answer === "Palpatine" ||
+      answer === "Emperor Palpatine" ||
+      answer === "Chancellor Palpatine"
+    ) {
+      answer = "Darth Sidious";
+    }
+
+    if (answer === "Zabrakian") answer = "Zabrak";
+    if (answer === "StormTroopers") {
+      questionText =
+        'In "A New Hope" Stormtroopers missed shooting the heros by large margins. We found out later in the movie they were trying to miss to make sure the heros got away and, with a tracking beacon secretly placed, the Emire could floow the heros to the Rebel base. Still, people often still claim that Stormtroopers are bad shots. Which character directly refutes this claim in the movie, and tells us that Imperial Stormtroopers are actually known to be very accurate. ';
+      answer = "Obi-Wan Kenobi";
+      answerExplanation =
+        "Despite the fact that they can never strike their targets when aiming at the movies' heroes, Obi-Wan lays claim to the skills of the Galactic Empire's soldiers when looking at an attacked Jawa Sandcrawler, saying that \"Only Imperial stormtroopers are so precise.\" Of course, one could excuse the contradictions, saying that these elite soldiers are under orders not to kill the people the Empire wished to track.";
+    }
+    if (answer === "Maul") {
+      answer = "Darth Maul";
+    }
+    if (answer === "Toydarian") {
+      category = "species";
+    }
+    if (answer === "Quermian") {
+      category = "species";
+    }
+
+    if (answer === "Jawa") {
+      answer = "Jawas";
+    }
+
+    if (answer === "On the moon of Endor" || answer === "Endor") {
+      answer = "Forest Moon of Endor";
+    }
+    if (
+      answer ===
+      'Jar Jar Binks makes his first appearance. Which "Star Wars" film does that happen in?'
+    ) {
+      questionText =
+        "In which film does Jar Jar Binks make his first appearance?";
+      answerExplanation =
+        "Some love him and some hate him, but his role in the plot was important, beyond just lightening the dialog child-like antics. A good-hearted and naive character was needed to be trusted by the heroes, but easily manipulated by the senate. Being led to believe a vote of no confidence in Chancellor Valorum was the best thing for Naboo, it was Jar Jar's naivety installed Palpatine in power and sealed the fate of the Republic.";
+    }
+
+    if (questionText === "Who was the oldest on the Council?") {
+      answerOptions = ["Shaak Ti", "Plo Koon"];
+    }
+
+    if (answer === "TC-14") {
+      answerOptions = ["C-3PO", "K-2SO"];
+    }
+
+    if (answer === "Threepio") {
+      answer = "C-3PO";
+    }
+
+    if (answer === "Darth Tyrannus") {
+      answer = "Count Dooku";
+    }
+
+    const rejectIfInAnswerList = [
+      "and",
+      "someone",
+      "fighter pilot",
+      "Beginning",
+      "Imperial Probe Droids",
+      "Someone to fly them to Alderaan",
+      "Boba Fett, a karate-style Sith apprentice, Chancellor Palpatine",
+    ];
+    if (
+      answer !== "Kamino Saberdart" &&
+      answer !== "Fode and Beed" &&
+      removeNonSWQuestions(answer, rejectIfInAnswerList)
+    ) {
+      console.log(
+        "*********SKIPPING BECAUSE ANSWER HAS 'AND' IN IT  : ",
+        questionText,
+        " ANSWER:",
+        answer
+      );
+      continue;
+    }
+
     const questionObjectArray = {
       type: "random-question",
       category,
       preQuestion: "Do you know...",
-      id: 1,
+      id:
+        category +
+        "-" +
+        answer +
+        questionText.length +
+        answerExplanation.length,
       questionText,
       answer,
       answerExplanation,

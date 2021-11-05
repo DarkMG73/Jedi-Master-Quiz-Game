@@ -1,7 +1,9 @@
 import { getRandomInt, shuffleArray } from "./utilities";
+import { popularStarWarsInfo } from "../store/starWarsInfo";
 
 export function createAnswerOptions(
   allQuestions,
+  category,
   answer,
   answerOptions,
   photoOptions,
@@ -9,119 +11,97 @@ export function createAnswerOptions(
   scoreCtx,
   startTimer
 ) {
-  const availableSpeakers = [];
-  for (const key in allQuestions) {
-    if (
-      answer !== allQuestions[key].answer &&
-      allQuestions[key].answer &&
-      allQuestions[key].answer != ""
-    ) {
-      availableSpeakers.push(allQuestions[key].answer);
-    }
-  }
-  console.log("answer: ", answer);
-  function twoUniqueRandomNumbers(highestLimit) {
-    let randomOne = getRandomInt(highestLimit);
-    let randomTwo = getRandomInt(highestLimit);
+  console.log(
+    "%c--- BEGIN  createAnswerOptions ---",
+    "background:green; color:white"
+  );
+  console.log("%canswer: ", "background:green; color:white", answer);
 
-    // Ensure different number
-    let limitCnt = 0;
+  let randomAnswerOptions = addAnswerOptions(category, answer, answerOptions);
+  let answerCntr = 0;
+  while (randomAnswerOptions.includes(answer) && answerCntr < 1000) {
+    console.log(
+      "%candomAnswerOptions.includes(answer): ",
+      "background:red; color:white",
+      randomAnswerOptions.includes(answer)
+    );
+    randomAnswerOptions = addAnswerOptions(category, answer, answerOptions);
 
-    while (limitCnt < 10 && highestLimit > 0 && randomOne === randomTwo) {
-      randomOne = getRandomInt(highestLimit);
-
-      randomTwo = getRandomInt(highestLimit);
-
-      limitCnt++;
-    }
-    return [randomOne, randomTwo];
+    answerCntr++;
   }
 
-  let randomNumbers = twoUniqueRandomNumbers(availableSpeakers.length);
+  console.log(
+    "%c+++ randomAnswerOptions: ",
+    "background:green; color:white",
+    randomAnswerOptions
+  );
 
-  // Ensure different name
-  let limitCnt = 0;
-
-  while (
-    limitCnt < 1000 &&
-    availableSpeakers.length > 0 &&
-    availableSpeakers[randomNumbers[0]] === availableSpeakers[randomNumbers[1]]
-  ) {
-    randomNumbers = twoUniqueRandomNumbers(availableSpeakers.length);
-    limitCnt++;
+  for (const key in popularStarWarsInfo) {
+    // console.log("------->" + key + ":", popularStarWarsInfo[key].length);
   }
-
   let allPhotoOptions = {};
   if (photoOptions) {
     allPhotoOptions = {
       photoOptionOne: photoOptions[1]
         ? photoOptions[1]
-        : availableSpeakers[randomNumbers[0]],
+        : randomAnswerOptions[0],
       photoOptionTwo: photoOptions[2]
         ? photoOptions[2]
-        : availableSpeakers[randomNumbers[1]],
+        : randomAnswerOptions[1],
       photoOptionThree: photoOptions[0] ? photoOptions[0] : answer,
     };
   } else {
     allPhotoOptions = {
-      photoOptionOne: availableSpeakers[randomNumbers[0]],
-      photoOptionTwo: availableSpeakers[randomNumbers[1]],
+      photoOptionOne: randomAnswerOptions[0],
+      photoOptionTwo: randomAnswerOptions[1],
       photoOptionThree: answer,
     };
   }
 
   let allAnswerOptions = {};
 
-  if (answerOptions) {
+  if (answerOptions && answerOptions.length >= 2) {
     allAnswerOptions = {
       answerOptionOne: answerOptions[0]
         ? answerOptions[0]
-        : availableSpeakers[randomNumbers[0]],
+        : randomAnswerOptions[0],
       answerOptionTwo: answerOptions[1]
         ? answerOptions[1]
-        : availableSpeakers[randomNumbers[1]],
+        : randomAnswerOptions[1],
     };
   } else {
     allAnswerOptions = {
-      answerOptionOne: availableSpeakers[randomNumbers[0]],
-      answerOptionTwo: availableSpeakers[randomNumbers[1]],
+      answerOptionOne: randomAnswerOptions[0],
+      answerOptionTwo: randomAnswerOptions[1],
     };
   }
 
-  console.log("availableSpeakers: ", availableSpeakers);
-  console.log("randomNumbers: ", randomNumbers);
-  console.log("OPTIONS-HOOKS answerOptions: ", answerOptions);
-  console.log("photoOptions: ", photoOptions);
-  console.log(
-    "availableSpeakers[randomNumbers[0]]: ",
+  // console.log("randomAnswerOptions: ", randomAnswerOptions);
+  // console.log("OPTIONS-HOOKS answerOptions: ", answerOptions);
+  // console.log("photoOptions: ", photoOptions);
 
-    availableSpeakers[randomNumbers[0]]
-  );
-  console.log(
-    "availableSpeakers[randomNumbers[1]]: ",
-    availableSpeakers[randomNumbers[1]]
-  );
+  // const dupsRemoved = [...new Set(availableSpeakers)];
+  // console.log("*******dupsRemoved: ", dupsRemoved);
 
-  console.log("availableSpeakers: ", availableSpeakers);
-  const dupsRemoved = [...new Set(availableSpeakers)];
-  console.log("*******dupsRemoved: ", dupsRemoved);
-
-  console.log("allAnswerOptions: ", allAnswerOptions);
+  // console.log("allAnswerOptions: ", allAnswerOptions);
 
   let optionsArray = [
     {
+      category,
       answer: allAnswerOptions.answerOptionOne,
       handler: scoreCtx.addIncorrect,
       class: "incorrect",
       photo: allPhotoOptions.photoOptionOne,
     },
     {
+      category,
       answer: allAnswerOptions.answerOptionTwo,
       handler: scoreCtx.addIncorrect,
       class: "incorrect",
       photo: allPhotoOptions.photoOptionTwo,
     },
     {
+      category,
       answer: answer,
       handler: scoreCtx.addCorrect,
       class: "correct",
@@ -132,4 +112,47 @@ export function createAnswerOptions(
 
   shuffleArray(optionsArray);
   return [...optionsArray];
+}
+
+function addAnswerOptions(
+  category,
+  answer,
+  answerOptions,
+  starWarsInfo = popularStarWarsInfo
+) {
+  console.log(
+    "%c========== addAnswerOptions: ",
+    "color: white; background: green",
+    addAnswerOptions
+  );
+  console.log("%canswer: ", "color: green", answer);
+  if (!answerOptions || answerOptions.length < 2) {
+    const topicInfoArray = starWarsInfo[category];
+
+    function getTwoDiffRandomNumbers(max) {
+      const randomOne = Math.floor(Math.random() * max);
+      const randomTwo = Math.floor(Math.random() * max);
+
+      if (randomOne === randomTwo) {
+        return getTwoDiffRandomNumbers(max);
+      }
+      return [randomOne, randomTwo];
+    }
+
+    const randomNumbers = getTwoDiffRandomNumbers(topicInfoArray.length);
+    const answerOptions = [
+      topicInfoArray[randomNumbers[0]],
+      topicInfoArray[randomNumbers[1]],
+    ];
+
+    console.log(
+      "%c***********answerOptions:",
+      "color: yellow; background:green",
+      answerOptions
+    );
+
+    return answerOptions;
+  } else {
+    return [answerOptions[0], answerOptions[1]];
+  }
 }

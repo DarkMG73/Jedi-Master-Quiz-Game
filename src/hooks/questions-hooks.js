@@ -30,13 +30,12 @@ export function splitQuoteAndAuthor(str) {
 }
 
 const arrayToObject = (arr, key) => {
-  console.log("|||||||||||||||");
-  console.log("key: ", key);
-  console.log("arr: ", arr);
+  //
+  //
+  //
   let cntr = 0;
   const res = {};
   arr.forEach((obj) => {
-    console.log("obj: ", obj);
     res[cntr] = obj;
     cntr++;
   });
@@ -44,15 +43,15 @@ const arrayToObject = (arr, key) => {
 };
 
 const combineQuestionObjsToArray = (obj1, obj2) => {
-  console.log("-----------------");
-  console.log("obj2: ", obj2);
-  console.log("obj1: ", obj1);
+  //
+  //
+  //
   const combinedObj = {};
   let cntr = 0;
   for (const key in obj1) {
     obj1[key].id = cntr;
     combinedObj[cntr] = obj1[key];
-    console.log("combinedObj[cntr] : ", combinedObj[cntr]);
+    //
     cntr++;
   }
 
@@ -80,14 +79,6 @@ export async function getAllQuestions(setAllQuestions, setTotalQuestionNumber) {
 
   //Grab all other questions.
   const fetchedQuestions = randomQuestionsList();
-  console.log(
-    '"*** getAllQuestions 1-B - fetchedQuestions: ',
-    fetchedQuestions.allFetchedQuestions
-  );
-  console.log(
-    "arrayToObject(fetchedQuestions.allFetchedQuestions): ",
-    arrayToObject(fetchedQuestions.allFetchedQuestions, "id", "rand_ques")
-  );
   const allSiftedQuestions = arrayToObject(
     fetchedQuestions.allFetchedQuestions,
     "id"
@@ -111,11 +102,6 @@ export async function getAllQuestions(setAllQuestions, setTotalQuestionNumber) {
     allFetchedQuestions: allQuestions,
   };
 
-  console.log(
-    "fetchedQuestions.allFetchedQuestions: ",
-    fetchedQuestions.allFetchedQuestions
-  );
-  console.log("AllQuestionsAndIds: ", AllQuestionsAndIds);
   setTotalQuestionNumber(allIds.length);
   setAllQuestions(AllQuestionsAndIds);
 }
@@ -135,16 +121,31 @@ export function getQuestion(
 
   let usedId;
 
+  console.log("%c--- BEGIN getQuestion ---", "background:yellow;");
+  console.log("%cselectedId", "background:yellow;", selectedId);
+  console.log("%CurrentIdList", "background:yellow;", CurrentIdList);
+  console.log("%cscoreRecord", "background:yellow;", scoreRecord);
   // If we do not have questoins, use the selcted ID
   if (totalQuestions > 0) usedId = CurrentIdList[selectedId];
+  console.log("usedId ---> ", usedId);
+  console.log(
+    "%callFetchedQuestions",
+    "background:yellow;",
+    allFetchedQuestions
+  );
 
   // Check if ID has already been used
-  if (usedId) {
-    console.log(
-      "scoreRecord.includes(usedId.toString()): ",
-      scoreRecord.includes(usedId.toString())
-    );
-  }
+  // if (usedId) {
+  //   console.log(
+  //     "scoreRecord.includes(usedId.toString()): ",
+  //     scoreRecord.includes(usedId.toString())
+  //   );
+  // }
+  // console.log(
+  //   "%cscoreRecord.includes(usedId.toString())",
+  //   "background:yellow;",
+  //   scoreRecord.includes(usedId.toString())
+  // );
   if (usedId && scoreRecord.includes(usedId.toString())) {
     // Check if we are out of questions
     console.log(
@@ -170,6 +171,7 @@ export function getQuestion(
     ? { ...allFetchedQuestions[usedId] }
     : { questionText: "Are you ready?", answer: "" };
 
+  console.log("%cselectedQuestion", "background:yellow;", selectedQuestion);
   if (!selectedQuestion) {
     getQuestion(
       allFetchedQuestionsIds,
@@ -179,23 +181,27 @@ export function getQuestion(
     );
   }
 
+  console.log("%cselectedQuestion", "background:yellow;", selectedQuestion);
+
   if (
     scoreRecord &&
     totalQuestions > 0 &&
-    usedId &&
+    usedId != "undefined" &&
+    usedId !== null &&
     typeof usedId !== "undefined" &&
     usedId !== "" &&
     usedId !== " "
   ) {
     scoreCtx.addCurrent(usedId.toString());
-    console.log("selectedQuestion: ", selectedQuestion);
+
     const finalAnswer =
       selectedQuestion.answer != ""
         ? selectedQuestion.answer
         : selectedQuestion.answerNotPerson;
-    console.log("finalAnswer: ", finalAnswer);
+
     selectedQuestion.answerOptions = createAnswerOptions(
       allFetchedQuestions,
+      selectedQuestion.category,
       finalAnswer,
       selectedQuestion.answerOptions,
       selectedQuestion.photoOptions,
