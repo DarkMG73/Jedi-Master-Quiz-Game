@@ -1,3 +1,6 @@
+import { quoteList } from "../../src/store/quotes";
+import { randomQuestionsList } from "../../src/store/random-questions";
+
 describe("Test Unique answerOptions", () => {
   it("Moves through questions then asserts that all three texts optins should be unique.", () => {
     cy.visit("http://localhost:3000/");
@@ -5,9 +8,15 @@ describe("Test Unique answerOptions", () => {
       cy.spy(win.console, "error");
       cy.spy(win.console, "warn");
     });
-    cy.contains("Begin, We Shall →").parent().scrollIntoView().click();
+    cy.contains("Begin, We Shall →")
+      .parent()
+      .scrollIntoView()
+      .click({ force: true });
     // Run for each question
-    for (let cntr = 1; cntr <= 194; cntr++) {
+    const numberOfQuestions =
+      quoteList().allFetchedQuotesIds.length +
+      randomQuestionsList().allFetchedQuestionIds.length;
+    for (let cntr = 1; cntr < numberOfQuestions; cntr++) {
       cy.get(".Options_options-container__3pnBB > div:first-child").then(
         ($optOne) => {
           const optOneText = $optOne.text();

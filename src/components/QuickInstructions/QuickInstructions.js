@@ -1,6 +1,7 @@
 import styles from "./QuickInstructions.module.css";
 import Card from "../UI/Card/Card";
 import { withRouter } from "react-router-dom";
+import { Animated } from "react-animated-css";
 
 const QuickInstructions = (props) => {
   return (
@@ -12,8 +13,8 @@ const QuickInstructions = (props) => {
           Trials arena. You will see a question and three characters. Select the
           character that you believe best answers the question. Be quick and
           wise, young Padawan, for there is a Dark Side timer that{" "}
-          <b>relenlessly and ruthlessly</b> ticks away for each question! Fail
-          to answer in the alloted time and an inccorect mark you will be given.
+          <b>relentlessly and ruthlessly</b> ticks away for each question! Fail
+          to answer in the alloted time and an incorrect mark you will be given.
         </p>
         <p>
           Your correct and incorrect answers will be tallied and your progress

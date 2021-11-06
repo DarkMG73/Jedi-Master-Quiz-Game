@@ -15,12 +15,12 @@ const Options = (props) => {
 
   let imageOne;
   try {
-    // console.log(
-    //   "imageOne: ",
-    //   `../../assets/images/${replSpace(answerOptions[0].category)}/${replSpace(
-    //     answerOptions[0].photo
-    //   )}.jpg`
-    // );
+    console.log(
+      "imageOne: ",
+      `../../assets/images/${replSpace(answerOptions[0].category)}/${replSpace(
+        answerOptions[0].photo
+      )}.jpg`
+    );
     imageOne = require(`../../assets/images/${replSpace(
       answerOptions[0].category
     )}/${replSpace(answerOptions[0].photo)}.jpg`);
@@ -31,12 +31,12 @@ const Options = (props) => {
   }
   let imageTwo;
   try {
-    // console.log(
-    //   "imageTwo: ",
-    //   `../../assets/images/${replSpace(answerOptions[1].category)}/${replSpace(
-    //     answerOptions[1].photo
-    //   )}.jpg`
-    // );
+    console.log(
+      "imageTwo: ",
+      `../../assets/images/${replSpace(answerOptions[1].category)}/${replSpace(
+        answerOptions[1].photo
+      )}.jpg`
+    );
     imageTwo = require(`../../assets/images/${replSpace(
       answerOptions[1].category
     )}/${replSpace(answerOptions[1].photo)}.jpg`);
@@ -53,12 +53,12 @@ const Options = (props) => {
 
   let imageThree;
   try {
-    // console.log(
-    //   "imageThree: ",
-    //   `../../assets/images/${replSpace(answerOptions[2].category)}/${replSpace(
-    //     answerOptions[2].photo
-    //   )}.jpg`
-    // );
+    console.log(
+      "imageThree: ",
+      `../../assets/images/${replSpace(answerOptions[2].category)}/${replSpace(
+        answerOptions[2].photo
+      )}.jpg`
+    );
     imageThree = require(`../../assets/images/${replSpace(
       answerOptions[2].category
     )}/${replSpace(answerOptions[2].photo)}.jpg`);

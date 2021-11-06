@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useLocation } from "react-router-dom";
 import Question from "../components/Questions/Question";
 import Score from "../components/Score/Score";
 import GameOver from "../components/GameOver/GameOver";
@@ -9,12 +9,17 @@ import RankingSystem from "../components/RankingSystem/RankingSystem";
 import Background from "../components/UI/Background/Background";
 import PageContainer from "../components/UI/PageContainer/PageContainer";
 import Card from "../components/UI/Card/Card";
+import { AnimatePresence, motion } from "framer-motion";
 
 function HomePage(props) {
   const [totalQuestionNumber, setTotalQuestionNumber] = useState();
   const [gameOver, setGameOver] = useState();
   const gameRunning = props.gameRunning;
   const setGameRunning = props.setGameRunning;
+  const location = useLocation();
+  const path = location.pathname;
+  console.log("path: ", path);
+  console.log('path === "/instructions": ', path === "/instructions");
 
   useEffect(() => {
     if (gameOver === false) setGameRunning(true);
@@ -24,14 +29,15 @@ function HomePage(props) {
     <PageContainer maxWidth="1000px">
       <Background>
         <Switch>
-          <Route path="/instructions" exact>
+          <Route path="/instructions">
             <QuickInstructions />
           </Route>
-          <Route path="/ranking-system" exact>
+          <Route path="/ranking-system">
             <RankingSystem />
           </Route>
           <Route path="/"></Route>
         </Switch>
+
         {!gameRunning && <StartGame setGameRunning={setGameRunning} />}
         {gameOver && (
           <GameOver

@@ -124,7 +124,7 @@ export function randomQuestionsList() {
         answer: "A New Hope",
         answerExplanation:
           "When the Millennium Falcon came out of hyperspace to find no Alderaan, they followed a lone TIE Fighter to what they realized, too late, was no moon. They were pulled onboard the Death Star, and commandeered some disguises in order to move about freely while looking for a solution to their problems. After Obi-Wan left to deactivate the tractor beam, Luke learned that Princess Leia had been captured and was scheduled to be executed. He then enlisted the help of Han and Chewie to stage a rescue. The trio made their way to the detention block and quickly took control of it. Luke found and freed the princess, but didn't have any escape plan, which resulted in the cell-block shootout, before the group bailed into the garbage chute. They were almost crushed by the masher, but R2-D2 was able to shut it down just in time. The gang then made their way through the Death Star back to the Falcon, where they were eventually able to leave, but only with the sacrifice of Obi-Wan Kenobi at the hands of Darth Vader. Once clear of the Death Star, Han and Luke still had to fend off four pursuing TIE Fighters. However, it had been Vader's plan for the Falcon to escape with a tracking beacon that would lead the Imperials straight to the hidden Rebel Base on Yavin IV.",
-        answerOptions: ["Return Of The Jedi", "Attack of the Clones"],
+        answerOptions: ["Return of the Jedi", "Attack of the Clones"],
         photoOptions: null,
         faction: -1,
       },
@@ -903,7 +903,7 @@ export function randomQuestionsList() {
         answer: "Revenge of the Sith",
         answerExplanation:
           'Palpatine was a Sith Lord, and his single goal in his life was to create a Sith-run galaxy. He joined politics, first seen in "Episode I", as the senator from Naboo. He was then elected as Supreme Chancellor of the Galactic Republic, and was in office when the Clone Wars broke out. The Senate chose to keep him in office until the war\'s end. At the same time, it was Dath Sidious, the same man, who was secretly manipulating galactic events, including the leaders of the Trade Federation, and later, the Separatist Alliance. Thus, the entire Clone Wars were engineered by a single man in order to gain Sith dominance over the galaxy. In "Episode III", the Clone Wars ended with the death of General Grievous, and surrender of the Separatist Leaders. The Jedi learned from Anakin that Palpatine was a Sith Lord, and moved to arrest him, but the Sith Lord was able to defeat the Jedi (with the help of Anakin Skywalker at the last minute). Palpatine then issued Order 66 to the Grand Army of the Republic, ordering the clones to kill all Jedi. He also fabricated a story about the Jedi\'s attempts to take over the Republic, branding the Jedi as evil. Thus, Palpatine had the power of the Grand Army of the Republic behind him. His enemies, the Jedi, were all but destroyed, and the Senate allowed him to reform the Galactic Republic into the Galactic Empire with the promise of peace and stability.',
-        answerOptions: ["Return Of The Jedi", "The Phantom Menace"],
+        answerOptions: ["Return of the Jedi", "The Phantom Menace"],
         photoOptions: null,
         faction: -1,
       },
@@ -4823,7 +4823,7 @@ function scrapeQuestions(allStarWarsInfo) {
     }
 
     if (answer === "On the moon of Endor" || answer === "Endor") {
-      answer = "Forest Moon of Endor";
+      answer = "The Forest Moon of Endor";
     }
     if (
       answer ===

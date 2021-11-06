@@ -1,7 +1,6 @@
 .top-nav {
-  position: sticky;
+  position: relative;
   display: flex;
-  top: -105px;
   max-width: 1000px;
   margin: 0 auto;
   flex-direction: column;
@@ -162,6 +161,8 @@
 }
 /* GAME MODE */
 .top-nav-game-mode {
+  position: sticky;
+  top: -105px;
   transform: scale(0.5);
   height: 250px;
 }

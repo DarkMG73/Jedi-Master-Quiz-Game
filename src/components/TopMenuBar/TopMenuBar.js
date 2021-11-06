@@ -40,7 +40,7 @@ function TopMenuBar(props) {
     <nav
       className={`${styles["top-nav"]} ${
         props.gameRunning && styles["top-nav-game-mode"]
-      } ${scrollPosition >= 100 && styles["small-timer"]}`}
+      } ${props.gameRunning && scrollPosition >= 100 && styles["small-timer"]}`}
     >
       <Link className={styles["app-title"]} to="/">
         <ArcText

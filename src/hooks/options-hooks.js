@@ -36,9 +36,6 @@ export function createAnswerOptions(
     randomAnswerOptions
   );
 
-  for (const key in popularStarWarsInfo) {
-    // console.log("------->" + key + ":", popularStarWarsInfo[key].length);
-  }
   let allPhotoOptions = {};
   if (photoOptions) {
     allPhotoOptions = {
