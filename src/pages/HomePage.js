@@ -6,7 +6,6 @@ import GameOver from "../components/GameOver/GameOver";
 import StartGame from "../components/StartGame/StartGame";
 import QuickInstructions from "../components/QuickInstructions/QuickInstructions";
 import RankingSystem from "../components/RankingSystem/RankingSystem";
-import Background from "../components/UI/Background/Background";
 import PageContainer from "../components/UI/PageContainer/PageContainer";
 import Card from "../components/UI/Card/Card";
 import { AnimatePresence, motion } from "framer-motion";
@@ -27,42 +26,40 @@ function HomePage(props) {
 
   return (
     <PageContainer maxWidth="1000px">
-      <Background>
-        <Switch>
-          <Route path="/instructions">
-            <QuickInstructions />
-          </Route>
-          <Route path="/ranking-system">
-            <RankingSystem />
-          </Route>
-          <Route path="/"></Route>
-        </Switch>
+      <Switch>
+        <Route path="/instructions">
+          <QuickInstructions />
+        </Route>
+        <Route path="/ranking-system">
+          <RankingSystem />
+        </Route>
+        <Route path="/"></Route>
+      </Switch>
 
-        {!gameRunning && <StartGame setGameRunning={setGameRunning} />}
-        {gameOver && (
-          <GameOver
-            totalQuestionNumber={totalQuestionNumber}
-            gameOver={gameOver}
-            setGameOver={setGameOver}
-          />
-        )}
-        {gameRunning && (
-          <Question
-            gameRunning={gameRunning}
-            setGameRunning={setGameRunning}
-            totalQuestionNumber={totalQuestionNumber}
-            setTotalQuestionNumber={setTotalQuestionNumber}
-            gameOver={gameOver}
-          />
-        )}
-        {gameRunning && !gameOver && (
-          <Score
-            totalQuestionNumber={totalQuestionNumber}
-            gameOver={gameOver}
-            setGameOver={setGameOver}
-          />
-        )}
-      </Background>
+      {!gameRunning && <StartGame setGameRunning={setGameRunning} />}
+      {gameOver && (
+        <GameOver
+          totalQuestionNumber={totalQuestionNumber}
+          gameOver={gameOver}
+          setGameOver={setGameOver}
+        />
+      )}
+      {gameRunning && (
+        <Question
+          gameRunning={gameRunning}
+          setGameRunning={setGameRunning}
+          totalQuestionNumber={totalQuestionNumber}
+          setTotalQuestionNumber={setTotalQuestionNumber}
+          gameOver={gameOver}
+        />
+      )}
+      {gameRunning && !gameOver && (
+        <Score
+          totalQuestionNumber={totalQuestionNumber}
+          gameOver={gameOver}
+          setGameOver={setGameOver}
+        />
+      )}
     </PageContainer>
   );
 }

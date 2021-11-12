@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.b643f2b1.chunk.css",
-    "main.js": "/static/js/main.7aa69969.chunk.js",
-    "main.js.map": "/static/js/main.7aa69969.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.e40316bc.js",
-    "runtime-main.js.map": "/static/js/runtime-main.e40316bc.js.map",
-    "static/js/2.43af08ce.chunk.js": "/static/js/2.43af08ce.chunk.js",
-    "static/js/2.43af08ce.chunk.js.map": "/static/js/2.43af08ce.chunk.js.map",
-    "static/js/3.6d5c2b02.chunk.js": "/static/js/3.6d5c2b02.chunk.js",
-    "static/js/3.6d5c2b02.chunk.js.map": "/static/js/3.6d5c2b02.chunk.js.map",
+    "main.css": "/static/css/main.3145a5e6.chunk.css",
+    "main.js": "/static/js/main.43f39fd1.chunk.js",
+    "main.js.map": "/static/js/main.43f39fd1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9012aef1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9012aef1.js.map",
+    "static/js/2.ea82d848.chunk.js": "/static/js/2.ea82d848.chunk.js",
+    "static/js/2.ea82d848.chunk.js.map": "/static/js/2.ea82d848.chunk.js.map",
+    "static/js/3.c78a7656.chunk.js": "/static/js/3.c78a7656.chunk.js",
+    "static/js/3.c78a7656.chunk.js.map": "/static/js/3.c78a7656.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.b643f2b1.chunk.css.map": "/static/css/main.b643f2b1.chunk.css.map",
-    "static/js/2.43af08ce.chunk.js.LICENSE.txt": "/static/js/2.43af08ce.chunk.js.LICENSE.txt",
+    "static/css/main.3145a5e6.chunk.css.map": "/static/css/main.3145a5e6.chunk.css.map",
+    "static/js/2.ea82d848.chunk.js.LICENSE.txt": "/static/js/2.ea82d848.chunk.js.LICENSE.txt",
     "static/media/Aarrba_the_Hutt.jpg": "/static/media/Aarrba_the_Hutt.faf671d4.jpg",
     "static/media/Acolyte.jpg": "/static/media/Acolyte.e4139f21.jpg",
     "static/media/Admiral_Ackbar.jpg": "/static/media/Admiral_Ackbar.2793a71b.jpg",
@@ -90,7 +90,6 @@
     "static/media/General_Redd_Wessel.jpg": "/static/media/General_Redd_Wessel.7798a2cd.jpg",
     "static/media/General_Rom_Mohc.jpg": "/static/media/General_Rom_Mohc.cde3af68.jpg",
     "static/media/Geonosis.jpg": "/static/media/Geonosis.132eb2f4.jpg",
-    "static/media/stylesheet.css": "/static/media/kodchasan-semibolditalic-webfont.77683ef3.woff",
     "static/media/Grand_Admiral_Thrawn.jpg": "/static/media/Grand_Admiral_Thrawn.599cee3a.jpg",
     "static/media/Grand_Moff_Tarkin.jpg": "/static/media/Grand_Moff_Tarkin.22a07c81.jpg",
     "static/media/Greedo.jpg": "/static/media/Greedo.f342de12.jpg",
@@ -190,12 +189,13 @@
     "static/media/Zabrakian.jpg": "/static/media/Zabrakian.5dfbf973.jpg",
     "static/media/Zillow_Beast.jpg": "/static/media/Zillow_Beast.b9fec4fe.jpg",
     "static/media/default-2.jpg": "/static/media/default-2.3cd45cc5.jpg",
-    "static/media/default.jpg": "/static/media/default.d377985a.jpg"
+    "static/media/default.jpg": "/static/media/default.d377985a.jpg",
+    "static/media/stylesheet.css": "/static/media/kodchasan-semibolditalic-webfont.77683ef3.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.e40316bc.js",
-    "static/js/2.43af08ce.chunk.js",
-    "static/css/main.b643f2b1.chunk.css",
-    "static/js/main.7aa69969.chunk.js"
+    "static/js/runtime-main.9012aef1.js",
+    "static/js/2.ea82d848.chunk.js",
+    "static/css/main.3145a5e6.chunk.css",
+    "static/js/main.43f39fd1.chunk.js"
   ]
 }

@@ -21,6 +21,10 @@ export function convertID(str, restore = false) {
   return str.replaceAll(" ", "^");
 }
 
+export function replSpace(str) {
+  return str.trim().replaceAll(" ", "_");
+}
+
 export const combineArraysNoDups = (arrayOne, arrayTwo) => [
   ...new Set([...arrayOne, ...arrayTwo]),
 ];
@@ -43,7 +47,3 @@ function getAllValues(selector) {
 getAllValues(
   "table.wikitable.sortable.jquery-tablesorter tbody tr td:first-child a"
 );
-
-export const replSpace = (str) => {
-  return str.trim().replaceAll(" ", "_");
-};

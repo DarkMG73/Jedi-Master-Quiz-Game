@@ -20,13 +20,16 @@ const ArcText = ({
   spacing = 12,
   offset = 30,
   overlap = true,
+  addedClassName = "",
 }) => {
   const d = objectSize + spacing * 2;
   const r = objectSize / 2 + spacing / 2;
   const CurvedText = styled.div`
-    margin-bottom: ${overlap ? `-${r}px` : "0"};
+    // margin-bottom: ${overlap ? `-${r}px` : "0"};
     width: ${d + offset * 2}px;
-    height: ${r + offset}px;
+    max-width: 100%;
+    // height: ${r + offset}px;
+    height: 1em;
     path {
       fill: transparent;
     }
@@ -37,7 +40,7 @@ const ArcText = ({
   `;
 
   return (
-    <CurvedText className="curved-text">
+    <CurvedText className={`curved-text ${addedClassName}`}>
       <svg viewBox={`0 0 ${d + offset * 2} ${r + offset * 2}`}>
         <path
           id="curve"

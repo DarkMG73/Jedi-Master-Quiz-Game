@@ -17,7 +17,23 @@ export function createAnswerOptions(
   );
   console.log("%canswer: ", "background:green; color:white", answer);
 
-  let randomAnswerOptions = addAnswerOptions(category, answer, answerOptions);
+  let primaryAffiliation = false;
+  console.log("category--------> ", category);
+  if (category === "characters") {
+    popularStarWarsInfo[category].forEach((character) => {
+      console.log("character--------> ", character);
+      console.log("answer--------> ", answer);
+      if (character.name === answer)
+        primaryAffiliation = character.primaryAffiliation;
+    });
+  }
+
+  let randomAnswerOptions = addAnswerOptions(
+    category,
+    answer,
+    primaryAffiliation,
+    answerOptions
+  );
   let answerCntr = 0;
   while (randomAnswerOptions.includes(answer) && answerCntr < 1000) {
     console.log(
@@ -25,7 +41,12 @@ export function createAnswerOptions(
       "background:red; color:white",
       randomAnswerOptions.includes(answer)
     );
-    randomAnswerOptions = addAnswerOptions(category, answer, answerOptions);
+    randomAnswerOptions = addAnswerOptions(
+      category,
+      answer,
+      primaryAffiliation,
+      answerOptions
+    );
 
     answerCntr++;
   }
@@ -114,6 +135,7 @@ export function createAnswerOptions(
 function addAnswerOptions(
   category,
   answer,
+  primaryAffiliation,
   answerOptions,
   starWarsInfo = popularStarWarsInfo
 ) {
@@ -123,8 +145,26 @@ function addAnswerOptions(
     addAnswerOptions
   );
   console.log("%canswer: ", "color: green", answer);
+  console.log("primaryAffiliation: ", primaryAffiliation);
+
   if (!answerOptions || answerOptions.length < 2) {
-    const topicInfoArray = starWarsInfo[category];
+    let topicInfoArray = starWarsInfo[category];
+
+    console.log(
+      "%ctopicInfoArray: ",
+      "background:cream; color: black",
+      topicInfoArray
+    );
+    if (primaryAffiliation) {
+      topicInfoArray = topicInfoArray.filter(
+        (item) => item.primaryAffiliation === primaryAffiliation
+      );
+      console.log(
+        "%c *** IN *** topicInfoArray: ",
+        "background:cream; color: black",
+        topicInfoArray
+      );
+    }
 
     function getTwoDiffRandomNumbers(max) {
       const randomOne = Math.floor(Math.random() * max);
@@ -138,8 +178,8 @@ function addAnswerOptions(
 
     const randomNumbers = getTwoDiffRandomNumbers(topicInfoArray.length);
     const answerOptions = [
-      topicInfoArray[randomNumbers[0]],
-      topicInfoArray[randomNumbers[1]],
+      topicInfoArray[randomNumbers[0]].name,
+      topicInfoArray[randomNumbers[1]].name,
     ];
 
     console.log(

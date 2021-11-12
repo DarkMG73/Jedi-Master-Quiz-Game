@@ -3,8 +3,8 @@ import classes from "./Timer.module.css";
 import ScoreContext from "../../store/score-context";
 
 function Timer(props) {
-  const [timeCounter, setTimeCounter] = useState(10);
   const scoreCtx = useContext(ScoreContext);
+  const [timeCounter, setTimeCounter] = useState(Number(scoreCtx.timerLength));
   const timerRunning = scoreCtx.timerRunning;
   const setTimerRunning = scoreCtx.setTimerRunning;
   const addIncorrect = scoreCtx.addIncorrect;
@@ -32,7 +32,8 @@ function Timer(props) {
 
   useEffect(() => {
     if (timerRunning) {
-      setTimeCounter(10);
+      setTimeCounter(Number(scoreCtx.timerLength));
+      console.log("scoreCtx.timerLength: ", scoreCtx.timerLength);
     }
   }, [timerRunning]);
 

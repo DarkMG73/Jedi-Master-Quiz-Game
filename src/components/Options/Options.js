@@ -14,63 +14,48 @@ const Options = (props) => {
   console.log("%ccategory: ", "background:blue, color:white", category);
 
   let imageOne;
+  const imageOneCategory = replSpace(answerOptions[0].category);
+  const imageOnePhoto = replSpace(answerOptions[0].photo);
   try {
     console.log(
       "imageOne: ",
-      `../../assets/images/${replSpace(answerOptions[0].category)}/${replSpace(
-        answerOptions[0].photo
-      )}.jpg`
+      `../../assets/images/${imageOneCategory}/${imageOnePhoto}.jpg`
     );
-    imageOne = require(`../../assets/images/${replSpace(
-      answerOptions[0].category
-    )}/${replSpace(answerOptions[0].photo)}.jpg`);
+    imageOne = require(`../../assets/images/${imageOneCategory}/${imageOnePhoto}.jpg`);
   } catch {
-    imageOne = require(`../../assets/images/${replSpace(
-      answerOptions[0].category
-    )}/default.jpg`);
+    imageOne = require(`../../assets/images/${imageOneCategory}/default.jpg`);
   }
+
   let imageTwo;
+  const imageTwoCategory = replSpace(answerOptions[1].category);
+  const imageTwoPhoto = replSpace(answerOptions[1].photo);
   try {
     console.log(
       "imageTwo: ",
-      `../../assets/images/${replSpace(answerOptions[1].category)}/${replSpace(
-        answerOptions[1].photo
-      )}.jpg`
+      `../../assets/images/${imageTwoCategory}/${imageTwoPhoto}.jpg`
     );
-    imageTwo = require(`../../assets/images/${replSpace(
-      answerOptions[1].category
-    )}/${replSpace(answerOptions[1].photo)}.jpg`);
+    imageTwo = require(`../../assets/images/${imageTwoCategory}/${imageTwoPhoto}.jpg`);
   } catch {
     imageTwo =
       category === "battles"
-        ? require(`../../assets/images/${replSpace(
-            answerOptions[1].category
-          )}/default-2.jpg`)
-        : require(`../../assets/images/${replSpace(
-            answerOptions[1].category
-          )}/default.jpg`);
+        ? require(`../../assets/images/battles/default-2.jpg`)
+        : require(`../../assets/images/${imageTwoCategory}/default.jpg`);
   }
 
   let imageThree;
+  const imageThreeCategory = replSpace(answerOptions[2].category);
+  const imageThreePhoto = replSpace(answerOptions[2].photo);
   try {
     console.log(
       "imageThree: ",
-      `../../assets/images/${replSpace(answerOptions[2].category)}/${replSpace(
-        answerOptions[2].photo
-      )}.jpg`
+      `../../assets/images/${imageThreeCategory}/${imageThreePhoto}.jpg`
     );
-    imageThree = require(`../../assets/images/${replSpace(
-      answerOptions[2].category
-    )}/${replSpace(answerOptions[2].photo)}.jpg`);
+    imageThree = require(`../../assets/images/${imageThreeCategory}/${imageThreePhoto}.jpg`);
   } catch {
     imageThree =
       category === "battles"
-        ? require(`../../assets/images/${replSpace(
-            answerOptions[2].category
-          )}/default-3.jpg`)
-        : require(`../../assets/images/${replSpace(
-            answerOptions[2].category
-          )}/default.jpg`);
+        ? require(`../../assets/images/battles/default-3.jpg`)
+        : require(`../../assets/images/${imageThreeCategory}/default.jpg`);
   }
 
   useEffect(() => {

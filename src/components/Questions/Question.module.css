@@ -117,3 +117,30 @@
   box-shadow: inset -2px -2px 2px -1px rgb(0 0 0 / 50%),
     inset 3px 3px 5px -3px rgb(0 0 0 / 61%);
 }
+
+@media screen and (max-width: 600px) {
+  .question-text {
+    max-height: none;
+  }
+
+  .button {
+    font-size: 24px;
+    margin: 0 auto 32px;
+    position: relative;
+    left: 50%;
+    transform: none;
+    padding: 1em 0;
+    width: 70%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    padding: 0;
+    margin: 0 auto;
+    transform: translateX(-50%);
+  }
+  .button > div {
+    padding: 2em 0;
+    border-radius: 75px 75px 0 0;
+    font-size: calc(5px + 2vh);
+  }
+}

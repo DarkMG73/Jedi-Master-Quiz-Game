@@ -180,7 +180,31 @@ export function getQuestion(
       setQuestion
     );
   }
+  const calculateTimerLength = (minLength, avgLength) => {
+    console.log("----calculateTimerLength ---- ");
+    console.log("avgLength: ", avgLength);
+    console.log("minLength: ", minLength);
+    console.log(
+      "selectedQuestion.questionText.length: ",
+      selectedQuestion.questionText.length
+    );
+    console.log(
+      "selectedQuestion.questionText.length / avgLength: ",
+      selectedQuestion.questionText.length / avgLength
+    );
+    console.log(
+      "minLength -1 + Math.ceil(selectedQuestion.questionText.length / avgLength): ",
+      minLength -
+        1 +
+        Math.ceil(selectedQuestion.questionText.length / avgLength)
+    );
 
+    return (
+      minLength -
+      1 +
+      Math.ceil(selectedQuestion.questionText.length / avgLength)
+    );
+  };
   console.log("%cselectedQuestion", "background:yellow;", selectedQuestion);
 
   if (
@@ -192,7 +216,12 @@ export function getQuestion(
     usedId !== "" &&
     usedId !== " "
   ) {
+    console.log(
+      "calculateTimerLength(10, 130): ",
+      calculateTimerLength(10, 130)
+    );
     scoreCtx.addCurrent(usedId.toString());
+    scoreCtx.setTimerLength(calculateTimerLength(10, 130));
 
     const finalAnswer =
       selectedQuestion.answer != ""

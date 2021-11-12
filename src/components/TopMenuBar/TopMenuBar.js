@@ -5,6 +5,8 @@ import specialGradient from "../UI/Card/specialGradient.module.css";
 import ArcText from "../UI/ArcText";
 import Timer from "../Timer/Timer";
 import ScoreContext from "../../store/score-context";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
+import Card from "../UI/Card/Card";
 
 function TopMenuBar(props) {
   const [timerStarted, setTimerStarted] = useState(false);
@@ -13,9 +15,12 @@ function TopMenuBar(props) {
   const imageTwo = require(`../../assets/images/characters/default.jpg`);
   const imageThree = require(`../../assets/images/characters/Maul.jpg`);
   const countdownAnimation = timerStarted ? styles["countdownAnimation"] : "";
-
+  const { height: windowHeight, width: windowWidth } = useWindowDimensions();
+  console.log("windowWidth: ", typeof windowWidth);
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  console.log("windowWidth < 460: ", windowWidth < 460);
+  console.log("windowWidth: ", windowWidth);
+  console.log("window.innerWidth", window.innerWidth);
   const handleScroll = () => {
     const position = window.pageYOffset;
     console.log("position: ", position);
@@ -40,24 +45,39 @@ function TopMenuBar(props) {
     <nav
       className={`${styles["top-nav"]} ${
         props.gameRunning && styles["top-nav-game-mode"]
-      } ${props.gameRunning && scrollPosition >= 100 && styles["small-timer"]}`}
+      } ${props.gameRunning && scrollPosition >= 50 && styles["small-timer"]}`}
     >
       <Link className={styles["app-title"]} to="/">
-        <ArcText
-          text={"Jedi Master Quiz Game"}
-          objectSize={1000}
-          spacing={12}
-          offset={30}
-        />
-
-        <div className={styles["curved-text-wrap"]}>
+        {windowWidth >= 460 && (
           <ArcText
-            text={"Fulfill Your Destiny"}
-            objectSize={1000}
+            text={"Jedi Master Quiz Game"}
+            objectSize={250}
             spacing={12}
             offset={30}
+            addedClassName="arc-text"
           />
-        </div>
+        )}
+
+        {windowWidth >= 460 && (
+          <div className={styles["arc-text-wrap"]}>
+            <ArcText
+              text={"Fulfill Your Destiny"}
+              objectSize={250}
+              spacing={12}
+              offset={30}
+            />
+          </div>
+        )}
+
+        {windowWidth < 460 && (
+          <ArcText
+            text={"Jedi Master Quiz Game"}
+            objectSize={windowWidth}
+            spacing={12}
+            offset={30}
+            addedClassName="arc-text"
+          />
+        )}
       </Link>
 
       <ul className={styles["content-container"]}>

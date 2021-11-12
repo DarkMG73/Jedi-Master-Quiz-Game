@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Star Wars Jedi Quiz Game",
+  "name": "Advance Through the Jedi Ranks Using Your Knowledge",
   "icons": [
     {
       "src": "favicon.ico",

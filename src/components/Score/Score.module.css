@@ -452,3 +452,34 @@ button {
 .gameover-fail {
   font-size: 14px;
 }
+
+@media screen and (max-width: 600px) {
+  .score-container {
+    flex-direction: column;
+  }
+
+  /* .lightsaber-wrap {
+    position: absolute; */
+  /* bottom: -73px; */
+  /* margin-left: 22%; */
+  /* width: 100%; */
+  /* left: 48px !important; */
+  /* transform: translateX(100%); */
+  /* top: 0;
+  } */
+
+  .lightsaber-wrap {
+    position: fixed;
+    bottom: 0;
+    /* margin-left: 22%; */
+    /* width: 100%; */
+    left: -1px !important;
+    transform: translateX(100%);
+    top: 37vh;
+    animation-duration: 3s;
+  }
+
+  .lightsaber-wrap > div {
+    transform: none !important;
+  }
+}

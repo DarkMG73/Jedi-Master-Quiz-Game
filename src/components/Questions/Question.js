@@ -51,6 +51,7 @@ function Question(props) {
   const newQuestionHandler = function () {
     console.log("%c--- BEGIN newQuestionHandler ---", "background:pink");
     const endOutput = getQuestion(...questionArgs);
+    window.scrollTo(0, 0);
     console.log("%cendOutput: ", "background:pink", endOutput);
     scoreCtx.setTimerRunning(true);
     if (endOutput === "QUESTIONS_DEPLETED") setGameRunning(false);

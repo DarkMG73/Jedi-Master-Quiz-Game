@@ -8,10 +8,12 @@ const ScoreContext = React.createContext({
   correct: [],
   incorrect: [],
   timerRunning: false,
+  timerLength: 10,
   addCurrent: () => {},
   addCorrect: () => {},
   addIncorrect: () => {},
   setTimerRunning: () => {},
+  setTimerLength: () => {},
   resetScoreContext: () => {},
 });
 
@@ -20,6 +22,7 @@ const initDefaultScoreState = {
   correct: [],
   incorrect: [],
   timerRunning: false,
+  timerLength: 10,
 };
 let defaultScoreState = { ...initDefaultScoreState };
 const localStorageContents = lSTools.getFromLocal(localStorageName);
@@ -30,6 +33,7 @@ if (localStorageContents) {
     correct: localStorageContents.correct,
     incorrect: localStorageContents.incorrect,
     timerRunning: false,
+    timerLength: 10,
   };
 }
 
@@ -40,6 +44,7 @@ const scoreReducer = (state, action) => {
       correct: state.correct,
       incorrect: state.incorrect,
       timerRunning: state.timerRunning,
+      timerLength: state.timerLength,
     };
   }
 
@@ -54,6 +59,7 @@ const scoreReducer = (state, action) => {
       correct: [...state.correct, state.current],
       incorrect: state.incorrect,
       timerRunning: false,
+      timerLength: state.timerLength,
     };
   }
 
@@ -68,6 +74,7 @@ const scoreReducer = (state, action) => {
       correct: state.correct,
       incorrect: [...state.incorrect, state.current],
       timerRunning: false,
+      timerLength: state.timerLength,
     };
   }
 
@@ -82,8 +89,20 @@ const scoreReducer = (state, action) => {
       correct: state.correct,
       incorrect: state.incorrect,
       timerRunning: action.value,
+      timerLength: state.timerLength,
     };
   }
+
+  if (action.type === "SET_TIMER-LENGTH") {
+    return {
+      current: state.current,
+      correct: state.correct,
+      incorrect: state.incorrect,
+      timerRunning: state.timerRunning,
+      timerLength: action.value,
+    };
+  }
+
   return defaultScoreState;
 };
 
@@ -124,15 +143,25 @@ export const ScoreProvider = (props) => {
     });
   };
 
+  const setTimerLengthHandler = (value) => {
+    dispatchScoreAction({
+      type: "SET_TIMER-LENGTH",
+      value,
+    });
+  };
+
   const scoreContext = {
     current: scoreState.current,
     correct: scoreState.correct,
     incorrect: scoreState.incorrect,
     timerRunning: scoreState.timerRunning,
+    timerLength: scoreState.timerLength,
     addCurrent: addCurrentHandler,
     addCorrect: addCorrectHandler,
     addIncorrect: addIncorrectHandler,
     setTimerRunning: setTimerRunningHandler,
+    setTimerLength: setTimerLengthHandler,
+
     resetScoreContext: resetScoreContextHandler,
   };
 

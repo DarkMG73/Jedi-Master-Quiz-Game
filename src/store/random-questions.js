@@ -749,7 +749,7 @@ export function randomQuestionsList() {
         preQuestion: "Do you know...",
         id: "planets-Tatooine144106",
         questionText:
-          'Last question on Anakin for awhile. On what planet was Anakin in "Attack of the Clones" when his shadow on a hut resembled the Darth Vader mask?',
+          'On what planet was Anakin in "Attack of the Clones" when his shadow on a hut resembled the Darth Vader mask?',
         answer: "Tatooine",
         answerExplanation:
           "Tatooine was the home to not only him, but his son Luke Skywalker. It is also home to the malicious Hutts.",
@@ -1363,7 +1363,7 @@ export function randomQuestionsList() {
         preQuestion: "Do you know...",
         id: "characters-Lobot868364",
         questionText:
-          "\"While I was flying one of those airplanes when they finally allowed me to, I got lost. So I landed on the nearest place that I could find. I didn't know what the place was actually called, so I just called it Cloud City because I sure did see a lot of clouds there. So I stayed in Cloud City for a little while, but I didn't do much. The only thing that I remember was this voice that I heard. No one else seemed to have heard it because whenever I asked anyone if they heard it, they always said 'no'. I guess I could hear pretty well. And just in case you want to know what the voice said, it was somethin' like, 'No, I am your father.' Y'know what? I think he just found his son.\" I think what Forrest is saying is easy to understand. So, if I may ask, what is the name of the aide of the Baron Administrator of Cloud City during the time of Forrest's description?",
+          "\"While I was flying one of those airplanes when they finally allowed me to, I got lost. So I landed on the nearest place that I could find...I just called it Cloud City because I sure did see a lot of clouds there...The only thing that I remember was this voice that I heard....'No, I am your father.'\" Given Forrest's quote above, what is the name of the aide of the Baron Administrator of Cloud City during the time of Forrest's is describing?",
         answer: "Lobot",
         answerExplanation:
           "The Baron Administrator of Cloud City during that time was Lando Calrissian, and his aide's name is Lobot. If that name doesn't ring a bell, Lobot is the human being from \"The Empire Strikes Back\" whom we could see wearing a semi-circle shaped device around the back of his head. The purpose of that device was to connect him to the central computer of Cloud City.",

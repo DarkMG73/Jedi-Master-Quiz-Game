@@ -6,7 +6,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: calc(50px + 1em);
+  /* padding-top: calc(50px + 1em); */
+  padding-top: 30px;
   font-family: "GoodTimes Reg", sans-serif;
   transition: 0.2s all ease;
   z-index: 10000;
@@ -15,25 +16,32 @@
 .app-title {
   position: relative;
   display: block;
+  max-width: 100%;
   /* transform: scale(1.5) translate(3.25%, 0);
   margin-bottom: -220px;
   margin-top: -118px; */
   color: #fbdcb6;
-  font-size: 28px;
+  font-size: 17px;
   text-indent: 0.5em;
   letter-spacing: 0.3em;
   text-shadow: 0 0 10px #ff0000;
-  padding-bottom: 1em;
+  margin-left: -28.5px;
+  padding-bottom: 1.5em;
   /* ALTERNATE COLOR SCHEME */
   color: white;
   text-shadow: -1px -1px 1px rgb(0 0 0 / 50%),
     1px 1px 1px rgb(255 255 255 / 73%);
   transition: 0.3s all ease;
+  transform: scale(1.5);
+  text-decoration: none;
 }
 
-.curved-text-wrap {
-  font-size: 10px;
-  letter-spacing: 2em;
+.arc-text-wrap {
+  max-width: 100%;
+  font-size: 50%;
+  letter-spacing: 1.25em;
+  transform: translateX(2.5em);
+  width: 291px;
 }
 
 .content-container {
@@ -43,6 +51,7 @@
   min-width: 100%;
   list-style: none;
   padding-bottom: 7%;
+  padding-left: 0;
 }
 
 .inner-element {
@@ -134,6 +143,7 @@
 .inner-element:nth-child(2) a {
   transform: scale(1.5, 1.5) translateY(-32%);
 }
+
 .inner-element a {
   position: absolute;
   height: 100%;
@@ -144,7 +154,7 @@
   z-index: 1;
   padding: 1.5em;
   text-align: center;
-  font-size: calc(12px + 0.2vw);
+  font-size: calc(5px + 1.3vw);
   text-decoration: none;
   font-weight: 700;
   background: transparent;
@@ -152,6 +162,13 @@
   transform: translatey(-50%);
   color: #c7bca7;
   transition: 0.2s all ease;
+  transform: scale(1, 1.25) translateY(-40%);
+}
+
+@media screen and (min-width: 1000px) {
+  .inner-element a {
+    font-size: 24px;
+  }
 }
 
 .inner-element:hover a {
@@ -162,23 +179,46 @@
 /* GAME MODE */
 .top-nav-game-mode {
   position: sticky;
-  top: -105px;
-  transform: scale(0.5);
+  top: 0;
   height: 250px;
+  transform: scale(0.5) translateY(50%);
+  transform-origin: top;
+}
+
+.small-timer:hover .app-title > div {
+  width: 433px;
+}
+.top-nav-game-mode .app-title .arc-text-wrap {
+  display: none;
+}
+
+@media screen and (max-width: 460px) {
+  .top-nav-game-mode {
+    transform: scale(0.9) translateY(0%);
+    transform-origin: top;
+    overflow: hidden;
+  }
+
+  .inner-element a {
+    transform: scale(0.75, 1) translateY(-50%);
+  }
+  .inner-element:nth-child(2) a {
+    transform: scale(1, 1.5) translateY(-32%);
+  }
 }
 
 .small-timer {
-  transform: scale(0.2);
+  transform: scale(0.2) translateY(20%);
   transition: 0.3s all ease;
   background: none;
+  transform-origin: top;
 }
 
 .small-timer * {
   transform: none;
 }
 .small-timer:hover {
-  transform: scale(0.5);
-  height: 250px;
+  transform: scale(0.5) translateY(43%);
   top: 0;
   transition: 0.3s all ease;
 }
@@ -227,7 +267,7 @@
   );
   background-color: hsl(0deg 0% 100%);
   border: none;
-  border-radius: 100px;
+  border-radius: 0 0 100px 100px;
   box-shadow: inset -7px -7px 10px -7px rgb(0 0 0 / 50%),
     inset 7px 7px 10px -7px rgb(0 0 0 / 73%);
   transition: 0.2s all ease;
@@ -249,15 +289,19 @@
   opacity: 1;
 }
 
+.title-small {
+  text-decoration: none;
+}
+
 .top-nav-game-mode .inner-element:nth-child(1) {
-  transform: translateY(17%) translatex(-14%) scale(1);
+  transform: translateY(40%) translatex(-10%) scale(1);
 }
 .top-nav-game-mode .inner-element:nth-child(2) {
   z-index: 3;
   filter: saturate(1.25);
 }
 .top-nav-game-mode .inner-element:nth-child(3) {
-  transform: translateY(17%) translatex(14%) scale(1);
+  transform: translateY(40%) translatex(10%) scale(1);
 }
 
 .countdownAnimation {

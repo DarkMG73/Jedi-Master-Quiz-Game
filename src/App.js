@@ -7,7 +7,8 @@ import Footer from "./components/Footer";
 import { ScoreProvider } from "./store/score-context";
 import { createBrowserHistory } from "history";
 import "./assets/fonts/Kodchasan/stylesheet.css";
-import "./assets/fonts/GoodTimes/stylesheet.css";
+import ScrollToTop from "./components/UI/ScrollToTop";
+import Background from "./components/UI/Background/Background";
 
 function App() {
   const [gameRunning, setGameRunning] = useState(false);
@@ -16,6 +17,8 @@ function App() {
   const history = createBrowserHistory();
   return (
     <BrowserRouter history={history}>
+      <ScrollToTop />
+      <Background />
       <ScoreProvider>
         <div className="App">
           <TopMenuBar
