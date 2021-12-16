@@ -13,7 +13,7 @@
 //       {
 //         type: 'questionText', id: 31,
 //         preQuestion, questionText:
-//           "Death is a natural part of life. Rejoice for those around you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is. - Yoda",
+//           "Death is a natural part of life. Rejoice for those ar ound you who transform into the Force. Mourn them do not. Miss them do not. Attachment leads to jealously. The shadow of greed, that is. - Yoda",
 //         faction: 0,
 //       },
 //       {
